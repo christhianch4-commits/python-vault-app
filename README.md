@@ -9,6 +9,9 @@ App web de recepción de pedidos. Se publica como un solo archivo: `index.html`.
   python3 build.py
   ```
 - Para probar en tu computador: `python3 -m http.server 8765` y abre http://localhost:8765
+- **Colores:** están como variables al inicio del segundo `<style>` de `src/app.html`
+  (`[data-theme="dark"]` y `[data-theme="light"]`). Cambiando esos valores se recolorea toda la app.
+- `manifest.webmanifest` e `icon-*.png` son el icono y el nombre al "Agregar a pantalla de inicio".
 
 ## Publicar en Vercel (sin programar)
 1. Crea cuenta en https://vercel.com (entra con GitHub o email).
@@ -18,8 +21,8 @@ App web de recepción de pedidos. Se publica como un solo archivo: `index.html`.
 
 ## Importante
 - Los datos (clientes, pedidos, stock) se guardan en el navegador de cada dispositivo y no se comparten entre equipos.
-  Usa **Stock → Respaldo de datos → Exportar respaldo** con frecuencia y guarda el archivo en Drive o en tu correo.
+  Usa **Ajustes (engranaje en el Resumen) → Respaldo de datos → Exportar respaldo** con frecuencia y guarda el archivo en Drive o en tu correo.
   Con **Importar** recuperas todo o lo pasas a otro celular.
 - Usa la app en un solo dispositivo a la vez: la numeración de pedidos (PV-0001…) es local y se repetiría entre equipos.
-- El mail de confirmación se prepara como borrador y se envía desde tu app de correo con el botón "Enviar mail al cliente".
+- La confirmación se prepara como mensaje y se envía por WhatsApp (si el cliente tiene celular 09…) o por mail desde tu app de correo.
   El envío automático requiere un servicio (ej. Resend) y un backend.

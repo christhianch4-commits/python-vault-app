@@ -5,6 +5,10 @@
 <title>Python Vault</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#0C0B09">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Python Vault">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
 <script src="20c9ad89-1cdf-43c3-a7ed-5830794f062e"></script>
 </head>
 <body>
@@ -356,9 +360,17 @@
 }
 </style>
 <style>
-html,body{margin:0;background:#E4E1D9;font-family:'Onest',system-ui,sans-serif;color:#15171A;-webkit-font-smoothing:antialiased}
-a{color:#8C6A22;text-decoration:none}a:hover{color:#15171A}
+/* ---------- Tokens de diseño: cambia aquí los colores de toda la app ---------- */
+[data-theme="dark"]{--bg:#0C0B09;--card:#17150F;--card-2:#1F1B13;--input:#12100C;--solid:#F2EDE2;--on-solid:#15110A;--ink:#F2EDE2;--muted:#A39C8C;--accent:#C9A24A;--accent-ink:#D9B55E;--on-accent:#15110A;--accent-grad:linear-gradient(180deg,#D9B55E,#B38A34);--accent-soft:#2A2213;--warn-soft:#2E1E10;--warn-ink:#F0A56A;--danger-soft:#331615;--danger:#D9483B;--danger-ink:#FF8A7E;--wa:#1F9D55;--line:#2A261C;--line-2:#221F17;--promo:#E08A45;--disabled:#3A362C;--disabled-ink:#8C8576;--tab:#0C0B09;--shadow:0 10px 30px rgba(0,0,0,.55);color-scheme:dark}
+[data-theme="light"]{--bg:#F3F1EB;--card:#FFFFFF;--card-2:#F7F5F0;--input:#FFFFFF;--solid:#15171A;--on-solid:#FFFFFF;--ink:#15171A;--muted:#6B6E72;--accent:#8C6A22;--accent-ink:#8C6A22;--on-accent:#FFFFFF;--accent-grad:linear-gradient(180deg,#9C7A2E,#7E5E1C);--accent-soft:#F3EBD9;--warn-soft:#F8E9DE;--warn-ink:#9A4515;--danger-soft:#FBE7E5;--danger:#B42318;--danger-ink:#B42318;--wa:#1E8C4C;--line:#E3E0D8;--line-2:#EFECE5;--promo:#C2702E;--disabled:#A9ADA9;--disabled-ink:#FFFFFF;--tab:#FFFFFF;--shadow:0 10px 30px rgba(0,0,0,.2);color-scheme:light}
+html,body{margin:0;background:#E4E1D9;font-family:'Onest',system-ui,sans-serif;color:#15171A;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+body:has([data-screen-label="App"][data-theme="dark"]){background:#1A1813}
+a{text-decoration:none}
 input,textarea,button{font-family:inherit}
+[data-theme] input,[data-theme] textarea{color:var(--ink);background:var(--input)}
+[data-theme] ::placeholder{color:var(--muted);opacity:.75}
+[data-theme] input:focus,[data-theme] textarea:focus{border-color:var(--accent)!important;box-shadow:0 0 0 3px var(--accent-soft)}
+[data-theme] button:focus-visible,[data-theme] a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 *::-webkit-scrollbar{width:0;height:0}
 @media (max-width:500px){
   [data-frame]{padding:0!important;min-height:100dvh!important}
@@ -367,28 +379,29 @@ input,textarea,button{font-family:inherit}
   [data-sb]>*{display:none!important}
   [data-tabbar]{padding-bottom:calc(6px + env(safe-area-inset-bottom,0px))!important}
   [data-cartbar]{padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))!important}
+  [data-toast]{top:calc(12px + env(safe-area-inset-top,0px))!important}
 }
 </style>
 </helmet>
 <div data-frame="" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 16px;box-sizing:border-box">
-<div data-screen-label="App" style="width:390px;height:844px;background:#F3F1EB;border-radius:48px;box-shadow:0 0 0 10px #15171A,0 30px 80px rgba(0,0,0,.25);overflow:hidden;display:flex;flex-direction:column;position:relative">
+<div data-screen-label="App" data-theme="{{ theme }}" style="width:390px;height:844px;background:var(--bg);color:var(--ink);border-radius:48px;box-shadow:0 0 0 10px #15171A,0 30px 80px rgba(0,0,0,.25);overflow:hidden;display:flex;flex-direction:column;position:relative">
 
-<div data-sb="" style="height:48px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 30px;font-size:15px;font-weight:600;background:{{ sbBg }};color:{{ sbColor }}">
+<div data-sb="" data-theme="{{ chromeTheme }}" style="height:48px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 30px;font-size:15px;font-weight:600;background:var(--bg);color:var(--ink)">
 <span>9:41</span>
-<div style="display:flex;gap:6px;align-items:center"><div style="width:17px;height:10px;border:1.5px solid {{ sbColor }};border-radius:3px;padding:1px;box-sizing:border-box"><div style="width:80%;height:100%;background:{{ sbColor }};border-radius:1px"></div></div></div>
+<div style="width:17px;height:10px;border:1.5px solid currentColor;border-radius:3px;padding:1px;box-sizing:border-box"><div style="width:80%;height:100%;background:currentColor;border-radius:1px"></div></div>
 </div>
 
 <sc-if value="{{ inFlow }}" hint-placeholder-val="{{ false }}">
-<div style="flex:none;padding:6px 16px 12px;display:flex;flex-direction:column;gap:12px;border-bottom:1px solid #E3E0D8">
+<div style="flex:none;padding:6px 16px 12px;display:flex;flex-direction:column;gap:12px;border-bottom:1px solid var(--line)">
 <div style="display:flex;align-items:center;gap:8px">
-<sc-if value="{{ showBack }}" hint-placeholder-val="{{ false }}"><button sc-camel-on-click="{{ goBack }}" aria-label="Volver" style="width:44px;height:44px;border-radius:22px;border:none;background:#FFFFFF;display:flex;align-items:center;justify-content:center;cursor:pointer" style-active="transform:scale(.95)"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="#15171A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></button></sc-if>
-<div style="flex:1;display:flex;flex-direction:column;gap:1px">
-<span style="font-size:12px;color:#6B6E72;font-weight:500">{{ stepLabel }}</span>
-<span style="font-size:18px;font-weight:600">{{ flowTitle }}</span>
+<sc-if value="{{ showBack }}" hint-placeholder-val="{{ false }}"><button sc-camel-on-click="{{ goBack }}" aria-label="Volver" style="width:44px;height:44px;border-radius:22px;border:1px solid var(--line);background:var(--card);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer" style-active="transform:scale(.95)"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></button></sc-if>
+<div style="flex:1;display:flex;flex-direction:column;gap:2px">
+<span style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600">{{ stepLabel }}</span>
+<span style="font:600 20px 'Cinzel',serif;letter-spacing:.02em">{{ flowTitle }}</span>
 </div>
 </div>
 <sc-if value="{{ showSteps }}" hint-placeholder-val="{{ true }}">
-<div style="height:4px;background:#E3E0D8;border-radius:2px;overflow:hidden"><div style="height:100%;background:#8C6A22;border-radius:2px;transition:width .3s;width:{{ stepPct }}"></div></div>
+<div style="height:4px;background:var(--line);border-radius:2px;overflow:hidden"><div style="height:100%;background:var(--accent);border-radius:2px;transition:width .3s;width:{{ stepPct }}"></div></div>
 </sc-if>
 </div>
 </sc-if>
@@ -396,40 +409,63 @@ input,textarea,button{font-family:inherit}
 <div ref="{{ scrollRef }}" style="flex:1;overflow-y:auto;overflow-x:hidden">
 
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
-<div data-screen-label="Inicio" style="background:#0C0B09;min-height:100%;display:flex;flex-direction:column;gap:22px;padding-bottom:28px;color:#F2EDE2">
-<div style="position:relative;height:360px;margin-top:-1px;overflow:hidden">
-<img src="66a9647f-bdaa-40de-abb5-191f50dcd5f3" alt="Python Vault" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%">
+<div data-screen-label="Inicio" data-theme="dark" style="background:var(--bg);min-height:100%;display:flex;flex-direction:column;gap:22px;padding-bottom:28px;color:var(--ink)">
+<div style="position:relative;height:340px;margin-top:-1px;overflow:hidden">
+<img src="66a9647f-bdaa-40de-abb5-191f50dcd5f3" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%">
 <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,11,9,.55) 0%,rgba(12,11,9,0) 28%,rgba(12,11,9,.15) 55%,#0C0B09 100%)"></div>
 <div style="position:absolute;top:8px;left:20px;right:20px;display:flex;align-items:center;gap:10px">
 <div style="width:40px;height:40px;border-radius:20px;background:rgba(12,11,9,.6);display:flex;align-items:center;justify-content:center"><svg width="30" height="30" sc-camel-view-box="0 0 48 48" fill="none" stroke="#C9A24A" stroke-width="2.4"><circle cx="24" cy="24" r="21.5"></circle><circle cx="24" cy="24" r="17"></circle><path d="M8.5 24C13 16.5 18.2 13.5 24 13.5S35 16.5 39.5 24C35 31.5 29.8 34.5 24 34.5S13 31.5 8.5 24Z"></path><circle cx="24" cy="24" r="6.5"></circle><path d="M24 20.2v7.6" stroke-width="3.2" stroke-linecap="round"></path></svg></div>
-<div style="flex:1;display:flex;flex-direction:column"><span style="font:700 14px 'Cinzel',serif;letter-spacing:.14em;color:#E6CC8A">PYTHON VAULT</span></div>
+<span style="flex:1;font:700 14px 'Cinzel',serif;letter-spacing:.14em;color:#E6CC8A">PYTHON VAULT</span>
+<button sc-camel-on-click="{{ goSettings }}" aria-label="Ajustes" style="width:40px;height:40px;border-radius:20px;border:none;background:rgba(12,11,9,.6);color:#E6CC8A;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"></path></svg></button>
 </div>
 <div style="position:absolute;left:20px;right:20px;bottom:18px;display:flex;flex-direction:column;gap:6px">
 <span style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C9A24A;font-weight:600">{{ todayLabel }}</span>
-<span style="font:600 32px/1.1 'Cinzel',serif;color:#FFFFFF;text-wrap:pretty">Resumen del día</span>
+<span style="font:600 32px/1.1 'Cinzel',serif;color:#FFFFFF;text-wrap:pretty">{{ summaryTitle }}</span>
 </div>
 </div>
 <div style="padding:0 20px;display:flex;flex-direction:column;gap:22px">
-<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#2A261C;border:1px solid #2A261C;border-radius:18px;overflow:hidden">
-<div style="background:#14120E;padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A39C8C">Pedidos hoy</span><span style="font:600 28px 'Cinzel',serif;color:#F2EDE2">{{ ordersToday }}</span></div>
-<div style="background:#14120E;padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A39C8C">Por despachar</span><span style="font:600 28px 'Cinzel',serif;color:#E59A5C">{{ pendingCount }}</span></div>
-<div style="background:#14120E;padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A39C8C">Ventas · IVA incl.</span><span style="font:600 24px 'Cinzel',serif;color:#F2EDE2">{{ salesToday }}</span></div>
-<div style="background:#1C180F;padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#C9A24A">Ganancia · {{ marginToday }}</span><span style="font:600 24px 'Cinzel',serif;color:#E6CC8A">{{ profitToday }}</span></div>
+<div role="tablist" aria-label="Periodo del resumen" style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px">
+<sc-for list="{{ periodChips }}" as="c" hint-placeholder-count="3">
+<button sc-camel-on-click="{{ c.onClick }}" role="tab" aria-selected="{{ c.selected }}" style="height:36px;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;background:{{ c.bg }};color:{{ c.color }}">{{ c.label }}</button>
+</sc-for>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden">
+<div style="background:#14120E;padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">Pedidos</span><span style="font:600 28px 'Cinzel',serif">{{ periodOrders }}</span></div>
+<div style="background:#14120E;padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">Por despachar</span><span style="font:600 28px 'Cinzel',serif;color:#E59A5C">{{ pendingCount }}</span></div>
+<div style="background:#14120E;padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">Ventas · IVA incl.</span><span style="font:600 24px 'Cinzel',serif">{{ periodSales }}</span></div>
+<div style="background:#1C180F;padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#C9A24A">Ganancia · {{ periodMargin }}</span><span style="font:600 24px 'Cinzel',serif;color:#E6CC8A">{{ periodProfit }}</span></div>
 </div>
 <sc-if value="{{ hasReceivable }}" hint-placeholder-val="{{ false }}">
-<button sc-camel-on-click="{{ goReceivables }}" style="text-align:left;background:#17150F;border:1px solid #4A3A1C;border-radius:16px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;color:#F2EDE2">
-<div style="display:flex;flex-direction:column;gap:3px"><span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#E59A5C;font-weight:600">Por cobrar · crédito</span><span style="font-size:13px;color:#A39C8C">{{ receivableCount }}</span></div>
-<span style="font:600 22px 'Cinzel',serif;color:#F2EDE2">{{ receivableTotal }}</span>
+<button sc-camel-on-click="{{ goReceivables }}" style="text-align:left;background:var(--card);border:1px solid #4A3A1C;border-radius:16px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;color:var(--ink)">
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#E59A5C;font-weight:600">Por cobrar · crédito</span><span style="font-size:13px;color:var(--muted)">{{ receivableCount }}</span></div>
+<span style="font:600 22px 'Cinzel',serif">{{ receivableTotal }}</span>
 </button>
 </sc-if>
-<button sc-camel-on-click="{{ newOrder }}" style="height:62px;border:none;border-radius:18px;background:linear-gradient(180deg,#D9B55E,#B38A34);color:#15110A;font-size:16px;font-weight:700;letter-spacing:.04em;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)" style-active="transform:scale(.98)"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="#15110A" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Nuevo pedido</button>
+<button sc-camel-on-click="{{ newOrder }}" style="height:62px;border:none;border-radius:18px;background:var(--accent-grad);color:var(--on-accent);font-size:16px;font-weight:700;letter-spacing:.04em;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)" style-active="transform:scale(.98)"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Nuevo pedido</button>
+<sc-if value="{{ hasBackupWarning }}" hint-placeholder-val="{{ false }}">
+<button sc-camel-on-click="{{ goSettings }}" style="text-align:left;background:var(--danger-soft);border:none;border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;color:var(--danger-ink);font-size:13px;font-weight:600"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"></path></svg><span style="flex:1">{{ backupWarning }}</span><span>Respaldar →</span></button>
+</sc-if>
+<sc-if value="{{ hasTop }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:10px">
+<span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600">Más vendidos</span>
+<div style="background:var(--card);border:1px solid var(--line);border-radius:16px;display:flex;flex-direction:column;overflow:hidden">
+<sc-for list="{{ topProducts }}" as="p" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);margin-bottom:-1px">
+<span style="width:24px;font:700 15px 'Cinzel',serif;color:#C9A24A">{{ p.rank }}</span>
+<span style="flex:1;font-size:14px;font-weight:500">{{ p.name }}</span>
+<span style="font-size:12px;color:var(--muted);white-space:nowrap">{{ p.meta }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
 <sc-if value="{{ hasLowStock }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex;flex-direction:column;gap:10px">
-<span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A39C8C;font-weight:600">Stock bajo</span>
-<div style="background:#17150F;border:1px solid #2A261C;border-radius:16px;display:flex;flex-direction:column;overflow:hidden">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600">Stock bajo</span><button sc-camel-on-click="{{ goStock }}" style="border:none;background:none;color:#C9A24A;font-size:13px;font-weight:600;cursor:pointer;padding:6px 0">Reponer</button></div>
+<div style="background:var(--card);border:1px solid var(--line);border-radius:16px;display:flex;flex-direction:column;overflow:hidden">
 <sc-for list="{{ lowStock }}" as="p" hint-placeholder-count="2">
-<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid #2A261C;margin-bottom:-1px">
-<span style="font-size:14px;font-weight:500;color:#F2EDE2">{{ p.name }}</span>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid var(--line);margin-bottom:-1px">
+<span style="font-size:14px;font-weight:500">{{ p.name }}</span>
 <span style="font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px;white-space:nowrap;background:{{ p.stockBg }};color:{{ p.stockColor }}">{{ p.stockLabel }}</span>
 </div>
 </sc-for>
@@ -437,94 +473,115 @@ input,textarea,button{font-family:inherit}
 </div>
 </sc-if>
 <div style="display:flex;flex-direction:column;gap:10px">
-<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A39C8C;font-weight:600">Últimos pedidos</span><button sc-camel-on-click="{{ goOrders }}" style="border:none;background:none;color:#C9A24A;font-size:13px;font-weight:600;cursor:pointer;padding:10px 0">Ver todos</button></div>
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600">Últimos pedidos</span><button sc-camel-on-click="{{ goOrders }}" style="border:none;background:none;color:#C9A24A;font-size:13px;font-weight:600;cursor:pointer;padding:6px 0">Ver todos</button></div>
 <div style="display:flex;flex-direction:column;gap:8px">
 <sc-for list="{{ recentOrders }}" as="o" hint-placeholder-count="2">
-<div style="background:#17150F;border:1px solid #2A261C;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;opacity:{{ o.opacity }}">
-<div style="display:flex;justify-content:space-between;gap:12px"><span style="font-size:15px;font-weight:600;color:#F2EDE2">{{ o.clientName }}</span><span style="font-size:15px;font-weight:600;color:#E6CC8A">{{ o.total }}</span></div>
-<div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><span style="font:500 12px 'JetBrains Mono',monospace;color:#A39C8C">{{ o.id }} · {{ o.items }}</span>
+<button sc-camel-on-click="{{ o.onOpen }}" style="text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;opacity:{{ o.opacity }};cursor:pointer;color:var(--ink)">
+<div style="display:flex;justify-content:space-between;gap:12px;width:100%"><span style="font-size:15px;font-weight:600">{{ o.clientName }}</span><span style="font-size:15px;font-weight:600;color:#E6CC8A">{{ o.total }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%"><span style="font:500 12px 'JetBrains Mono',monospace;color:var(--muted)">{{ o.id }} · {{ o.items }}</span>
 <div style="display:flex;gap:6px">
-<sc-if value="{{ o.unpaid }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px;white-space:nowrap;background:#FBE7E5;color:#B42318">Por cobrar</span></sc-if>
+<sc-if value="{{ o.unpaid }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px;white-space:nowrap;background:var(--danger-soft);color:var(--danger-ink)">Por cobrar</span></sc-if>
 <span style="font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px;white-space:nowrap;background:{{ o.statusBg }};color:{{ o.statusColor }}">{{ o.statusLabel }}</span>
 </div></div>
-</div>
+</button>
 </sc-for>
+<sc-if value="{{ noRecent }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;color:var(--muted);padding:12px 0;text-align:center">Aún no hay pedidos. Crea el primero con «Nuevo pedido».</span></sc-if>
 </div>
 </div>
 <div style="margin-top:6px;border-radius:8px;overflow:hidden;position:relative;height:122px;box-shadow:0 8px 24px rgba(0,0,0,.5)">
-<img src="4ba1f1c0-eec8-4fba-ac4b-f08ee2c9c2c3" alt="Python Vault" style="position:absolute;width:113.3%;left:-6.6%;top:-14.6px;height:auto">
+<img src="4ba1f1c0-eec8-4fba-ac4b-f08ee2c9c2c3" alt="" style="position:absolute;width:113.3%;left:-6.6%;top:-14.6px;height:auto">
 </div>
 </div>
 </div>
 </sc-if>
 
 <sc-if value="{{ isOrders }}" hint-placeholder-val="{{ false }}">
-<div data-screen-label="Pedidos" style="padding:8px 20px 24px;display:flex;flex-direction:column;gap:16px">
-<span style="font-size:30px;font-weight:700;letter-spacing:-.02em">Historial</span>
-<div style="display:flex;gap:8px;flex-wrap:wrap">
+<div data-screen-label="Pedidos" style="padding:8px 20px 24px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 28px 'Cinzel',serif;letter-spacing:.02em">Historial</span>
+<input type="search" value="{{ orderQuery }}" sc-camel-on-change="{{ onOrderQuery }}" placeholder="Buscar por cliente o número" style="height:46px;border:1px solid var(--line);border-radius:12px;padding:0 14px;font-size:15px;outline:none;box-sizing:border-box;width:100%">
+<div style="display:flex;gap:8px;overflow-x:auto;margin:0 -20px;padding:0 20px">
 <sc-for list="{{ orderFilters }}" as="c" hint-placeholder-count="3">
-<button sc-camel-on-click="{{ c.onClick }}" style="height:36px;padding:0 14px;border-radius:18px;font-size:14px;font-weight:500;cursor:pointer;background:{{ c.bg }};color:{{ c.color }};border:1px solid {{ c.border }}">{{ c.label }}</button>
+<button sc-camel-on-click="{{ c.onClick }}" style="flex:none;height:36px;padding:0 14px;border-radius:18px;font-size:14px;font-weight:500;cursor:pointer;background:{{ c.bg }};color:{{ c.color }};border:1px solid {{ c.border }}">{{ c.label }}</button>
 </sc-for>
 </div>
 <div style="display:flex;flex-direction:column;gap:8px">
 <sc-for list="{{ orderRows }}" as="o" hint-placeholder-count="3">
-<div style="background:#FFFFFF;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:8px">
-<div style="display:flex;justify-content:space-between;gap:12px;opacity:{{ o.opacity }}"><span style="font-size:15px;font-weight:600">{{ o.clientName }}</span><span style="font-size:15px;font-weight:600">{{ o.total }}</span></div>
-<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;opacity:{{ o.opacity }}"><span style="font:500 12px 'JetBrains Mono',monospace;color:#6B6E72">{{ o.id }} · {{ o.items }} · {{ o.payment }}</span>
+<div style="background:var(--card);border:1px solid {{ o.cardBorder }};border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+<button sc-camel-on-click="{{ o.onToggle }}" aria-expanded="{{ o.expandedAria }}" style="text-align:left;background:none;border:none;padding:0;color:var(--ink);cursor:pointer;display:flex;flex-direction:column;gap:8px;opacity:{{ o.opacity }}">
+<div style="display:flex;justify-content:space-between;gap:12px;width:100%"><span style="font-size:15px;font-weight:600">{{ o.clientName }}</span><span style="font-size:15px;font-weight:600">{{ o.total }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%"><span style="font:500 12px 'JetBrains Mono',monospace;color:var(--muted)">{{ o.id }} · {{ o.createdLabel }}</span>
 <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end">
-<sc-if value="{{ o.unpaid }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px;white-space:nowrap;background:#FBE7E5;color:#B42318">Por cobrar</span></sc-if>
+<sc-if value="{{ o.unpaid }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px;white-space:nowrap;background:var(--danger-soft);color:var(--danger-ink)">Por cobrar</span></sc-if>
 <span style="font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px;white-space:nowrap;background:{{ o.statusBg }};color:{{ o.statusColor }}">{{ o.statusLabel }}</span>
 </div></div>
-<sc-if value="{{ o.confirming }}" hint-placeholder-val="{{ false }}">
-<div style="display:flex;flex-direction:column;gap:8px;background:#FBE7E5;border-radius:12px;padding:12px">
-<span style="font-size:13px;color:#B42318;font-weight:500">¿Anular {{ o.id }}? Los paquetes vuelven al stock y el pedido deja de contar en ventas y promo.</span>
-<div style="display:flex;gap:8px">
-<button sc-camel-on-click="{{ o.onCancelNo }}" style="flex:1;height:40px;border-radius:10px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer;color:#15171A">Volver</button>
-<button sc-camel-on-click="{{ o.onCancelYes }}" style="flex:1;height:40px;border-radius:10px;border:none;background:#B42318;color:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer">Anular pedido</button>
+</button>
+<sc-if value="{{ o.expanded }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line-2);padding-top:10px;font-size:14px">
+<sc-for list="{{ o.lines }}" as="l" hint-placeholder-count="2">
+<div style="display:flex;justify-content:space-between;gap:12px"><span><b style="font-weight:700">{{ l.qty }}×</b> {{ l.name }}</span><span style="white-space:nowrap">{{ l.amount }}</span></div>
+</sc-for>
+<sc-if value="{{ o.hasPromo }}" hint-placeholder-val="{{ false }}"><div style="display:flex;justify-content:space-between;gap:12px;color:var(--warn-ink)"><span>{{ o.promoLine }}</span><span style="font-weight:600">Regalo</span></div></sc-if>
+<div style="display:flex;flex-direction:column;gap:3px;margin-top:6px;font-size:13px;color:var(--muted)">
+<span>{{ o.deliveryText }}</span>
+<span>Pago: {{ o.payment }} · Subtotal {{ o.subtotal }} + IVA {{ o.tax }}</span>
+<sc-if value="{{ o.hasNotes }}" hint-placeholder-val="{{ false }}"><span>Notas: {{ o.notes }}</span></sc-if>
 </div>
 </div>
 </sc-if>
-<sc-if value="{{ o.showActions }}" hint-placeholder-val="{{ true }}">
-<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
-<sc-if value="{{ o.isPending }}" hint-placeholder-val="{{ false }}"><button sc-camel-on-click="{{ o.onMark }}" style="flex:1 1 140px;height:44px;border-radius:12px;border:1px solid #E3E0D8;background:#F3F1EB;font-size:14px;font-weight:600;cursor:pointer;color:#15171A">Marcar despachado</button></sc-if>
-<sc-if value="{{ o.unpaid }}" hint-placeholder-val="{{ false }}"><button sc-camel-on-click="{{ o.onCollect }}" style="flex:1 1 140px;height:44px;border-radius:12px;border:1px solid #E3E0D8;background:#F3F1EB;font-size:14px;font-weight:600;cursor:pointer;color:#15171A">Marcar cobrado</button></sc-if>
+<sc-if value="{{ o.confirming }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:8px;background:var(--danger-soft);border-radius:12px;padding:12px">
+<span style="font-size:13px;color:var(--danger-ink);font-weight:500">¿Anular {{ o.id }}? Los paquetes vuelven al stock y el pedido deja de contar en ventas y promo.</span>
+<div style="display:flex;gap:8px">
+<button sc-camel-on-click="{{ o.onCancelNo }}" style="flex:1;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--card);font-size:14px;font-weight:600;cursor:pointer;color:var(--ink)">Volver</button>
+<button sc-camel-on-click="{{ o.onCancelYes }}" style="flex:1;height:40px;border-radius:10px;border:none;background:var(--danger);color:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer">Anular pedido</button>
 </div>
-<div style="display:flex;gap:18px">
-<a href="{{ o.mailHref }}" style="font-size:13px;font-weight:600;padding:6px 0">Enviar mail</a>
-<button sc-camel-on-click="{{ o.onAskCancel }}" style="border:none;background:none;padding:6px 0;font-size:13px;font-weight:600;color:#B42318;cursor:pointer">Anular</button>
+</div>
+</sc-if>
+<sc-if value="{{ o.showActions }}" hint-placeholder-val="{{ false }}">
+<sc-if value="{{ o.hasMainActions }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<sc-if value="{{ o.isPending }}" hint-placeholder-val="{{ false }}"><button sc-camel-on-click="{{ o.onMark }}" style="flex:1 1 140px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--card-2);font-size:14px;font-weight:600;cursor:pointer;color:var(--ink)">Marcar despachado</button></sc-if>
+<sc-if value="{{ o.unpaid }}" hint-placeholder-val="{{ false }}"><button sc-camel-on-click="{{ o.onCollect }}" style="flex:1 1 140px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--card-2);font-size:14px;font-weight:600;cursor:pointer;color:var(--ink)">Marcar cobrado</button></sc-if>
+</div>
+</sc-if>
+<div style="display:flex;gap:18px;align-items:center">
+<sc-if value="{{ o.hasWa }}" hint-placeholder-val="{{ true }}"><a href="{{ o.waHref }}" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;padding:6px 0;color:var(--accent-ink)">WhatsApp</a></sc-if>
+<a href="{{ o.mailHref }}" style="font-size:13px;font-weight:600;padding:6px 0;color:var(--accent-ink)">Mail</a>
+<span style="flex:1"></span>
+<button sc-camel-on-click="{{ o.onAskCancel }}" style="border:none;background:none;padding:6px 0;font-size:13px;font-weight:600;color:var(--danger-ink);cursor:pointer">Anular</button>
 </div>
 </sc-if>
 </div>
 </sc-for>
-<sc-if value="{{ noOrders }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;color:#6B6E72;padding:24px 0;text-align:center">Sin pedidos en esta vista</span></sc-if>
+<sc-if value="{{ noOrders }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;color:var(--muted);padding:24px 0;text-align:center">Sin pedidos en esta vista</span></sc-if>
 </div>
 </div>
 </sc-if>
 
 <sc-if value="{{ isClients }}" hint-placeholder-val="{{ false }}">
-<div data-screen-label="Clientes" style="padding:8px 20px 24px;display:flex;flex-direction:column;gap:16px">
+<div data-screen-label="Clientes" style="padding:8px 20px 24px;display:flex;flex-direction:column;gap:14px">
 <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-<span style="font-size:30px;font-weight:700;letter-spacing:-.02em">Clientes</span>
-<sc-if value="{{ showClientsList }}" hint-placeholder-val="{{ true }}"><button sc-camel-on-click="{{ openClientsNew }}" style="height:40px;padding:0 14px;border-radius:12px;border:none;background:#8C6A22;color:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Nuevo</button></sc-if>
+<span style="font:600 28px 'Cinzel',serif;letter-spacing:.02em">Clientes</span>
+<sc-if value="{{ showClientsList }}" hint-placeholder-val="{{ true }}"><button sc-camel-on-click="{{ openClientsNew }}" style="height:40px;padding:0 14px;border-radius:12px;border:none;background:var(--accent);color:var(--on-accent);font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Nuevo</button></sc-if>
 </div>
 <sc-if value="{{ clientsNew }}" hint-placeholder-val="{{ false }}">
-<div style="background:#FFFFFF;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:14px">
+<div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:14px">
 <span style="font-size:16px;font-weight:600">{{ clientFormTitle }}</span>
 <sc-for list="{{ formFields }}" as="f" hint-placeholder-count="5">
 <label style="display:flex;flex-direction:column;gap:6px">
 <span style="font-size:13px;font-weight:600">{{ f.label }}</span>
-<input type="{{ f.type }}" value="{{ f.value }}" sc-camel-on-change="{{ f.onChange }}" placeholder="{{ f.placeholder }}" style="height:48px;border-radius:12px;padding:0 14px;font-size:15px;background:#FFFFFF;outline:none;box-sizing:border-box;width:100%;border:1px solid {{ f.border }}">
-<sc-if value="{{ f.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#B42318;font-weight:500">{{ f.error }}</span></sc-if>
+<input type="{{ f.type }}" sc-camel-input-mode="{{ f.mode }}" sc-camel-auto-complete="{{ f.auto }}" value="{{ f.value }}" sc-camel-on-change="{{ f.onChange }}" placeholder="{{ f.placeholder }}" style="height:48px;border-radius:12px;padding:0 14px;font-size:15px;outline:none;box-sizing:border-box;width:100%;border:1px solid {{ f.border }}">
+<sc-if value="{{ f.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:var(--danger-ink);font-weight:500">{{ f.error }}</span></sc-if>
 </label>
 </sc-for>
 <div style="display:flex;gap:8px">
-<button sc-camel-on-click="{{ cancelClientsNew }}" style="flex:1;height:48px;border-radius:14px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:15px;font-weight:600;cursor:pointer;color:#15171A">Cancelar</button>
-<button sc-camel-on-click="{{ saveClient }}" style="flex:2;height:48px;border-radius:14px;border:none;background:#8C6A22;color:#FFFFFF;font-size:15px;font-weight:600;cursor:pointer">{{ clientSaveLabel }}</button>
+<button sc-camel-on-click="{{ cancelClientsNew }}" style="flex:1;height:48px;border-radius:14px;border:1px solid var(--line);background:var(--card);font-size:15px;font-weight:600;cursor:pointer;color:var(--ink)">Cancelar</button>
+<button sc-camel-on-click="{{ saveClient }}" style="flex:2;height:48px;border-radius:14px;border:none;background:var(--accent-grad);color:var(--on-accent);font-size:15px;font-weight:600;cursor:pointer">{{ clientSaveLabel }}</button>
 </div>
 </div>
 </sc-if>
 <sc-if value="{{ showClientsList }}" hint-placeholder-val="{{ true }}">
-<input value="{{ clientsQuery }}" sc-camel-on-change="{{ onClientsQuery }}" placeholder="Buscar por nombre, email o RUC" style="height:48px;border:1px solid #E3E0D8;border-radius:12px;padding:0 14px;font-size:15px;background:#FFFFFF;outline:none;box-sizing:border-box;width:100%">
+<input type="search" value="{{ clientsQuery }}" sc-camel-on-change="{{ onClientsQuery }}" placeholder="Buscar por nombre, email o RUC" style="height:46px;border:1px solid var(--line);border-radius:12px;padding:0 14px;font-size:15px;outline:none;box-sizing:border-box;width:100%">
 <div style="display:flex;gap:8px">
 <sc-for list="{{ clientFilters }}" as="c" hint-placeholder-count="2">
 <button sc-camel-on-click="{{ c.onClick }}" style="height:36px;padding:0 14px;border-radius:18px;font-size:14px;font-weight:500;cursor:pointer;background:{{ c.bg }};color:{{ c.color }};border:1px solid {{ c.border }}">{{ c.label }}</button>
@@ -532,133 +589,189 @@ input,textarea,button{font-family:inherit}
 </div>
 <div style="display:flex;flex-direction:column;gap:8px">
 <sc-for list="{{ clientRows }}" as="c" hint-placeholder-count="2">
-<div style="background:#FFFFFF;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:12px;opacity:{{ c.opacity }}">
+<div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:12px;opacity:{{ c.opacity }}">
 <div style="display:flex;align-items:center;gap:12px">
-<div style="width:40px;height:40px;flex:none;border-radius:20px;background:#F3EBD9;color:#8C6A22;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">{{ c.initials }}</div>
+<div style="width:40px;height:40px;flex:none;border-radius:20px;background:var(--accent-soft);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">{{ c.initials }}</div>
 <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
 <span style="font-size:15px;font-weight:600">{{ c.name }}</span>
-<span style="font-size:13px;color:#6B6E72;overflow:hidden;text-overflow:ellipsis">{{ c.email }}</span>
-<span style="font-size:12px;color:#6B6E72">{{ c.meta }}</span>
+<span style="font-size:13px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.email }}</span>
+<span style="font-size:12px;color:var(--muted)">{{ c.meta }}</span>
 </div>
-<sc-if value="{{ c.active }}" hint-placeholder-val="{{ true }}"><button sc-camel-on-click="{{ c.onEdit }}" style="flex:none;border:none;background:none;color:#8C6A22;font-size:13px;font-weight:600;cursor:pointer;padding:8px 0">Editar</button></sc-if>
+<sc-if value="{{ c.active }}" hint-placeholder-val="{{ true }}"><button sc-camel-on-click="{{ c.onEdit }}" style="flex:none;border:none;background:none;color:var(--accent-ink);font-size:13px;font-weight:600;cursor:pointer;padding:8px 0">Editar</button></sc-if>
 </div>
 <div style="display:flex;align-items:center;gap:10px">
-<div style="flex:1;height:6px;background:#EFECE5;border-radius:3px;overflow:hidden"><div style="height:100%;background:#C2702E;border-radius:3px;width:{{ c.promoPct }}"></div></div>
-<span style="font-size:12px;font-weight:600;color:#9A4515;white-space:nowrap">{{ c.promoLabel }}</span>
+<div style="flex:1;height:6px;background:var(--line-2);border-radius:3px;overflow:hidden"><div style="height:100%;background:var(--promo);border-radius:3px;width:{{ c.promoPct }}"></div></div>
+<span style="font-size:12px;font-weight:600;color:var(--warn-ink);white-space:nowrap">{{ c.promoLabel }}</span>
 </div>
 <sc-if value="{{ c.confirming }}" hint-placeholder-val="{{ false }}">
-<div style="display:flex;flex-direction:column;gap:8px;background:#FBE7E5;border-radius:12px;padding:12px">
-<span style="font-size:13px;color:#B42318;font-weight:500">¿Dar de baja a {{ c.name }}? Su historial de pedidos se conserva.</span>
+<div style="display:flex;flex-direction:column;gap:8px;background:var(--danger-soft);border-radius:12px;padding:12px">
+<span style="font-size:13px;color:var(--danger-ink);font-weight:500">¿Dar de baja a {{ c.name }}? Su historial de pedidos se conserva.</span>
 <div style="display:flex;gap:8px">
-<button sc-camel-on-click="{{ c.onCancel }}" style="flex:1;height:40px;border-radius:10px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer;color:#15171A">Cancelar</button>
-<button sc-camel-on-click="{{ c.onConfirm }}" style="flex:1;height:40px;border-radius:10px;border:none;background:#B42318;color:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer">Dar de baja</button>
+<button sc-camel-on-click="{{ c.onCancel }}" style="flex:1;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--card);font-size:14px;font-weight:600;cursor:pointer;color:var(--ink)">Cancelar</button>
+<button sc-camel-on-click="{{ c.onConfirm }}" style="flex:1;height:40px;border-radius:10px;border:none;background:var(--danger);color:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer">Dar de baja</button>
 </div>
 </div>
 </sc-if>
 <sc-if value="{{ c.showActions }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex;gap:8px">
 <sc-if value="{{ c.active }}" hint-placeholder-val="{{ true }}">
-<button sc-camel-on-click="{{ c.onAskRemove }}" style="flex:1;height:40px;border-radius:10px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:13px;font-weight:600;cursor:pointer;color:#B42318">Dar de baja</button>
-<button sc-camel-on-click="{{ c.onOrder }}" style="flex:1;height:40px;border-radius:10px;border:none;background:#15171A;color:#FFFFFF;font-size:13px;font-weight:600;cursor:pointer">Nuevo pedido</button>
+<button sc-camel-on-click="{{ c.onAskRemove }}" style="flex:1;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--card);font-size:13px;font-weight:600;cursor:pointer;color:var(--danger-ink)">Dar de baja</button>
+<button sc-camel-on-click="{{ c.onOrder }}" style="flex:1;height:40px;border-radius:10px;border:none;background:var(--solid);color:var(--on-solid);font-size:13px;font-weight:600;cursor:pointer">Nuevo pedido</button>
 </sc-if>
 <sc-if value="{{ c.inactive }}" hint-placeholder-val="{{ false }}">
-<button sc-camel-on-click="{{ c.onRestore }}" style="flex:1;height:40px;border-radius:10px;border:1px solid #8C6A22;background:#F3EBD9;font-size:13px;font-weight:600;cursor:pointer;color:#8C6A22">Reactivar cliente</button>
+<button sc-camel-on-click="{{ c.onRestore }}" style="flex:1;height:40px;border-radius:10px;border:1px solid var(--accent);background:var(--accent-soft);font-size:13px;font-weight:600;cursor:pointer;color:var(--accent-ink)">Reactivar cliente</button>
 </sc-if>
 </div>
 </sc-if>
 </div>
 </sc-for>
-<sc-if value="{{ noClients }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;color:#6B6E72;padding:24px 0;text-align:center">Sin clientes en esta vista</span></sc-if>
+<sc-if value="{{ noClients }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;color:var(--muted);padding:24px 0;text-align:center">Sin clientes en esta vista</span></sc-if>
 </div>
 </sc-if>
 </div>
 </sc-if>
 
 <sc-if value="{{ isStock }}" hint-placeholder-val="{{ false }}">
-<div data-screen-label="Stock" style="padding:8px 20px 24px;display:flex;flex-direction:column;gap:16px">
+<div data-screen-label="Stock" style="padding:8px 20px 24px;display:flex;flex-direction:column;gap:14px">
 <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
-<div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:30px;font-weight:700;letter-spacing:-.02em">Stock</span><span style="font-size:13px;color:#6B6E72">Paquetes de 100 fundas · 1 caja = 12 paquetes</span></div>
-<sc-if value="{{ canAddProduct }}" hint-placeholder-val="{{ true }}"><button sc-camel-on-click="{{ openNewProduct }}" style="flex:none;height:40px;padding:0 14px;border-radius:12px;border:none;background:#8C6A22;color:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Producto</button></sc-if>
+<div style="display:flex;flex-direction:column;gap:4px"><span style="font:600 28px 'Cinzel',serif;letter-spacing:.02em">Stock</span><span style="font-size:13px;color:var(--muted)">Paquetes de 100 fundas · 1 caja = 12 paquetes</span></div>
+<sc-if value="{{ canAddProduct }}" hint-placeholder-val="{{ true }}"><button sc-camel-on-click="{{ openNewProduct }}" style="flex:none;height:40px;padding:0 14px;border-radius:12px;border:none;background:var(--accent);color:var(--on-accent);font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Producto</button></sc-if>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden">
+<div style="background:var(--card);padding:12px;display:flex;flex-direction:column;gap:4px"><span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600">Paquetes</span><span style="font:600 18px 'Cinzel',serif">{{ invPacks }}</span></div>
+<div style="background:var(--card);padding:12px;display:flex;flex-direction:column;gap:4px"><span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600">Costo</span><span style="font:600 18px 'Cinzel',serif">{{ invCost }}</span></div>
+<div style="background:var(--card);padding:12px;display:flex;flex-direction:column;gap:4px"><span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);font-weight:600">Venta</span><span style="font:600 18px 'Cinzel',serif;color:var(--accent-ink)">{{ invSale }}</span></div>
 </div>
 <sc-if value="{{ newProductOpen }}" hint-placeholder-val="{{ false }}">
-<div style="background:#FFFFFF;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px">
+<div style="background:var(--card);border:1px solid var(--accent);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px">
 <span style="font-size:16px;font-weight:600">Nuevo producto</span>
 <div style="display:flex;flex-wrap:wrap;gap:10px">
 <sc-for list="{{ prodFields }}" as="f" hint-placeholder-count="5">
 <label style="display:flex;flex-direction:column;gap:6px;width:{{ f.width }}">
 <span style="font-size:13px;font-weight:600">{{ f.label }}</span>
-<input type="text" sc-camel-input-mode="{{ f.mode }}" value="{{ f.value }}" sc-camel-on-change="{{ f.onChange }}" placeholder="{{ f.placeholder }}" style="height:44px;border-radius:12px;padding:0 12px;font-size:15px;background:#FFFFFF;outline:none;box-sizing:border-box;width:100%;border:1px solid {{ f.border }}">
-<sc-if value="{{ f.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#B42318;font-weight:500">{{ f.error }}</span></sc-if>
+<input type="text" sc-camel-input-mode="{{ f.mode }}" value="{{ f.value }}" sc-camel-on-change="{{ f.onChange }}" placeholder="{{ f.placeholder }}" style="height:44px;border-radius:12px;padding:0 12px;font-size:15px;outline:none;box-sizing:border-box;width:100%;border:1px solid {{ f.border }}">
+<sc-if value="{{ f.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:var(--danger-ink);font-weight:500">{{ f.error }}</span></sc-if>
 </label>
 </sc-for>
 </div>
 <div style="display:flex;gap:8px">
-<button sc-camel-on-click="{{ cancelProduct }}" style="flex:1;height:46px;border-radius:14px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:15px;font-weight:600;cursor:pointer;color:#15171A">Cancelar</button>
-<button sc-camel-on-click="{{ saveProduct }}" style="flex:2;height:46px;border-radius:14px;border:none;background:#8C6A22;color:#FFFFFF;font-size:15px;font-weight:600;cursor:pointer">Crear producto</button>
+<button sc-camel-on-click="{{ cancelProduct }}" style="flex:1;height:46px;border-radius:14px;border:1px solid var(--line);background:var(--card);font-size:15px;font-weight:600;cursor:pointer;color:var(--ink)">Cancelar</button>
+<button sc-camel-on-click="{{ saveProduct }}" style="flex:2;height:46px;border-radius:14px;border:none;background:var(--accent-grad);color:var(--on-accent);font-size:15px;font-weight:600;cursor:pointer">Crear producto</button>
 </div>
 </div>
 </sc-if>
-<div style="background:#FFFFFF;border-radius:16px;display:flex;flex-direction:column">
+<div style="background:var(--card);border:1px solid var(--line);border-radius:16px;display:flex;flex-direction:column;overflow:hidden">
 <sc-for list="{{ stockRows }}" as="p" hint-placeholder-count="4">
-<div style="display:flex;flex-direction:column;gap:10px;padding:12px 16px;border-bottom:1px solid #EFECE5">
+<div style="display:flex;flex-direction:column;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line-2);margin-bottom:-1px">
 <div style="display:flex;align-items:center;gap:12px">
-<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px"><span style="font-size:14px;font-weight:600">{{ p.name }}</span><span style="font-size:12px;color:#6B6E72">Costo {{ p.costLabel }} · Venta {{ p.priceLabel }} · Caja {{ p.boxLabel }}</span><span style="font-size:12px;font-weight:600;color:#8C6A22">Margen {{ p.margin }} · {{ p.units }}</span></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px"><span style="font-size:14px;font-weight:600">{{ p.name }}</span><span style="font-size:12px;color:var(--muted)">Paq. {{ p.priceLabel }} · Caja {{ p.boxLabel }} · Costo {{ p.costLabel }}</span><span style="font-size:12px;font-weight:600;color:var(--accent-ink)">Margen {{ p.margin }} · {{ p.units }}</span></div>
 <div style="display:flex;align-items:center;gap:4px">
-<button sc-camel-on-click="{{ p.onDec }}" aria-label="{{ p.decLabel }}" style="width:36px;height:36px;border-radius:10px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:18px;cursor:pointer;color:#15171A">−</button>
+<button sc-camel-on-click="{{ p.onDec }}" aria-label="{{ p.decLabel }}" style="width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--card-2);font-size:18px;cursor:pointer;color:var(--ink)">−</button>
 <span style="min-width:34px;text-align:center;font-size:15px;font-weight:700;color:{{ p.stockColor }}">{{ p.stock }}</span>
-<button sc-camel-on-click="{{ p.onInc }}" aria-label="{{ p.incLabel }}" style="width:36px;height:36px;border-radius:10px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:18px;cursor:pointer;color:#15171A">+</button>
+<button sc-camel-on-click="{{ p.onInc }}" aria-label="{{ p.incLabel }}" style="width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--card-2);font-size:18px;cursor:pointer;color:var(--ink)">+</button>
 </div>
 </div>
-<sc-if value="{{ p.notEditing }}" hint-placeholder-val="{{ true }}"><button sc-camel-on-click="{{ p.onEdit }}" style="align-self:flex-start;border:none;background:none;color:#8C6A22;font-size:13px;font-weight:600;cursor:pointer;padding:0">Editar precios</button></sc-if>
+<sc-if value="{{ p.notEditing }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;gap:16px">
+<button sc-camel-on-click="{{ p.onEdit }}" style="border:none;background:none;color:var(--accent-ink);font-size:13px;font-weight:600;cursor:pointer;padding:0">Editar precios</button>
+<button sc-camel-on-click="{{ p.onAddBox }}" style="border:none;background:none;color:var(--accent-ink);font-size:13px;font-weight:600;cursor:pointer;padding:0">+1 caja (12 paq.)</button>
+</div>
+</sc-if>
 <sc-if value="{{ p.editing }}" hint-placeholder-val="{{ false }}">
-<div style="display:flex;flex-direction:column;gap:12px;background:#F7F5F0;border-radius:12px;padding:12px">
+<div style="display:flex;flex-direction:column;gap:12px;background:var(--card-2);border-radius:12px;padding:12px">
 <div style="display:flex;flex-wrap:wrap;gap:10px">
 <sc-for list="{{ prodFields }}" as="f" hint-placeholder-count="5">
 <label style="display:flex;flex-direction:column;gap:6px;width:{{ f.width }}">
 <span style="font-size:13px;font-weight:600">{{ f.label }}</span>
-<input type="text" sc-camel-input-mode="{{ f.mode }}" value="{{ f.value }}" sc-camel-on-change="{{ f.onChange }}" placeholder="{{ f.placeholder }}" style="height:44px;border-radius:12px;padding:0 12px;font-size:15px;background:#FFFFFF;outline:none;box-sizing:border-box;width:100%;border:1px solid {{ f.border }}">
-<sc-if value="{{ f.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#B42318;font-weight:500">{{ f.error }}</span></sc-if>
+<input type="text" sc-camel-input-mode="{{ f.mode }}" value="{{ f.value }}" sc-camel-on-change="{{ f.onChange }}" placeholder="{{ f.placeholder }}" style="height:44px;border-radius:12px;padding:0 12px;font-size:15px;outline:none;box-sizing:border-box;width:100%;border:1px solid {{ f.border }}">
+<sc-if value="{{ f.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:var(--danger-ink);font-weight:500">{{ f.error }}</span></sc-if>
 </label>
 </sc-for>
 </div>
 <div style="display:flex;gap:8px">
-<button sc-camel-on-click="{{ cancelProduct }}" style="flex:1;height:44px;border-radius:12px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer;color:#15171A">Cancelar</button>
-<button sc-camel-on-click="{{ saveProduct }}" style="flex:2;height:44px;border-radius:12px;border:none;background:#8C6A22;color:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer">Guardar cambios</button>
+<button sc-camel-on-click="{{ cancelProduct }}" style="flex:1;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--card);font-size:14px;font-weight:600;cursor:pointer;color:var(--ink)">Cancelar</button>
+<button sc-camel-on-click="{{ saveProduct }}" style="flex:2;height:44px;border-radius:12px;border:none;background:var(--accent-grad);color:var(--on-accent);font-size:14px;font-weight:600;cursor:pointer">Guardar cambios</button>
 </div>
 </div>
 </sc-if>
 </div>
 </sc-for>
 </div>
+</div>
+</sc-if>
 
-<div style="background:#FFFFFF;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px">
-<span style="font-size:16px;font-weight:600">Promo tiendas</span>
-<span style="font-size:13px;color:#6B6E72">{{ promoDesc }}</span>
+<sc-if value="{{ isSettings }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Ajustes" style="padding:8px 20px 24px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 28px 'Cinzel',serif;letter-spacing:.02em">Ajustes</span>
+
+<div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px">
+<span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600">Apariencia</span>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+<sc-for list="{{ themeChips }}" as="c" hint-placeholder-count="2">
+<button sc-camel-on-click="{{ c.onClick }}" style="height:44px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;background:{{ c.bg }};color:{{ c.color }};border:1px solid {{ c.border }}">{{ c.label }}</button>
+</sc-for>
+</div>
+</div>
+
+<div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:14px">
+<span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600">Ventas</span>
 <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-<span style="font-size:14px;font-weight:600">Cajas para ganar regalo</span>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:600">IVA</span><span style="font-size:12px;color:var(--muted)">Los precios ya incluyen IVA</span></div>
 <div style="display:flex;align-items:center;gap:4px">
-<button sc-camel-on-click="{{ promoBoxesDec }}" aria-label="Menos cajas para la promo" style="width:36px;height:36px;border-radius:10px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:18px;cursor:pointer;color:#15171A">−</button>
+<button sc-camel-on-click="{{ taxDec }}" aria-label="Bajar IVA" style="width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--card-2);font-size:18px;cursor:pointer;color:var(--ink)">−</button>
+<span style="min-width:44px;text-align:center;font-size:15px;font-weight:700">{{ taxRateLabel }}</span>
+<button sc-camel-on-click="{{ taxInc }}" aria-label="Subir IVA" style="width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--card-2);font-size:18px;cursor:pointer;color:var(--ink)">+</button>
+</div>
+</div>
+<button sc-camel-on-click="{{ toggleBackorder }}" role="switch" aria-checked="{{ backorderAria }}" style="text-align:left;background:none;border:none;padding:0;display:flex;align-items:center;gap:12px;cursor:pointer;color:var(--ink)">
+<div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:600">Vender sin stock</span><span style="font-size:12px;color:var(--muted)">Permite pedidos aunque falten paquetes</span></div>
+<div style="width:48px;height:28px;flex:none;border-radius:14px;position:relative;transition:background .2s;background:{{ backorderTrack }}"><div style="position:absolute;top:3px;width:22px;height:22px;border-radius:11px;background:#FFFFFF;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.3);left:{{ backorderKnob }}"></div></div>
+</button>
+</div>
+
+<div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px">
+<span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600">Promo tiendas</span>
+<span style="font-size:13px;color:var(--muted)">{{ promoDesc }}</span>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+<span style="font-size:15px;font-weight:600">Cajas para ganar regalo</span>
+<div style="display:flex;align-items:center;gap:4px">
+<button sc-camel-on-click="{{ promoBoxesDec }}" aria-label="Menos cajas para la promo" style="width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--card-2);font-size:18px;cursor:pointer;color:var(--ink)">−</button>
 <span style="min-width:34px;text-align:center;font-size:15px;font-weight:700">{{ promoBoxes }}</span>
-<button sc-camel-on-click="{{ promoBoxesInc }}" aria-label="Más cajas para la promo" style="width:36px;height:36px;border-radius:10px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:18px;cursor:pointer;color:#15171A">+</button>
+<button sc-camel-on-click="{{ promoBoxesInc }}" aria-label="Más cajas para la promo" style="width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--card-2);font-size:18px;cursor:pointer;color:var(--ink)">+</button>
 </div>
 </div>
-<span style="font-size:14px;font-weight:600">Regalo (1 paquete x100, se descuenta del stock)</span>
+<span style="font-size:14px;font-weight:600">Regalo · 1 paquete x100, se descuenta del stock</span>
 <div style="display:flex;gap:8px;flex-wrap:wrap">
 <sc-for list="{{ promoChips }}" as="c" hint-placeholder-count="4">
 <button sc-camel-on-click="{{ c.onClick }}" style="height:36px;padding:0 12px;border-radius:18px;font-size:13px;font-weight:500;cursor:pointer;background:{{ c.bg }};color:{{ c.color }};border:1px solid {{ c.border }}">{{ c.label }}</button>
 </sc-for>
 </div>
-<sc-if value="{{ promoUnset }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:600;color:#9A4515">Elige el producto de regalo para que se descuente del stock.</span></sc-if>
+<sc-if value="{{ promoUnset }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:600;color:var(--warn-ink)">Elige el producto de regalo para que se descuente del stock.</span></sc-if>
 </div>
 
-<div style="background:#FFFFFF;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px">
-<span style="font-size:16px;font-weight:600">Respaldo de datos</span>
-<span style="font-size:13px;color:#6B6E72">Clientes, pedidos y stock viven solo en este dispositivo. Exporta un respaldo seguido y guárdalo en Drive o en tu correo; con él puedes recuperar todo o pasarlo a otro celular.</span>
+<div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px">
+<span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600">Respaldo de datos</span>
+<span style="font-size:13px;color:var(--muted)">Clientes, pedidos y stock viven solo en este dispositivo. Exporta un respaldo seguido y guárdalo en Drive o en tu correo; con él recuperas todo o lo pasas a otro celular.</span>
 <span style="font-size:12px;font-weight:600;color:{{ backupColor }}">{{ backupLabel }}</span>
 <div style="display:flex;gap:8px">
-<button sc-camel-on-click="{{ exportBackup }}" style="flex:1;height:46px;border-radius:14px;border:none;background:#15171A;color:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer">Exportar respaldo</button>
-<label style="flex:1;height:46px;border-radius:14px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer;color:#15171A;display:flex;align-items:center;justify-content:center">Importar<input type="file" accept="application/json,.json" sc-camel-on-change="{{ importBackup }}" style="display:none"></label>
+<button sc-camel-on-click="{{ exportBackup }}" style="flex:1;height:46px;border-radius:14px;border:none;background:var(--solid);color:var(--on-solid);font-size:14px;font-weight:600;cursor:pointer">Exportar respaldo</button>
+<label style="flex:1;height:46px;border-radius:14px;border:1px solid var(--line);background:var(--card-2);font-size:14px;font-weight:600;cursor:pointer;color:var(--ink);display:flex;align-items:center;justify-content:center">Importar<input type="file" accept="application/json,.json" sc-camel-on-change="{{ importBackup }}" style="display:none"></label>
 </div>
+</div>
+
+<div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px">
+<span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--danger-ink);font-weight:600">Empezar de cero</span>
+<span style="font-size:13px;color:var(--muted)">Borra clientes y pedidos (por ejemplo, los datos de muestra). Los productos, el stock y los ajustes se conservan.</span>
+<sc-if value="{{ notConfirmReset }}" hint-placeholder-val="{{ true }}"><button sc-camel-on-click="{{ askReset }}" style="height:44px;border-radius:12px;border:1px solid var(--line);background:var(--card-2);font-size:14px;font-weight:600;cursor:pointer;color:var(--danger-ink)">Borrar clientes y pedidos</button></sc-if>
+<sc-if value="{{ confirmReset }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:8px;background:var(--danger-soft);border-radius:12px;padding:12px">
+<span style="font-size:13px;color:var(--danger-ink);font-weight:500">Esto no se puede deshacer. Si tienes datos reales, exporta un respaldo antes.</span>
+<div style="display:flex;gap:8px">
+<button sc-camel-on-click="{{ cancelReset }}" style="flex:1;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--card);font-size:14px;font-weight:600;cursor:pointer;color:var(--ink)">Cancelar</button>
+<button sc-camel-on-click="{{ doReset }}" style="flex:1;height:40px;border-radius:10px;border:none;background:var(--danger);color:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer">Borrar todo</button>
+</div>
+</div>
+</sc-if>
 </div>
 </div>
 </sc-if>
@@ -666,32 +779,32 @@ input,textarea,button{font-family:inherit}
 <sc-if value="{{ fClient }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="Paso 1 Cliente" style="padding:16px 20px 24px;display:flex;flex-direction:column;gap:16px">
 <sc-if value="{{ showClientSearch }}" hint-placeholder-val="{{ true }}">
-<input value="{{ clientQuery }}" sc-camel-on-change="{{ onClientQuery }}" placeholder="Buscar cliente guardado" style="height:48px;border:1px solid #E3E0D8;border-radius:12px;padding:0 14px;font-size:15px;background:#FFFFFF;outline:none;box-sizing:border-box;width:100%">
+<input type="search" value="{{ clientQuery }}" sc-camel-on-change="{{ onClientQuery }}" placeholder="Buscar cliente guardado" style="height:48px;border:1px solid var(--line);border-radius:12px;padding:0 14px;font-size:15px;outline:none;box-sizing:border-box;width:100%">
 <div style="display:flex;flex-direction:column;gap:8px">
 <sc-for list="{{ matchingClients }}" as="c" hint-placeholder-count="2">
-<button sc-camel-on-click="{{ c.onClick }}" style="text-align:left;background:#FFFFFF;border:1px solid #FFFFFF;border-radius:16px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;color:#15171A" style-hover="border-color:#8C6A22">
-<div style="width:40px;height:40px;flex:none;border-radius:20px;background:#F3EBD9;color:#8C6A22;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">{{ c.initials }}</div>
-<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:600">{{ c.name }}</span><span style="font-size:13px;color:#6B6E72">{{ c.email }}</span><span style="font-size:12px;font-weight:600;color:#9A4515">{{ c.promoLabel }}</span></div>
-<svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#6B6E72" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"></path></svg>
+<button sc-camel-on-click="{{ c.onClick }}" style="text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;color:var(--ink)" style-hover="border-color:var(--accent)">
+<div style="width:40px;height:40px;flex:none;border-radius:20px;background:var(--accent-soft);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">{{ c.initials }}</div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:600">{{ c.name }}</span><span style="font-size:13px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.email }}</span><span style="font-size:12px;font-weight:600;color:var(--warn-ink)">{{ c.promoLabel }}</span></div>
+<svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="color:var(--muted)"><path d="M9 6l6 6-6 6"></path></svg>
 </button>
 </sc-for>
-<sc-if value="{{ noClientMatch }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;color:#6B6E72;padding:8px 0">No hay coincidencias. Crea el cliente abajo.</span></sc-if>
+<sc-if value="{{ noClientMatch }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;color:var(--muted);padding:8px 0">No hay coincidencias. Crea el cliente abajo.</span></sc-if>
 </div>
-<button sc-camel-on-click="{{ openNew }}" style="height:52px;border-radius:14px;border:1.5px dashed #8C6A22;background:#F3EBD9;color:#8C6A22;font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#8C6A22" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Crear cliente nuevo</button>
+<button sc-camel-on-click="{{ openNew }}" style="height:52px;border-radius:14px;border:1.5px dashed var(--accent);background:var(--accent-soft);color:var(--accent-ink);font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Crear cliente nuevo</button>
 </sc-if>
 <sc-if value="{{ showNew }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;flex-direction:column;gap:14px">
-<span style="font-size:13px;color:#6B6E72">Los datos de la tienda quedan guardados para el próximo pedido.</span>
+<span style="font-size:13px;color:var(--muted)">Los datos de la tienda quedan guardados para el próximo pedido.</span>
 <sc-for list="{{ formFields }}" as="f" hint-placeholder-count="5">
 <label style="display:flex;flex-direction:column;gap:6px">
 <span style="font-size:13px;font-weight:600">{{ f.label }}</span>
-<input type="{{ f.type }}" value="{{ f.value }}" sc-camel-on-change="{{ f.onChange }}" placeholder="{{ f.placeholder }}" style="height:48px;border-radius:12px;padding:0 14px;font-size:15px;background:#FFFFFF;outline:none;box-sizing:border-box;width:100%;border:1px solid {{ f.border }}">
-<sc-if value="{{ f.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#B42318;font-weight:500">{{ f.error }}</span></sc-if>
+<input type="{{ f.type }}" sc-camel-input-mode="{{ f.mode }}" sc-camel-auto-complete="{{ f.auto }}" value="{{ f.value }}" sc-camel-on-change="{{ f.onChange }}" placeholder="{{ f.placeholder }}" style="height:48px;border-radius:12px;padding:0 14px;font-size:15px;outline:none;box-sizing:border-box;width:100%;border:1px solid {{ f.border }}">
+<sc-if value="{{ f.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:var(--danger-ink);font-weight:500">{{ f.error }}</span></sc-if>
 </label>
 </sc-for>
 <div style="display:flex;gap:8px;margin-top:4px">
-<button sc-camel-on-click="{{ cancelNew }}" style="flex:1;height:52px;border-radius:14px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:15px;font-weight:600;cursor:pointer;color:#15171A">Cancelar</button>
-<button sc-camel-on-click="{{ saveClient }}" style="flex:2;height:52px;border-radius:14px;border:none;background:#8C6A22;color:#FFFFFF;font-size:15px;font-weight:600;cursor:pointer">Guardar y continuar</button>
+<button sc-camel-on-click="{{ cancelNew }}" style="flex:1;height:52px;border-radius:14px;border:1px solid var(--line);background:var(--card);font-size:15px;font-weight:600;cursor:pointer;color:var(--ink)">Cancelar</button>
+<button sc-camel-on-click="{{ saveClient }}" style="flex:2;height:52px;border-radius:14px;border:none;background:var(--accent-grad);color:var(--on-accent);font-size:15px;font-weight:600;cursor:pointer">Guardar y continuar</button>
 </div>
 </div>
 </sc-if>
@@ -700,35 +813,35 @@ input,textarea,button{font-family:inherit}
 
 <sc-if value="{{ fProducts }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="Paso 2 Productos" style="padding:16px 20px 24px;display:flex;flex-direction:column;gap:14px">
-<div style="display:flex;align-items:center;gap:10px;background:#FFFFFF;border-radius:14px;padding:10px 14px">
-<div style="width:32px;height:32px;flex:none;border-radius:16px;background:#F3EBD9;color:#8C6A22;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">{{ selClient.initials }}</div>
-<div style="flex:1;min-width:0;display:flex;flex-direction:column"><span style="font-size:14px;font-weight:600">{{ selClient.name }}</span><span style="font-size:12px;color:#6B6E72">{{ selClient.email }}</span></div>
-<button sc-camel-on-click="{{ changeClient }}" style="border:none;background:none;color:#8C6A22;font-size:13px;font-weight:600;cursor:pointer;padding:8px 0">Cambiar</button>
+<div style="display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 14px">
+<div style="width:32px;height:32px;flex:none;border-radius:16px;background:var(--accent-soft);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">{{ selClient.initials }}</div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column"><span style="font-size:14px;font-weight:600">{{ selClient.name }}</span><span style="font-size:12px;color:var(--muted)">{{ selClient.email }}</span></div>
+<button sc-camel-on-click="{{ changeClient }}" style="border:none;background:none;color:var(--accent-ink);font-size:13px;font-weight:600;cursor:pointer;padding:8px 0">Cambiar</button>
 </div>
-<div style="border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;background:#F8E9DE">
-<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font-size:14px;font-weight:600;color:#7A3610">{{ promoTitle }}</span><span style="font-size:12px;font-weight:600;color:#7A3610;white-space:nowrap">{{ promoCount }}</span></div>
-<div style="height:6px;background:#FFFFFF;border-radius:3px;overflow:hidden"><div style="height:100%;background:#C2702E;border-radius:3px;transition:width .3s;width:{{ promoPct }}"></div></div>
-<span style="font-size:13px;color:#7A3610">{{ promoText }}</span>
+<div style="border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;background:var(--warn-soft)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font-size:14px;font-weight:600;color:var(--warn-ink)">{{ promoTitle }}</span><span style="font-size:12px;font-weight:600;color:var(--warn-ink);white-space:nowrap">{{ promoCount }}</span></div>
+<div style="height:6px;background:var(--card);border-radius:3px;overflow:hidden"><div style="height:100%;background:var(--promo);border-radius:3px;transition:width .3s;width:{{ promoPct }}"></div></div>
+<span style="font-size:13px;color:var(--warn-ink)">{{ promoText }}</span>
 </div>
 <div style="display:flex;flex-direction:column;gap:10px">
 <sc-for list="{{ productRows }}" as="p" hint-placeholder-count="5">
-<div style="background:#FFFFFF;border-radius:16px;padding:14px 12px 8px 16px;display:flex;flex-direction:column;gap:6px;opacity:{{ p.opacity }};border:1.5px solid {{ p.border }}">
+<div style="background:var(--card);border-radius:16px;padding:14px 12px 8px 16px;display:flex;flex-direction:column;gap:6px;opacity:{{ p.opacity }};border:1.5px solid {{ p.border }}">
 <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding-right:4px">
-<div style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-size:15px;font-weight:600">{{ p.name }}</span><span style="font-size:12px;color:#6B6E72">{{ p.pvpLabel }}</span></div>
+<div style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-size:15px;font-weight:600">{{ p.name }}</span><span style="font-size:12px;color:var(--muted)">{{ p.pvpLabel }}</span></div>
 <span style="flex:none;font-size:11px;font-weight:600;padding:3px 8px;border-radius:999px;background:{{ p.stockBg }};color:{{ p.stockColor }}">{{ p.stockLabel }}</span>
 </div>
 <sc-for list="{{ p.options }}" as="u" hint-placeholder-count="2">
-<div style="display:flex;align-items:center;gap:12px;border-top:1px solid #EFECE5;padding-top:6px">
-<div style="flex:1;display:flex;flex-direction:column;gap:1px"><span style="font-size:13px;color:#6B6E72">{{ u.label }}</span><span style="font-size:15px;font-weight:700">{{ u.priceLabel }}</span></div>
+<div style="display:flex;align-items:center;gap:12px;border-top:1px solid var(--line-2);padding-top:6px">
+<div style="flex:1;display:flex;flex-direction:column;gap:1px"><span style="font-size:13px;color:var(--muted)">{{ u.label }}</span><span style="font-size:15px;font-weight:700">{{ u.priceLabel }}</span></div>
 <sc-if value="{{ u.hasQty }}" hint-placeholder-val="{{ false }}">
-<div style="display:flex;align-items:center;background:#15171A;border-radius:14px;padding:2px">
-<button sc-camel-on-click="{{ u.onDec }}" aria-label="{{ u.decLabel }}" style="width:40px;height:40px;border:none;background:none;color:#FFFFFF;font-size:20px;cursor:pointer">−</button>
-<span style="min-width:24px;text-align:center;color:#FFFFFF;font-size:15px;font-weight:700">{{ u.qty }}</span>
-<button sc-camel-on-click="{{ u.onInc }}" aria-label="{{ u.incLabel }}" style="width:40px;height:40px;border:none;background:none;font-size:20px;cursor:pointer;color:{{ u.incColor }}">+</button>
+<div style="display:flex;align-items:center;background:var(--solid);color:var(--on-solid);border-radius:14px;padding:2px">
+<button sc-camel-on-click="{{ u.onDec }}" aria-label="{{ u.decLabel }}" style="width:40px;height:40px;border:none;background:none;color:inherit;font-size:20px;cursor:pointer">−</button>
+<span style="min-width:24px;text-align:center;font-size:15px;font-weight:700">{{ u.qty }}</span>
+<button sc-camel-on-click="{{ u.onInc }}" aria-label="{{ u.incLabel }}" style="width:40px;height:40px;border:none;background:none;color:inherit;font-size:20px;cursor:pointer;opacity:{{ u.incOpacity }}">+</button>
 </div>
 </sc-if>
 <sc-if value="{{ u.noQty }}" hint-placeholder-val="{{ true }}">
-<button sc-camel-on-click="{{ u.onInc }}" aria-label="{{ u.incLabel }}" style="width:44px;height:44px;border-radius:14px;border:1px solid #E3E0D8;background:#F3F1EB;font-size:22px;cursor:pointer;color:#15171A">+</button>
+<button sc-camel-on-click="{{ u.onInc }}" aria-label="{{ u.incLabel }}" style="width:44px;height:44px;border-radius:14px;border:1px solid var(--line);background:var(--card-2);font-size:22px;cursor:pointer;color:var(--ink);opacity:{{ u.incOpacity }}">+</button>
 </sc-if>
 </div>
 </sc-for>
@@ -742,13 +855,13 @@ input,textarea,button{font-family:inherit}
 <div data-screen-label="Paso 3 Entrega" style="padding:16px 20px 24px;display:flex;flex-direction:column;gap:20px">
 <div style="display:flex;flex-direction:column;gap:10px">
 <span style="font-size:15px;font-weight:600">¿Cuándo se entrega?</span>
-<button sc-camel-on-click="{{ pickHoy }}" style="text-align:left;background:#FFFFFF;border-radius:16px;padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;color:#15171A;border:2px solid {{ hoyBorder }}">
+<button sc-camel-on-click="{{ pickHoy }}" role="radio" aria-checked="{{ hoyAria }}" style="text-align:left;background:var(--card);border-radius:16px;padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;color:var(--ink);border:2px solid {{ hoyBorder }}">
 <div style="width:22px;height:22px;flex:none;border-radius:11px;box-sizing:border-box;border:{{ hoyRadio }}"></div>
-<div style="display:flex;flex-direction:column;gap:3px"><span style="font-size:16px;font-weight:600">Entrega hoy</span><span style="font-size:13px;color:#6B6E72">El cliente se lleva el pedido ahora</span></div>
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font-size:16px;font-weight:600">Entrega hoy</span><span style="font-size:13px;color:var(--muted)">El cliente se lleva el pedido ahora</span></div>
 </button>
-<button sc-camel-on-click="{{ pickDesp }}" style="text-align:left;background:#FFFFFF;border-radius:16px;padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;color:#15171A;border:2px solid {{ despBorder }}">
+<button sc-camel-on-click="{{ pickDesp }}" role="radio" aria-checked="{{ despAria }}" style="text-align:left;background:var(--card);border-radius:16px;padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;color:var(--ink);border:2px solid {{ despBorder }}">
 <div style="width:22px;height:22px;flex:none;border-radius:11px;box-sizing:border-box;border:{{ despRadio }}"></div>
-<div style="display:flex;flex-direction:column;gap:3px"><span style="font-size:16px;font-weight:600">Despacho posterior</span><span style="font-size:13px;color:#6B6E72">Se envía en una fecha programada</span></div>
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font-size:16px;font-weight:600">Despacho posterior</span><span style="font-size:13px;color:var(--muted)">Se envía en una fecha programada</span></div>
 </button>
 </div>
 <sc-if value="{{ isDespacho }}" hint-placeholder-val="{{ false }}">
@@ -760,7 +873,7 @@ input,textarea,button{font-family:inherit}
 </sc-for>
 </div>
 <label style="display:flex;flex-direction:column;gap:6px;margin-top:6px"><span style="font-size:15px;font-weight:600">Dirección de despacho</span>
-<input value="{{ draftAddress }}" sc-camel-on-change="{{ onAddress }}" placeholder="Calle, número, ciudad" style="height:48px;border:1px solid #E3E0D8;border-radius:12px;padding:0 14px;font-size:15px;background:#FFFFFF;outline:none;box-sizing:border-box;width:100%"></label>
+<input value="{{ draftAddress }}" sc-camel-on-change="{{ onAddress }}" sc-camel-auto-complete="street-address" placeholder="Calle, número, ciudad" style="height:48px;border:1px solid {{ addressBorder }};border-radius:12px;padding:0 14px;font-size:15px;outline:none;box-sizing:border-box;width:100%"></label>
 </div>
 </sc-if>
 <div style="display:flex;flex-direction:column;gap:10px">
@@ -770,46 +883,46 @@ input,textarea,button{font-family:inherit}
 <button sc-camel-on-click="{{ c.onClick }}" style="height:40px;padding:0 16px;border-radius:20px;font-size:14px;font-weight:500;cursor:pointer;background:{{ c.bg }};color:{{ c.color }};border:1px solid {{ c.border }}">{{ c.label }}</button>
 </sc-for>
 </div>
-<sc-if value="{{ isCredit }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#9A4515">Quedará como «Por cobrar» hasta que lo marques cobrado en el Historial.</span></sc-if>
+<sc-if value="{{ isCredit }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:var(--warn-ink)">Quedará como «Por cobrar» hasta que lo marques cobrado en el Historial.</span></sc-if>
 </div>
-<label style="display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">Notas <span style="font-weight:400;color:#6B6E72">(opcional)</span></span>
-<textarea value="{{ draftNotes }}" sc-camel-on-change="{{ onNotes }}" placeholder="Horario, referencia, instrucciones…" rows="3" style="border:1px solid #E3E0D8;border-radius:12px;padding:12px 14px;font-size:15px;background:#FFFFFF;outline:none;resize:none;box-sizing:border-box;width:100%"></textarea></label>
-<sc-if value="{{ deliveryError }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#B42318;font-weight:500">{{ deliveryError }}</span></sc-if>
+<label style="display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">Notas <span style="font-weight:400;color:var(--muted)">(opcional)</span></span>
+<textarea value="{{ draftNotes }}" sc-camel-on-change="{{ onNotes }}" placeholder="Horario, referencia, instrucciones…" rows="3" style="border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:15px;outline:none;resize:none;box-sizing:border-box;width:100%"></textarea></label>
+<sc-if value="{{ deliveryError }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:var(--danger-ink);font-weight:500">{{ deliveryError }}</span></sc-if>
 </div>
 </sc-if>
 
 <sc-if value="{{ fReview }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="Paso 4 Confirmar" style="padding:16px 20px 24px;display:flex;flex-direction:column;gap:12px">
-<div style="background:#FFFFFF;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:4px">
-<span style="font-size:12px;color:#6B6E72;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Cliente</span>
+<div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:4px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.1em">Cliente</span><button sc-camel-on-click="{{ changeClient }}" style="border:none;background:none;color:var(--accent-ink);font-size:13px;font-weight:600;cursor:pointer;padding:0">Cambiar</button></div>
 <span style="font-size:16px;font-weight:600">{{ selClient.name }}</span>
-<span style="font-size:14px;color:#6B6E72">{{ selClient.email }} · {{ selClient.phone }}</span>
+<span style="font-size:14px;color:var(--muted)">{{ selClient.email }} · {{ selClient.phone }}</span>
 </div>
-<div style="background:#FFFFFF;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px">
-<span style="font-size:12px;color:#6B6E72;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Productos</span>
+<div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.1em">Productos</span><button sc-camel-on-click="{{ editProducts }}" style="border:none;background:none;color:var(--accent-ink);font-size:13px;font-weight:600;cursor:pointer;padding:0">Editar</button></div>
 <sc-for list="{{ reviewItems }}" as="i" hint-placeholder-count="2">
 <div style="display:flex;justify-content:space-between;gap:12px;font-size:14px"><span><b style="font-weight:700">{{ i.qty }}×</b> {{ i.name }}</span><span style="font-weight:600;white-space:nowrap">{{ i.line }}</span></div>
 </sc-for>
 <sc-if value="{{ promoWon }}" hint-placeholder-val="{{ false }}">
-<div style="display:flex;justify-content:space-between;gap:12px;font-size:14px;background:#F8E9DE;color:#7A3610;border-radius:10px;padding:8px 10px;margin:0 -4px"><span><b style="font-weight:700">{{ promoEarned }}×</b> {{ promoName }} · promo {{ promoBoxes }} cajas</span><span style="font-weight:700">Regalo</span></div>
+<div style="display:flex;justify-content:space-between;gap:12px;font-size:14px;background:var(--warn-soft);color:var(--warn-ink);border-radius:10px;padding:8px 10px;margin:0 -4px"><span><b style="font-weight:700">{{ promoEarned }}×</b> {{ promoName }} · promo {{ promoBoxes }} cajas</span><span style="font-weight:700">Regalo</span></div>
 </sc-if>
-<div style="height:1px;background:#EFECE5;margin:4px 0"></div>
-<div style="display:flex;justify-content:space-between;font-size:14px;color:#6B6E72"><span>Subtotal sin IVA</span><span>{{ subLabel }}</span></div>
-<div style="display:flex;justify-content:space-between;font-size:14px;color:#6B6E72"><span>{{ taxName }}</span><span>{{ taxLabel }}</span></div>
+<div style="height:1px;background:var(--line-2);margin:4px 0"></div>
+<div style="display:flex;justify-content:space-between;font-size:14px;color:var(--muted)"><span>Subtotal sin IVA</span><span>{{ subLabel }}</span></div>
+<div style="display:flex;justify-content:space-between;font-size:14px;color:var(--muted)"><span>{{ taxName }}</span><span>{{ taxLabel }}</span></div>
 <div style="display:flex;justify-content:space-between;font-size:18px;font-weight:700"><span>Total</span><span>{{ totalLabel }}</span></div>
 </div>
-<div style="background:#F3EBD9;border-radius:16px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px">
-<div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:14px;font-weight:600;color:#8C6A22">Tu ganancia</span><span style="font-size:12px;color:#8C6A22">Interno · no aparece en el mail</span></div>
-<div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px"><span style="font-size:18px;font-weight:700;color:#8C6A22">{{ profitLabel }}</span><span style="font-size:12px;font-weight:600;color:#8C6A22">Margen {{ marginLabel }}</span></div>
+<div style="background:var(--accent-soft);border-radius:16px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px">
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:14px;font-weight:600;color:var(--accent-ink)">Tu ganancia</span><span style="font-size:12px;color:var(--accent-ink)">Interno · no aparece en el mensaje</span></div>
+<div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px"><span style="font-size:18px;font-weight:700;color:var(--accent-ink)">{{ profitLabel }}</span><span style="font-size:12px;font-weight:600;color:var(--accent-ink)">Margen {{ marginLabel }}</span></div>
 </div>
-<div style="background:#FFFFFF;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:4px">
-<span style="font-size:12px;color:#6B6E72;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Entrega y pago</span>
+<div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:4px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.1em">Entrega y pago</span><button sc-camel-on-click="{{ editDelivery }}" style="border:none;background:none;color:var(--accent-ink);font-size:13px;font-weight:600;cursor:pointer;padding:0">Editar</button></div>
 <span style="font-size:15px;font-weight:600">{{ deliveryLabel }}</span>
-<span style="font-size:14px;color:#6B6E72">{{ deliverySub }}</span>
+<span style="font-size:14px;color:var(--muted)">{{ deliverySub }}</span>
 </div>
-<button sc-camel-on-click="{{ toggleMail }}" role="switch" aria-checked="{{ sendMail }}" style="text-align:left;background:#FFFFFF;border:none;border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;color:#15171A">
-<div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:600">Preparar mail de confirmación</span><span style="font-size:13px;color:#6B6E72">{{ selClient.email }}</span></div>
-<div style="width:48px;height:28px;flex:none;border-radius:14px;position:relative;transition:background .2s;background:{{ mailTrack }}"><div style="position:absolute;top:3px;width:22px;height:22px;border-radius:11px;background:#FFFFFF;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.2);left:{{ mailKnob }}"></div></div>
+<button sc-camel-on-click="{{ toggleMail }}" role="switch" aria-checked="{{ sendMailAria }}" style="text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;color:var(--ink)">
+<div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:600">Preparar mensaje de confirmación</span><span style="font-size:13px;color:var(--muted)">Para enviar por WhatsApp o mail</span></div>
+<div style="width:48px;height:28px;flex:none;border-radius:14px;position:relative;transition:background .2s;background:{{ mailTrack }}"><div style="position:absolute;top:3px;width:22px;height:22px;border-radius:11px;background:#FFFFFF;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.3);left:{{ mailKnob }}"></div></div>
 </button>
 </div>
 </sc-if>
@@ -817,25 +930,28 @@ input,textarea,button{font-family:inherit}
 <sc-if value="{{ fDone }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="Pedido confirmado" style="padding:28px 20px 24px;display:flex;flex-direction:column;gap:20px">
 <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
-<div style="width:64px;height:64px;border-radius:32px;background:#8C6A22;display:flex;align-items:center;justify-content:center"><svg width="30" height="30" sc-camel-view-box="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div>
-<span style="font-size:24px;font-weight:700;letter-spacing:-.01em">Pedido confirmado</span>
-<span style="font:500 14px 'JetBrains Mono',monospace;color:#6B6E72">{{ done.id }} · {{ done.total }}</span>
-<span style="font-size:14px;color:#15171A;background:#FFFFFF;padding:6px 12px;border-radius:999px">{{ done.status }}</span>
+<div style="width:64px;height:64px;border-radius:32px;background:var(--accent-grad);color:var(--on-accent);display:flex;align-items:center;justify-content:center"><svg width="30" height="30" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div>
+<span style="font:600 24px 'Cinzel',serif;letter-spacing:.02em">Pedido confirmado</span>
+<span style="font:500 14px 'JetBrains Mono',monospace;color:var(--muted)">{{ done.id }} · {{ done.total }}</span>
+<span style="font-size:14px;background:var(--card);border:1px solid var(--line);padding:6px 12px;border-radius:999px">{{ done.status }}</span>
 </div>
 <sc-if value="{{ done.mailWanted }}" hint-placeholder-val="{{ true }}">
-<a href="{{ done.mailHref }}" style="height:52px;border-radius:14px;border:none;background:#8C6A22;display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:600;color:#FFFFFF"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3.5 6.5L12 13l8.5-6.5"></path></svg>Enviar mail al cliente</a>
-<div style="background:#FFFFFF;border-radius:16px;overflow:hidden;display:flex;flex-direction:column">
-<div style="padding:12px 16px;border-bottom:1px solid #EFECE5;display:flex;flex-direction:column;gap:4px;font-size:13px">
-<span style="font-size:12px;font-weight:600;color:#9A4515">Borrador · todavía no se ha enviado</span>
-<span><span style="color:#6B6E72">Para:</span> {{ done.email }}</span>
-<span><span style="color:#6B6E72">Asunto:</span> {{ done.subject }}</span>
+<div style="display:flex;gap:8px">
+<sc-if value="{{ done.hasWa }}" hint-placeholder-val="{{ true }}"><a href="{{ done.waHref }}" target="_blank" rel="noopener" style="flex:1;height:52px;border-radius:14px;background:var(--wa);display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:600;color:#FFFFFF"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 01-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1121 11.5z"></path></svg>WhatsApp</a></sc-if>
+<a href="{{ done.mailHref }}" style="flex:1;height:52px;border-radius:14px;background:var(--accent-grad);display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:600;color:var(--on-accent)"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3.5 6.5L12 13l8.5-6.5"></path></svg>Mail</a>
 </div>
-<div style="padding:14px 16px;font-size:13px;line-height:1.55;white-space:pre-wrap;color:#15171A">{{ done.body }}</div>
+<div style="background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column">
+<div style="padding:12px 16px;border-bottom:1px solid var(--line-2);display:flex;flex-direction:column;gap:4px;font-size:13px">
+<span style="font-size:12px;font-weight:600;color:var(--warn-ink)">Mensaje listo · todavía no se ha enviado</span>
+<span><span style="color:var(--muted)">Para:</span> {{ done.email }}{{ done.phoneSuffix }}</span>
+<span><span style="color:var(--muted)">Asunto:</span> {{ done.subject }}</span>
+</div>
+<div style="padding:14px 16px;font-size:13px;line-height:1.55;white-space:pre-wrap">{{ done.body }}</div>
 </div>
 </sc-if>
 <div style="display:flex;gap:8px">
-<button sc-camel-on-click="{{ goHome }}" style="flex:1;height:52px;border-radius:14px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:15px;font-weight:600;cursor:pointer;color:#15171A">Inicio</button>
-<button sc-camel-on-click="{{ newOrder }}" style="flex:1;height:52px;border-radius:14px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:15px;font-weight:600;cursor:pointer;color:#15171A">Otro pedido</button>
+<button sc-camel-on-click="{{ goHome }}" style="flex:1;height:52px;border-radius:14px;border:1px solid var(--line);background:var(--card);font-size:15px;font-weight:600;cursor:pointer;color:var(--ink)">Inicio</button>
+<button sc-camel-on-click="{{ newOrder }}" style="flex:1;height:52px;border-radius:14px;border:1px solid var(--line);background:var(--card);font-size:15px;font-weight:600;cursor:pointer;color:var(--ink)">Otro pedido</button>
 </div>
 </div>
 </sc-if>
@@ -843,23 +959,23 @@ input,textarea,button{font-family:inherit}
 </div>
 
 <sc-if value="{{ showCartBar }}" hint-placeholder-val="{{ false }}">
-<div data-cartbar="" style="flex:none;padding:12px 16px 28px;background:#F3F1EB;border-top:1px solid #E3E0D8">
-<button sc-camel-on-click="{{ barAction }}" style="width:100%;height:56px;border:none;border-radius:16px;color:#FFFFFF;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:space-between;padding:0 20px;cursor:pointer;background:{{ barBg }}" style-active="transform:scale(.98)"><span>{{ barLeft }}</span><span>{{ barRight }}</span></button>
+<div data-cartbar="" style="flex:none;padding:12px 16px 28px;background:var(--bg);border-top:1px solid var(--line)">
+<button sc-camel-on-click="{{ barAction }}" aria-disabled="{{ barDisabled }}" style="width:100%;height:56px;border:none;border-radius:16px;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:space-between;padding:0 20px;cursor:pointer;background:{{ barBg }};color:{{ barColor }}" style-active="transform:scale(.98)"><span>{{ barLeft }}</span><span>{{ barRight }}</span></button>
 </div>
 </sc-if>
 
 <sc-if value="{{ showTabs }}" hint-placeholder-val="{{ true }}">
-<div data-tabbar="" style="flex:none;display:grid;grid-template-columns:repeat(5,1fr);padding:8px 4px 26px;background:{{ tabBg }};border-top:1px solid {{ tabBorder }}">
-<button sc-camel-on-click="{{ goHome }}" style="height:52px;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:11px;font-weight:600;color:{{ tHome }}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 20V11M12 20V5M19 20v-6"></path></svg>Resumen</button>
+<nav data-tabbar="" data-theme="{{ chromeTheme }}" aria-label="Secciones" style="flex:none;display:grid;grid-template-columns:repeat(5,1fr);padding:8px 4px 26px;background:var(--tab);border-top:1px solid var(--line)">
+<button sc-camel-on-click="{{ goHome }}" aria-current="{{ aHome }}" style="height:52px;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:11px;font-weight:600;color:{{ tHome }}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 20V11M12 20V5M19 20v-6"></path></svg>Resumen</button>
 <button sc-camel-on-click="{{ goOrder }}" style="height:52px;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:11px;font-weight:600;color:{{ tOrder }}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><path d="M12 8v8M8 12h8"></path></svg>Pedido</button>
-<button sc-camel-on-click="{{ goOrders }}" style="height:52px;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:11px;font-weight:600;color:{{ tOrders }}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="3.5" width="14" height="17" rx="2"></rect><path d="M9 8.5h6M9 12h6M9 15.5h4"></path></svg>Historial</button>
-<button sc-camel-on-click="{{ goClients }}" style="height:52px;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:11px;font-weight:600;color:{{ tClients }}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8.5" r="3.5"></circle><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"></path></svg>Clientes</button>
-<button sc-camel-on-click="{{ goStock }}" style="height:52px;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:11px;font-weight:600;color:{{ tStock }}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3.5l8 4.2v8.6l-8 4.2-8-4.2V7.7z"></path><path d="M4 7.7l8 4.3 8-4.3M12 12v8.5"></path></svg>Stock</button>
-</div>
+<button sc-camel-on-click="{{ goOrders }}" aria-current="{{ aOrders }}" style="height:52px;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:11px;font-weight:600;color:{{ tOrders }}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="3.5" width="14" height="17" rx="2"></rect><path d="M9 8.5h6M9 12h6M9 15.5h4"></path></svg>Historial</button>
+<button sc-camel-on-click="{{ goClients }}" aria-current="{{ aClients }}" style="height:52px;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:11px;font-weight:600;color:{{ tClients }}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8.5" r="3.5"></circle><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"></path></svg>Clientes</button>
+<button sc-camel-on-click="{{ goStock }}" aria-current="{{ aStock }}" style="height:52px;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:11px;font-weight:600;color:{{ tStock }}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3.5l8 4.2v8.6l-8 4.2-8-4.2V7.7z"></path><path d="M4 7.7l8 4.3 8-4.3M12 12v8.5"></path></svg>Stock</button>
+</nav>
 </sc-if>
 
 <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
-<div role="status" style="position:absolute;left:20px;right:20px;top:60px;background:#15171A;color:#FFFFFF;border-radius:14px;padding:14px 16px;font-size:14px;font-weight:500;box-shadow:0 10px 30px rgba(0,0,0,.2)">{{ toast }}</div>
+<div data-toast="" role="status" style="position:absolute;left:20px;right:20px;top:60px;background:var(--solid);color:var(--on-solid);border-radius:14px;padding:14px 16px;font-size:14px;font-weight:500;box-shadow:var(--shadow)">{{ toast }}</div>
 </sc-if>
 
 </div>
@@ -872,9 +988,9 @@ class Component extends DCLogic {
     super(props);
     this.scrollRef = React.createRef();
     this._prev = { flow: null, tab: 'home' };
-    this.state = { ...this.load(), tab: 'home', flow: null, clientsNew: false, editingClient: null, clientsFilter: 'Activos', confirmRemove: null,
+    this.state = { ...this.load(), tab: 'home', flow: null, period: 'hoy', clientsNew: false, editingClient: null, clientsFilter: 'Activos', confirmRemove: null,
       draft: this.emptyDraft(), clientQuery: '', showNew: false, form: this.emptyForm(), errors: {}, lastOrderId: null, sendMail: true,
-      toast: null, clientsQuery: '', orderFilter: 'Todos', deliveryError: '', confirmCancel: null,
+      toast: null, clientsQuery: '', orderQuery: '', orderFilter: 'Todos', expanded: null, deliveryError: '', confirmCancel: null, confirmReset: false,
       editingProduct: null, prodForm: this.emptyProdForm(), prodErrors: {} };
   }
   // ---------- datos ----------
@@ -884,8 +1000,8 @@ class Component extends DCLogic {
     return this.normalize(saved && saved.products ? saved : this.seed());
   }
   normalize(d) {
-    return { seq: d.seq || 0, products: d.products, clients: d.clients, orders: d.orders || [],
-      settings: { promoBoxes: 4, promoPid: null, ...(d.settings || {}) }, lastBackup: d.lastBackup || null };
+    return { seq: d.seq || 0, products: d.products, clients: d.clients, orders: d.orders || [], lastBackup: d.lastBackup || null,
+      settings: { promoBoxes: 4, promoPid: null, theme: 'dark', taxRate: this.props.taxRate ?? 15, allowBackorder: this.props.allowBackorder ?? false, ...(d.settings || {}) } };
   }
   persisted() { const { clients, products, orders, seq, settings, lastBackup } = this.state; return { clients, products, orders, seq, settings, lastBackup }; }
   componentDidUpdate() {
@@ -900,7 +1016,7 @@ class Component extends DCLogic {
   addDays(n) { const d = new Date(); d.setDate(d.getDate() + n); return this.iso(d); }
   parse(iso) { const [y, m, d] = iso.split('-').map(Number); return new Date(y, m - 1, d); }
   dateLabel(iso) { return this.parse(iso).toLocaleDateString('es-EC', { weekday: 'short', day: 'numeric', month: 'short' }); }
-  money(n) { return '$' + (Math.round(n * 100) / 100).toFixed(2).replace('.', ','); }
+  money(n) { const v = (Math.round(n * 100) / 100).toFixed(2).split('.'); return '$' + v[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ',' + v[1]; }
   pct(n) { return Math.round(n * 100) + '%'; }
   num(v) { const n = parseFloat(String(v).replace(',', '.')); return isFinite(n) ? n : NaN; }
   packsUsed(pid, items) { return (items[pid + '|p'] || 0) + 12 * (items[pid + '|c'] || 0); }
@@ -911,8 +1027,12 @@ class Component extends DCLogic {
   emptyDraft() { return { clientId: null, items: {}, delivery: 'hoy', date: this.addDays(1), address: '', payment: 'Efectivo', notes: '' }; }
   isActive(o) { return o.status !== 'anulado'; }
   isPaid(o) { return o.paid ?? (o.payment !== 'Crédito'); }
+  orderCost(o) { return o.items.reduce((a, i) => a + (i.packs || i.qty) * (i.cost || 0), 0); }
   showToast(msg) { this.setState({ toast: msg }); clearTimeout(this._t); this._t = setTimeout(() => this.setState({ toast: null }), 2400); }
-  rate() { return (this.props.taxRate ?? 15) / 100; }
+  taxRate() { return this.state && this.state.settings ? this.state.settings.taxRate : (this.props.taxRate ?? 15); }
+  rate() { return this.taxRate() / 100; }
+  // Celular ecuatoriano 09XXXXXXXX → 5939XXXXXXXX para wa.me
+  waNumber(phone) { const d = (phone || '').replace(/\D/g, ''); if (/^09\d{8}$/.test(d)) return '593' + d.slice(1); if (/^5939\d{8}$/.test(d)) return d; return null; }
   seed() {
     const t = this.addDays(0), y = this.addDays(-1);
     const products = [
@@ -953,12 +1073,12 @@ class Component extends DCLogic {
     this.setState({ tab: 'order', flow: c ? 'products' : 'client', draft: { ...this.emptyDraft(), clientId: c ? c.id : null, address: c ? c.address : '' },
       clientQuery: '', showNew: false, form: this.emptyForm(), errors: {}, deliveryError: '', sendMail: true });
   }
-  pickClient(c) { this.setState(s => ({ draft: { ...s.draft, clientId: c.id, address: c.address || '' }, flow: 'products' })); }
+  pickClient(c) { this.setState(s => ({ draft: { ...s.draft, clientId: c.id, address: s.draft.address || c.address || '' }, flow: 'products' })); }
   changeQty(pid, unit, delta) {
     const p = this.state.products.find(x => x.id === pid);
     const k = pid + '|' + unit, items = this.state.draft.items;
     const next = { ...items, [k]: Math.max(0, (items[k] || 0) + delta) };
-    if (delta > 0 && !(this.props.allowBackorder ?? false) && this.packsUsed(pid, next) > p.stock) {
+    if (delta > 0 && !this.state.settings.allowBackorder && this.packsUsed(pid, next) > p.stock) {
       const left = p.stock - this.packsUsed(pid, items);
       return this.showToast(left <= 0 ? 'No queda stock de ' + p.name.toLowerCase() : 'Solo quedan ' + left + ' paquetes' + (unit === 'c' ? ', no alcanza una caja' : ''));
     }
@@ -976,8 +1096,8 @@ class Component extends DCLogic {
     const hoy = d.delivery === 'hoy';
     const promo = this.promoCalc(d.clientId, items.filter(i => i.unit === 'c').reduce((a, i) => a + i.qty, 0)).earned;
     const promoPid = promo > 0 ? s.settings.promoPid : null;
-    const order = { id, clientId: d.clientId, items, delivery: d.delivery, date: hoy ? this.addDays(0) : d.date, address: d.address, payment: d.payment, notes: d.notes,
-      subtotal: t.sub, tax: t.tax, total: t.total, status: hoy ? 'entregado' : 'pendiente', paid: d.payment !== 'Crédito', createdAt: this.addDays(0),
+    const order = { id, clientId: d.clientId, items, delivery: d.delivery, date: hoy ? this.addDays(0) : d.date, address: d.address, payment: d.payment, notes: d.notes.trim(),
+      subtotal: t.sub, tax: t.tax, total: t.total, taxRate: this.taxRate(), status: hoy ? 'entregado' : 'pendiente', paid: d.payment !== 'Crédito', createdAt: this.addDays(0),
       mailWanted: s.sendMail, promo, promoPid, promoGift: promo > 0 ? this.promoName() : '' };
     const products = this.applyStock(s.products, order, -1);
     const gift = promoPid && products.find(p => p.id === promoPid);
@@ -1068,36 +1188,53 @@ class Component extends DCLogic {
       const d = JSON.parse(txt);
       if (!d || !Array.isArray(d.products) || !Array.isArray(d.clients) || !Array.isArray(d.orders)) throw new Error('formato');
       if (!window.confirm('Se reemplazarán los datos de este dispositivo por los del respaldo (' + d.orders.length + ' pedidos, ' + d.clients.length + ' clientes). ¿Continuar?')) return;
-      this.setState({ ...this.normalize(d), draft: this.emptyDraft(), tab: 'home', flow: null, lastOrderId: null });
+      this.setState({ ...this.normalize(d), draft: this.emptyDraft(), tab: 'home', flow: null, lastOrderId: null, expanded: null });
       this.showToast('Respaldo importado');
     }).catch(() => this.showToast('El archivo no es un respaldo válido')).finally(() => { input.value = ''; });
   }
+  resetData() {
+    this.setState({ clients: [], orders: [], seq: 0, confirmReset: false, draft: this.emptyDraft(), lastOrderId: null, expanded: null, tab: 'home', flow: null });
+    this.showToast('Clientes y pedidos borrados');
+  }
   // ---------- vistas ----------
   stockTag(n) {
-    if (n <= 0) return { stockLabel: n < 0 ? 'Faltan ' + (-n) + ' paq.' : 'Sin stock', stockBg: '#FBE7E5', stockColor: '#B42318' };
-    if (n < 12) return { stockLabel: 'Quedan ' + n + ' paq.', stockBg: '#F8E9DE', stockColor: '#9A4515' };
-    return { stockLabel: n + ' paq.', stockBg: '#EFECE5', stockColor: '#4A4D52' };
+    if (n <= 0) return { stockLabel: n < 0 ? 'Faltan ' + (-n) + ' paq.' : 'Sin stock', stockBg: 'var(--danger-soft)', stockColor: 'var(--danger-ink)' };
+    if (n < 12) return { stockLabel: 'Quedan ' + n + ' paq.', stockBg: 'var(--warn-soft)', stockColor: 'var(--warn-ink)' };
+    return { stockLabel: n + ' paq.', stockBg: 'var(--line-2)', stockColor: 'var(--muted)' };
   }
-  chip(sel) { return sel ? { bg: '#15171A', color: '#FFFFFF', border: '#15171A' } : { bg: '#FFFFFF', color: '#15171A', border: '#E3E0D8' }; }
-  orderRow(o) {
-    const anul = !this.isActive(o), pend = o.status === 'pendiente', unpaid = !anul && !this.isPaid(o), conf = this.state.confirmCancel === o.id;
-    const st = anul ? ['Anulado', '#EFECE5', '#6B6E72'] : pend ? ['Despacho ' + this.dateLabel(o.date), '#F8E9DE', '#9A4515'] : ['Entregado', '#F3EBD9', '#8C6A22'];
-    return { id: o.id, clientName: this.client(o.clientId).name, total: this.money(o.total), items: o.items.reduce((a, i) => a + i.qty, 0) + ' art.', payment: o.payment,
-      statusLabel: st[0], statusBg: st[1], statusColor: st[2], opacity: anul ? 0.55 : 1, unpaid,
-      isPending: pend, confirming: conf, showActions: !anul && !conf, mailHref: this.mail(o).mailHref,
-      onMark: () => { this.setState(s => ({ orders: s.orders.map(x => x.id === o.id ? { ...x, status: 'entregado' } : x) })); this.showToast(o.id + ' marcado como despachado'); },
-      onCollect: () => { this.setState(s => ({ orders: s.orders.map(x => x.id === o.id ? { ...x, paid: true } : x) })); this.showToast(o.id + ' marcado como cobrado'); },
-      onAskCancel: () => this.setState({ confirmCancel: o.id }), onCancelNo: () => this.setState({ confirmCancel: null }), onCancelYes: () => this.cancelOrder(o.id) };
-  }
-  mail(o) {
+  chip(sel) { return sel ? { bg: 'var(--accent)', color: 'var(--on-accent)', border: 'var(--accent)', selected: 'true' } : { bg: 'var(--card)', color: 'var(--ink)', border: 'var(--line)', selected: 'false' }; }
+  toggle(on) { return { track: on ? 'var(--accent)' : 'var(--disabled)', knob: on ? '23px' : '3px', aria: on ? 'true' : 'false' }; }
+  message(o) {
     const c = this.client(o.clientId);
     const lines = o.items.map(i => '• ' + i.qty + ' × ' + i.name + ' — ' + this.money(i.qty * i.price)).join('\n');
     const ent = o.delivery === 'hoy' ? 'Entrega: inmediata (hoy)' : 'Despacho: ' + this.dateLabel(o.date) + '\nDirección: ' + o.address;
     const subject = 'Confirmación de pedido ' + o.id + ' · Python Vault';
     const body = 'Hola equipo de ' + c.name + ',\n\nConfirmamos su pedido ' + o.id + '.\n\n' + lines + '\n\nSubtotal sin IVA: ' + this.money(o.subtotal) +
-      '\nIVA (' + (this.props.taxRate ?? 15) + '%): ' + this.money(o.tax) + '\nTotal: ' + this.money(o.total) + '\n\n' + ent + '\nPago: ' + o.payment +
+      '\nIVA (' + (o.taxRate ?? this.taxRate()) + '%): ' + this.money(o.tax) + '\nTotal: ' + this.money(o.total) + '\n\n' + ent + '\nPago: ' + o.payment +
       (o.notes ? '\nNotas: ' + o.notes : '') + (o.promo ? '\n\nPromoción tiendas: este pedido incluye ' + o.promo + ' × ' + (o.promoGift || 'regalo promocional') + ' sin costo.' : '') + '\n\nGracias por tu compra.\nPython Vault';
-    return { email: c.email, subject, body, mailHref: 'mailto:' + c.email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body) };
+    const wa = this.waNumber(c.phone);
+    return { email: c.email, subject, body, phoneSuffix: wa ? ' · ' + c.phone : '',
+      mailHref: 'mailto:' + c.email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body),
+      hasWa: !!wa, waHref: wa ? 'https://wa.me/' + wa + '?text=' + encodeURIComponent(body) : '' };
+  }
+  orderRow(o) {
+    const s = this.state, anul = !this.isActive(o), pend = o.status === 'pendiente', unpaid = !anul && !this.isPaid(o), conf = s.confirmCancel === o.id, exp = s.expanded === o.id;
+    const st = anul ? ['Anulado', 'var(--line-2)', 'var(--muted)'] : pend ? ['Despacho ' + this.dateLabel(o.date), 'var(--warn-soft)', 'var(--warn-ink)'] : ['Entregado', 'var(--accent-soft)', 'var(--accent-ink)'];
+    const m = this.message(o);
+    return { id: o.id, clientName: this.client(o.clientId).name, total: this.money(o.total), items: o.items.reduce((a, i) => a + i.qty, 0) + ' art.', payment: o.payment,
+      createdLabel: this.parse(o.createdAt).toLocaleDateString('es-EC', { day: 'numeric', month: 'short' }).replace('.', ''), statusLabel: st[0], statusBg: st[1], statusColor: st[2], opacity: anul ? 0.55 : 1, unpaid,
+      expanded: exp, expandedAria: exp ? 'true' : 'false', cardBorder: exp ? 'var(--accent)' : 'var(--line)',
+      lines: o.items.map(i => ({ qty: i.qty, name: i.name, amount: this.money(i.qty * i.price) })),
+      hasPromo: !!o.promo, promoLine: (o.promo || 0) + '× ' + (o.promoGift || 'regalo promocional'),
+      deliveryText: o.delivery === 'hoy' ? 'Entregado en el momento' : 'Despacho ' + this.dateLabel(o.date) + (o.address ? ' · ' + o.address : ''),
+      subtotal: this.money(o.subtotal), tax: this.money(o.tax), notes: o.notes, hasNotes: !!o.notes,
+      isPending: pend, confirming: conf, showActions: exp && !anul && !conf, hasMainActions: pend || unpaid,
+      mailHref: m.mailHref, waHref: m.waHref, hasWa: m.hasWa,
+      onToggle: () => this.setState(st2 => ({ expanded: st2.expanded === o.id ? null : o.id, confirmCancel: null })),
+      onOpen: () => this.setState({ tab: 'orders', flow: null, orderFilter: 'Todos', orderQuery: '', expanded: o.id, confirmCancel: null }),
+      onMark: () => { this.setState(s2 => ({ orders: s2.orders.map(x => x.id === o.id ? { ...x, status: 'entregado' } : x) })); this.showToast(o.id + ' marcado como despachado'); },
+      onCollect: () => { this.setState(s2 => ({ orders: s2.orders.map(x => x.id === o.id ? { ...x, paid: true } : x) })); this.showToast(o.id + ' marcado como cobrado'); },
+      onAskCancel: () => this.setState({ confirmCancel: o.id }), onCancelNo: () => this.setState({ confirmCancel: null }), onCancelYes: () => this.cancelOrder(o.id) };
   }
   renderVals() {
     const s = this.state, flow = s.flow, today = this.addDays(0);
@@ -1109,17 +1246,24 @@ class Component extends DCLogic {
     const count = items.reduce((a, i) => a + i.qty, 0);
     const sc = this.client(s.draft.clientId);
     const steps = { client: 1, products: 2, delivery: 3, review: 4 };
-    const titles = { client: 'Cliente', products: 'Productos', delivery: 'Entrega', review: 'Confirmar pedido', done: 'Listo' };
+    const titles = { client: 'Cliente', products: 'Productos', delivery: 'Entrega', review: 'Confirmar', done: 'Listo' };
     const active = s.orders.filter(o => this.isActive(o));
-    const ordersToday = active.filter(o => o.createdAt === today);
+    // Resumen por periodo
+    const inPeriod = { hoy: o => o.createdAt === today, '7d': o => o.createdAt >= this.addDays(-6), mes: o => o.createdAt.slice(0, 7) === today.slice(0, 7) }[s.period];
+    const po = active.filter(inPeriod);
+    const pSub = po.reduce((a, o) => a + o.subtotal, 0), pProfit = pSub - po.reduce((a, o) => a + this.orderCost(o), 0);
+    const agg = {};
+    po.forEach(o => o.items.forEach(i => { const p = s.products.find(x => x.id === i.pid);
+      const a = agg[i.pid] || (agg[i.pid] = { packs: 0, amount: 0, name: p ? p.name : i.name.split(' · ')[0] }); a.packs += i.packs; a.amount += i.qty * i.price; }));
+    const top = Object.values(agg).sort((a, b) => b.packs - a.packs).slice(0, 3);
     const receivable = active.filter(o => !this.isPaid(o));
     const q = s.clientQuery.trim().toLowerCase();
     const matching = s.clients.filter(c => c.active !== false).filter(c => !q || (c.name + ' ' + c.email + ' ' + c.doc + ' ' + c.phone).toLowerCase().includes(q));
-    const cq = s.clientsQuery.trim().toLowerCase();
-    const backorder = this.props.allowBackorder ?? false;
+    const cq = s.clientsQuery.trim().toLowerCase(), oq = s.orderQuery.trim().toLowerCase();
+    const backorder = s.settings.allowBackorder;
     const fieldDefs = [
-      ['name', 'Tienda o razón social *', 'Ej. Arena TCG Quito', 'text'], ['email', 'Email *', 'correo@ejemplo.com', 'email'],
-      ['phone', 'Teléfono', '099 123 4567', 'tel'], ['doc', 'Cédula / RUC', '1712345678', 'text'], ['address', 'Dirección', 'Calle, número, ciudad', 'text']
+      ['name', 'Tienda o razón social *', 'Ej. Arena TCG Quito', 'text', 'text', 'organization'], ['email', 'Email *', 'correo@ejemplo.com', 'email', 'email', 'email'],
+      ['phone', 'Celular (para WhatsApp)', '099 123 4567', 'tel', 'tel', 'tel'], ['doc', 'Cédula / RUC', '1712345678', 'text', 'numeric', 'off'], ['address', 'Dirección', 'Calle, número, ciudad', 'text', 'text', 'street-address']
     ];
     const prodDefs = [
       ['name', 'Nombre *', 'Ej. Fundas mate', 'text', '100%'], ['price', 'Precio paquete *', '7,50', 'decimal', 'calc(50% - 5px)'],
@@ -1130,10 +1274,12 @@ class Component extends DCLogic {
       'Todos': () => true, 'Por despachar': o => o.status === 'pendiente', 'Por cobrar': o => this.isActive(o) && !this.isPaid(o),
       'Entregados': o => o.status === 'entregado', 'Anulados': o => !this.isActive(o)
     };
-    const filtered = s.orders.filter(orderFilter[s.orderFilter] || orderFilter['Todos']);
+    const filtered = s.orders.filter(orderFilter[s.orderFilter] || orderFilter['Todos'])
+      .filter(o => !oq || (o.id + ' ' + this.client(o.clientId).name).toLowerCase().includes(oq));
     const lastO = s.orders.find(o => o.id === s.lastOrderId);
-    const dark = !inFlow && s.tab === 'home';
-    const tabColor = k => (s.tab === k ? (dark ? '#C9A24A' : '#8C6A22') : (dark ? '#8C8576' : '#8A8D91'));
+    const isHome = !inFlow && s.tab === 'home';
+    const tabColor = k => (s.tab === k ? 'var(--accent-ink)' : 'var(--muted)');
+    const cur = k => (s.tab === k ? 'page' : 'false');
     const barByFlow = {
       products: { show: true, left: count ? count + (count === 1 ? ' artículo' : ' artículos') : 'Agrega productos', right: count ? this.money(t.total) + '  →' : '', ok: count > 0, act: () => this.setState({ flow: 'delivery' }) },
       delivery: { show: true, left: 'Revisar pedido', right: '→', ok: true, act: () => this.goReview() },
@@ -1142,31 +1288,44 @@ class Component extends DCLogic {
     const hoy = s.draft.delivery === 'hoy';
     const gift = s.products.find(p => p.id === s.settings.promoPid);
     const days = s.lastBackup ? Math.floor((Date.now() - new Date(s.lastBackup).getTime()) / 86400000) : null;
+    const bo = this.toggle(backorder), ml = this.toggle(s.sendMail);
+    const net = p => p.price / (1 + this.rate());
     return {
-      scrollRef: this.scrollRef, toast: s.toast, sbBg: dark ? '#0C0B09' : '#F3F1EB', sbColor: dark ? '#F2EDE2' : '#15171A', tabBg: dark ? '#0C0B09' : '#FFFFFF', tabBorder: dark ? '#2A261C' : '#E3E0D8',
+      scrollRef: this.scrollRef, toast: s.toast, theme: s.settings.theme, chromeTheme: isHome ? 'dark' : s.settings.theme,
       inFlow, showTabs: !inFlow || flow === 'client' || flow === 'done', showSteps: !!steps[flow], showBack: ['products', 'delivery', 'review'].includes(flow),
-      tOrder: tabColor('order'), goOrder: () => this.startOrder(null),
-      isHome: !inFlow && s.tab === 'home', isOrders: !inFlow && s.tab === 'orders', isClients: !inFlow && s.tab === 'clients', isStock: !inFlow && s.tab === 'stock',
+      isHome, isOrders: !inFlow && s.tab === 'orders', isClients: !inFlow && s.tab === 'clients', isStock: !inFlow && s.tab === 'stock', isSettings: !inFlow && s.tab === 'settings',
       fClient: flow === 'client', fProducts: flow === 'products', fDelivery: flow === 'delivery', fReview: flow === 'review', fDone: flow === 'done',
       flowTitle: titles[flow] || '', stepLabel: steps[flow] ? 'Nuevo pedido · Paso ' + steps[flow] + ' de 4' : 'Nuevo pedido', stepPct: ((steps[flow] || 4) / 4 * 100) + '%',
-      tHome: tabColor('home'), tOrders: tabColor('orders'), tClients: tabColor('clients'), tStock: tabColor('stock'),
-      goHome: () => this.setState({ tab: 'home', flow: null }), goOrders: () => this.setState({ tab: 'orders', flow: null, confirmCancel: null }),
-      goReceivables: () => this.setState({ tab: 'orders', flow: null, orderFilter: 'Por cobrar', confirmCancel: null }),
+      tHome: tabColor('home'), tOrder: tabColor('order'), tOrders: tabColor('orders'), tClients: tabColor('clients'), tStock: tabColor('stock'),
+      aHome: cur('home'), aOrders: cur('orders'), aClients: cur('clients'), aStock: cur('stock'),
+      goHome: () => this.setState({ tab: 'home', flow: null }), goOrder: () => this.startOrder(null),
+      goOrders: () => this.setState({ tab: 'orders', flow: null, confirmCancel: null }),
+      goReceivables: () => this.setState({ tab: 'orders', flow: null, orderFilter: 'Por cobrar', orderQuery: '', confirmCancel: null }),
       goClients: () => this.setState({ tab: 'clients', flow: null, clientsNew: false, editingClient: null, confirmRemove: null }),
       goStock: () => this.setState({ tab: 'stock', flow: null, editingProduct: null }),
+      goSettings: () => this.setState({ tab: 'settings', flow: null, confirmReset: false }),
       newOrder: () => this.startOrder(null),
       goBack: () => { const prev = { client: null, products: 'client', delivery: 'products', review: 'delivery', done: null }[flow]; this.setState({ flow: prev, showNew: false }); },
+      // Inicio
       todayLabel: new Date().toLocaleDateString('es-EC', { weekday: 'long', day: 'numeric', month: 'long' }),
-      ordersToday: ordersToday.length, pendingCount: active.filter(o => o.status === 'pendiente').length,
-      salesToday: this.money(ordersToday.reduce((a, o) => a + o.total, 0)),
-      ...(() => { const tt = this.totals(ordersToday.flatMap(o => o.items)); return { profitToday: this.money(tt.profit), marginToday: 'margen ' + this.pct(tt.margin) }; })(),
+      summaryTitle: { hoy: 'Resumen de hoy', '7d': 'Últimos 7 días', mes: 'Resumen del mes' }[s.period],
+      periodChips: [['hoy', 'Hoy'], ['7d', '7 días'], ['mes', 'Mes']].map(([k, l]) => ({ label: l, selected: s.period === k ? 'true' : 'false',
+        bg: s.period === k ? 'var(--accent)' : 'transparent', color: s.period === k ? 'var(--on-accent)' : 'var(--muted)', onClick: () => this.setState({ period: k }) })),
+      periodOrders: po.length, pendingCount: active.filter(o => o.status === 'pendiente').length,
+      periodSales: this.money(po.reduce((a, o) => a + o.total, 0)), periodProfit: this.money(pProfit), periodMargin: 'margen ' + this.pct(pSub ? pProfit / pSub : 0),
+      topProducts: top.map((a, i) => ({ rank: i + 1, name: a.name, meta: a.packs + ' paq. · ' + this.money(a.amount) })), hasTop: top.length > 0,
       hasReceivable: receivable.length > 0, receivableTotal: this.money(receivable.reduce((a, o) => a + o.total, 0)),
       receivableCount: receivable.length + (receivable.length === 1 ? ' pedido pendiente de pago' : ' pedidos pendientes de pago'),
+      hasBackupWarning: s.orders.length > 0 && (days === null || days > 7),
+      backupWarning: days === null ? 'Aún no has respaldado tus datos' : 'Último respaldo hace ' + days + ' días',
       lowStock: s.products.filter(p => p.stock < 12).map(p => ({ name: p.name, ...this.stockTag(p.stock) })),
       hasLowStock: s.products.some(p => p.stock < 12),
-      recentOrders: s.orders.slice(0, 4).map(o => this.orderRow(o)),
+      recentOrders: s.orders.slice(0, 4).map(o => this.orderRow(o)), noRecent: s.orders.length === 0,
+      // Historial
+      orderQuery: s.orderQuery, onOrderQuery: e => this.setState({ orderQuery: e.target.value }),
       orderFilters: Object.keys(orderFilter).map(l => ({ label: l, ...this.chip(s.orderFilter === l), onClick: () => this.setState({ orderFilter: l, confirmCancel: null }) })),
       orderRows: filtered.map(o => this.orderRow(o)), noOrders: filtered.length === 0,
+      // Clientes
       clientsQuery: s.clientsQuery, onClientsQuery: e => this.setState({ clientsQuery: e.target.value }),
       clientsNew: s.clientsNew, showClientsList: !s.clientsNew,
       clientFormTitle: s.editingClient ? 'Editar cliente' : 'Crear cliente', clientSaveLabel: s.editingClient ? 'Guardar cambios' : 'Guardar cliente',
@@ -1174,33 +1333,46 @@ class Component extends DCLogic {
       cancelClientsNew: () => this.setState({ clientsNew: false, editingClient: null, errors: {} }),
       clientFilters: ['Activos', 'De baja'].map(l => ({ label: l + ' (' + s.clients.filter(c => (c.active !== false) === (l === 'Activos')).length + ')', ...this.chip(s.clientsFilter === l), onClick: () => this.setState({ clientsFilter: l, confirmRemove: null }) })),
       ...(() => { const rows = s.clients.filter(c => (c.active !== false) === (s.clientsFilter === 'Activos')).filter(c => !cq || (c.name + ' ' + c.email + ' ' + c.doc).toLowerCase().includes(cq)).map(c => {
-        const n = s.orders.filter(o => o.clientId === c.id && this.isActive(o)).length, po = promoOf(c), isOn = c.active !== false, conf = s.confirmRemove === c.id;
-        return { name: c.name, email: c.email, initials: this.initials(c.name), meta: n + (n === 1 ? ' pedido' : ' pedidos') + ' · ' + po.boxes + (po.boxes === 1 ? ' caja' : ' cajas') + (c.phone ? ' · ' + c.phone : ''),
-          promoLabel: po.promoLabel, promoPct: po.promoPct, active: isOn, inactive: !isOn, opacity: isOn ? 1 : 0.7, confirming: conf, showActions: !conf,
+        const mine = s.orders.filter(o => o.clientId === c.id && this.isActive(o)), n = mine.length, po2 = promoOf(c), isOn = c.active !== false, conf = s.confirmRemove === c.id;
+        const spent = mine.reduce((a, o) => a + o.total, 0);
+        return { name: c.name, email: c.email, initials: this.initials(c.name), meta: n + (n === 1 ? ' pedido' : ' pedidos') + (n ? ' · ' + this.money(spent) : '') + (c.phone ? ' · ' + c.phone : ''),
+          promoLabel: po2.promoLabel, promoPct: po2.promoPct, active: isOn, inactive: !isOn, opacity: isOn ? 1 : 0.7, confirming: conf, showActions: !conf,
           onEdit: () => this.setState({ clientsNew: true, editingClient: c.id, errors: {}, confirmRemove: null, form: { name: c.name, email: c.email, phone: c.phone || '', doc: c.doc || '', address: c.address || '' } }),
           onOrder: () => this.startOrder(c.id), onAskRemove: () => this.setState({ confirmRemove: c.id }), onCancel: () => this.setState({ confirmRemove: null }),
           onConfirm: () => { this.setState(st => ({ clients: st.clients.map(x => x.id === c.id ? { ...x, active: false } : x), confirmRemove: null })); this.showToast(c.name + ' dado de baja'); },
           onRestore: () => { this.setState(st => ({ clients: st.clients.map(x => x.id === c.id ? { ...x, active: true } : x) })); this.showToast(c.name + ' reactivado'); } };
       }); return { clientRows: rows, noClients: rows.length === 0 }; })(),
-      stockRows: s.products.map(p => { const net = p.price / (1 + this.rate()), editing = s.editingProduct === p.id;
+      // Stock
+      invPacks: s.products.reduce((a, p) => a + Math.max(0, p.stock), 0).toLocaleString('es-EC'),
+      invCost: this.money(s.products.reduce((a, p) => a + Math.max(0, p.stock) * p.cost, 0)),
+      invSale: this.money(s.products.reduce((a, p) => a + Math.max(0, p.stock) * p.price, 0)),
+      stockRows: s.products.map(p => { const editing = s.editingProduct === p.id;
         return { name: p.name, priceLabel: this.money(p.price), boxLabel: this.money(p.box), costLabel: this.money(p.cost), stock: p.stock, stockColor: this.stockTag(p.stock).stockColor,
-          margin: this.pct((net - p.cost) / net), units: (p.stock * 100).toLocaleString('es-EC') + ' fundas',
+          margin: this.pct((net(p) - p.cost) / net(p)), units: (p.stock * 100).toLocaleString('es-EC') + ' fundas',
           decLabel: 'Quitar un paquete de ' + p.name, incLabel: 'Agregar un paquete de ' + p.name,
-          editing, notEditing: !editing, onEdit: () => this.editProduct(p),
+          editing, notEditing: !editing, onEdit: () => this.editProduct(p), onAddBox: () => { this.adjustStock(p.id, 12); this.showToast('+12 paquetes de ' + p.name.toLowerCase()); },
           onInc: () => this.adjustStock(p.id, 1), onDec: () => this.adjustStock(p.id, -1) }; }),
       canAddProduct: s.editingProduct === null, newProductOpen: s.editingProduct === 'new',
       openNewProduct: () => this.setState({ editingProduct: 'new', prodForm: this.emptyProdForm(), prodErrors: {} }),
       cancelProduct: () => this.setState({ editingProduct: null, prodErrors: {} }), saveProduct: () => this.saveProduct(),
-      prodFields: prodDefs.map(([k, label, ph, mode, width]) => ({ label, placeholder: ph, mode, width, value: s.prodForm[k], error: s.prodErrors[k] || '', border: s.prodErrors[k] ? '#B42318' : '#E3E0D8',
+      prodFields: prodDefs.map(([k, label, ph, mode, width]) => ({ label, placeholder: ph, mode, width, value: s.prodForm[k], error: s.prodErrors[k] || '', border: s.prodErrors[k] ? 'var(--danger)' : 'var(--line)',
         onChange: e => { const v = e.target.value; this.setState(st => ({ prodForm: { ...st.prodForm, [k]: v }, prodErrors: { ...st.prodErrors, [k]: '' } })); } })),
+      // Ajustes
+      themeChips: [['dark', 'Oscuro'], ['light', 'Claro']].map(([k, l]) => ({ label: l, ...this.chip(s.settings.theme === k), onClick: () => this.setSettings({ theme: k }) })),
+      taxRateLabel: s.settings.taxRate + '%',
+      taxInc: () => this.setSettings({ taxRate: Math.min(30, s.settings.taxRate + 1) }), taxDec: () => this.setSettings({ taxRate: Math.max(0, s.settings.taxRate - 1) }),
+      toggleBackorder: () => this.setSettings({ allowBackorder: !backorder }), backorderTrack: bo.track, backorderKnob: bo.knob, backorderAria: bo.aria,
       promoDesc: 'Cada ' + s.settings.promoBoxes + ' cajas acumuladas por una tienda, el pedido incluye ' + (gift ? '1 paquete de ' + gift.name.toLowerCase() : 'un regalo') + ' sin costo.',
       promoBoxesInc: () => this.setSettings({ promoBoxes: Math.min(20, s.settings.promoBoxes + 1) }),
       promoBoxesDec: () => this.setSettings({ promoBoxes: Math.max(1, s.settings.promoBoxes - 1) }),
       promoChips: s.products.map(p => ({ label: p.name, ...this.chip(s.settings.promoPid === p.id), onClick: () => this.setSettings({ promoPid: p.id }) })),
       promoUnset: !gift,
       backupLabel: days === null ? 'Aún no has exportado un respaldo' : 'Último respaldo: ' + (days === 0 ? 'hoy' : days === 1 ? 'ayer' : 'hace ' + days + ' días'),
-      backupColor: days === null || days > 7 ? '#B42318' : '#8C6A22',
+      backupColor: days === null || days > 7 ? 'var(--danger-ink)' : 'var(--accent-ink)',
       exportBackup: () => this.exportBackup(), importBackup: e => this.importBackup(e),
+      confirmReset: s.confirmReset, notConfirmReset: !s.confirmReset,
+      askReset: () => this.setState({ confirmReset: true }), cancelReset: () => this.setState({ confirmReset: false }), doReset: () => this.resetData(),
+      // Paso 1
       showClientSearch: !s.showNew, showNew: s.showNew,
       clientQuery: s.clientQuery, onClientQuery: e => this.setState({ clientQuery: e.target.value }),
       matchingClients: matching.map(c => ({ name: c.name, email: c.email, initials: this.initials(c.name), promoLabel: promoOf(c).promoLabel, onClick: () => this.pickClient(c) })),
@@ -1208,44 +1380,49 @@ class Component extends DCLogic {
       openNew: () => this.setState(st => ({ showNew: true, editingClient: null, errors: {}, form: { ...this.emptyForm(), name: /@/.test(st.clientQuery) ? '' : st.clientQuery, email: /@/.test(st.clientQuery) ? st.clientQuery : '' } })),
       cancelNew: () => this.setState({ showNew: false, errors: {} }),
       saveClient: () => this.saveClient(),
-      formFields: fieldDefs.map(([k, label, ph, type]) => ({ label, placeholder: ph, type, value: s.form[k], error: s.errors[k] || '', border: s.errors[k] ? '#B42318' : '#E3E0D8',
+      formFields: fieldDefs.map(([k, label, ph, type, mode, auto]) => ({ label, placeholder: ph, type, mode, auto, value: s.form[k], error: s.errors[k] || '', border: s.errors[k] ? 'var(--danger)' : 'var(--line)',
         onChange: e => { const v = e.target.value; this.setState(st => ({ form: { ...st.form, [k]: v }, errors: { ...st.errors, [k]: '' } })); } })),
       selClient: { name: sc.name, email: sc.email, phone: sc.phone || 'Sin teléfono', initials: this.initials(sc.name) },
       changeClient: () => this.setState({ flow: 'client' }),
+      // Paso 2
       productRows: s.products.map(p => {
         const used = this.packsUsed(p.id, s.draft.items), left = p.stock - used, blocked = !backorder && p.stock <= 0;
         const opt = (u, label, price, need) => { const qty = s.draft.items[p.id + '|' + u] || 0;
-          return { label, priceLabel: this.money(price), qty, hasQty: qty > 0, noQty: qty === 0, incColor: !backorder && left < need ? '#5A5D61' : '#FFFFFF',
+          return { label, priceLabel: this.money(price), qty, hasQty: qty > 0, noQty: qty === 0, incOpacity: !backorder && left < need ? 0.35 : 1,
             incLabel: 'Agregar ' + label.toLowerCase() + ' de ' + p.name, decLabel: 'Quitar ' + label.toLowerCase() + ' de ' + p.name,
             onInc: () => this.changeQty(p.id, u, 1), onDec: () => this.changeQty(p.id, u, -1) }; };
-        return { name: p.name, pvpLabel: p.pvp ? 'PVP sugerido ' + this.money(p.pvp) : 'Sin PVP sugerido', ...this.stockTag(left), opacity: blocked ? 0.5 : 1, border: used > 0 ? '#8C6A22' : '#FFFFFF',
+        return { name: p.name, pvpLabel: p.pvp ? 'PVP sugerido ' + this.money(p.pvp) : 'Sin PVP sugerido', ...this.stockTag(left), opacity: blocked ? 0.5 : 1, border: used > 0 ? 'var(--accent)' : 'var(--line)',
           options: [opt('p', 'Paquete x100', p.price, 1), opt('c', 'Caja x12 paquetes', p.box, 12)] };
       }),
-      pickHoy: () => this.setDraft({ delivery: 'hoy' }), pickDesp: () => this.setDraft({ delivery: 'despacho' }),
-      hoyBorder: hoy ? '#8C6A22' : '#FFFFFF', despBorder: hoy ? '#FFFFFF' : '#8C6A22',
-      hoyRadio: hoy ? '7px solid #8C6A22' : '2px solid #C9C5BB', despRadio: hoy ? '2px solid #C9C5BB' : '7px solid #8C6A22',
-      isDespacho: !hoy,
-      dateChips: [1, 2, 3, 4, 5, 6, 7].map(n => { const iso = this.addDays(n), d = this.parse(iso);
-        return { dow: d.toLocaleDateString('es-EC', { weekday: 'short' }).replace('.', ''), day: d.getDate(), ...this.chip(s.draft.date === iso), onClick: () => this.setDraft({ date: iso }) }; }),
-      draftAddress: s.draft.address, onAddress: e => this.setDraft({ address: e.target.value }),
-      payChips: ['Efectivo', 'Transferencia', 'Tarjeta', 'Crédito'].map(l => ({ label: l, ...this.chip(s.draft.payment === l), onClick: () => this.setDraft({ payment: l }) })),
-      isCredit: s.draft.payment === 'Crédito',
-      draftNotes: s.draft.notes, onNotes: e => this.setDraft({ notes: e.target.value }),
-      deliveryError: s.deliveryError,
-      reviewItems: items.map(i => ({ qty: i.qty, name: i.name, line: this.money(i.qty * i.price) })),
       promoName: this.promoName(), promoBoxes: pr.th, promoWon: pr.earned > 0, promoEarned: pr.earned,
       promoTitle: pr.earned > 0 ? 'Promo desbloqueada' : 'Promo tiendas', promoCount: (pr.earned > 0 && pr.into === 0 ? pr.th : pr.into) + ' / ' + pr.th + ' cajas',
       promoPct: ((pr.earned > 0 && pr.into === 0 ? pr.th : pr.into) / pr.th * 100) + '%',
       promoText: pr.earned > 0 ? 'Este pedido incluye ' + pr.earned + ' × ' + this.promoName() + ' de regalo.' : 'Con ' + pr.left + (pr.left === 1 ? ' caja' : ' cajas') + ' más recibe ' + this.promoName() + ' de regalo.',
-      subLabel: this.money(t.sub), profitLabel: this.money(t.profit), marginLabel: this.pct(t.margin), taxName: 'IVA ' + (this.props.taxRate ?? 15) + '%', taxLabel: this.money(t.tax), totalLabel: this.money(t.total),
+      // Paso 3
+      pickHoy: () => this.setDraft({ delivery: 'hoy' }), pickDesp: () => this.setDraft({ delivery: 'despacho' }),
+      hoyAria: hoy ? 'true' : 'false', despAria: hoy ? 'false' : 'true',
+      hoyBorder: hoy ? 'var(--accent)' : 'var(--line)', despBorder: hoy ? 'var(--line)' : 'var(--accent)',
+      hoyRadio: hoy ? '7px solid var(--accent)' : '2px solid var(--muted)', despRadio: hoy ? '2px solid var(--muted)' : '7px solid var(--accent)',
+      isDespacho: !hoy,
+      dateChips: [1, 2, 3, 4, 5, 6, 7].map(n => { const iso = this.addDays(n), d = this.parse(iso);
+        return { dow: d.toLocaleDateString('es-EC', { weekday: 'short' }).replace('.', ''), day: d.getDate(), ...this.chip(s.draft.date === iso), onClick: () => this.setDraft({ date: iso }) }; }),
+      draftAddress: s.draft.address, onAddress: e => this.setDraft({ address: e.target.value }),
+      addressBorder: s.deliveryError ? 'var(--danger)' : 'var(--line)',
+      payChips: ['Efectivo', 'Transferencia', 'Tarjeta', 'Crédito'].map(l => ({ label: l, ...this.chip(s.draft.payment === l), onClick: () => this.setDraft({ payment: l }) })),
+      isCredit: s.draft.payment === 'Crédito',
+      draftNotes: s.draft.notes, onNotes: e => this.setDraft({ notes: e.target.value }),
+      deliveryError: s.deliveryError,
+      // Paso 4
+      editProducts: () => this.setState({ flow: 'products' }), editDelivery: () => this.setState({ flow: 'delivery' }),
+      reviewItems: items.map(i => ({ qty: i.qty, name: i.name, line: this.money(i.qty * i.price) })),
+      subLabel: this.money(t.sub), profitLabel: this.money(t.profit), marginLabel: this.pct(t.margin), taxName: 'IVA ' + this.taxRate() + '%', taxLabel: this.money(t.tax), totalLabel: this.money(t.total),
       deliveryLabel: hoy ? 'Entrega hoy' : 'Despacho ' + this.dateLabel(s.draft.date),
       deliverySub: (hoy ? '' : s.draft.address + ' · ') + 'Pago: ' + s.draft.payment + (s.draft.notes ? ' · ' + s.draft.notes : ''),
-      sendMail: s.sendMail ? 'true' : 'false', toggleMail: () => this.setState(st => ({ sendMail: !st.sendMail })),
-      mailTrack: s.sendMail ? '#8C6A22' : '#C9C5BB', mailKnob: s.sendMail ? '23px' : '3px',
+      toggleMail: () => this.setState(st => ({ sendMail: !st.sendMail })), mailTrack: ml.track, mailKnob: ml.knob, sendMailAria: ml.aria,
       done: lastO ? { id: lastO.id, total: this.money(lastO.total), status: lastO.status === 'pendiente' ? 'Por despachar · ' + this.dateLabel(lastO.date) : 'Entregado hoy',
-        mailWanted: !!(lastO.mailWanted ?? lastO.mailSent), ...this.mail(lastO) } : { mailWanted: false },
-      showCartBar: !!barByFlow.show, barLeft: barByFlow.left, barRight: barByFlow.right,
-      barBg: barByFlow.ok ? '#8C6A22' : '#A9ADA9',
+        mailWanted: !!(lastO.mailWanted ?? lastO.mailSent), ...this.message(lastO) } : { mailWanted: false },
+      showCartBar: !!barByFlow.show, barLeft: barByFlow.left, barRight: barByFlow.right, barDisabled: barByFlow.ok ? 'false' : 'true',
+      barBg: barByFlow.ok ? 'var(--accent-grad)' : 'var(--disabled)', barColor: barByFlow.ok ? 'var(--on-accent)' : 'var(--disabled-ink)',
       barAction: () => { if (barByFlow.ok && barByFlow.act) barByFlow.act(); }
     };
   }
