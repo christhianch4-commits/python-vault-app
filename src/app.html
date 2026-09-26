@@ -363,36 +363,31 @@
 /* ---------- Tokens de diseño: cambia aquí los colores de toda la app ---------- */
 [data-theme="dark"]{--bg:#0C0B09;--card:#17150F;--card-2:#1F1B13;--input:#12100C;--solid:#F2EDE2;--on-solid:#15110A;--ink:#F2EDE2;--muted:#A39C8C;--accent:#C9A24A;--accent-ink:#D9B55E;--on-accent:#15110A;--accent-grad:linear-gradient(180deg,#D9B55E,#B38A34);--accent-soft:#2A2213;--warn-soft:#2E1E10;--warn-ink:#F0A56A;--danger-soft:#331615;--danger:#D9483B;--danger-ink:#FF8A7E;--wa:#1F9D55;--line:#2A261C;--line-2:#221F17;--promo:#E08A45;--disabled:#3A362C;--disabled-ink:#8C8576;--tab:#0C0B09;--shadow:0 10px 30px rgba(0,0,0,.55);color-scheme:dark}
 [data-theme="light"]{--bg:#F3F1EB;--card:#FFFFFF;--card-2:#F7F5F0;--input:#FFFFFF;--solid:#15171A;--on-solid:#FFFFFF;--ink:#15171A;--muted:#6B6E72;--accent:#8C6A22;--accent-ink:#8C6A22;--on-accent:#FFFFFF;--accent-grad:linear-gradient(180deg,#9C7A2E,#7E5E1C);--accent-soft:#F3EBD9;--warn-soft:#F8E9DE;--warn-ink:#9A4515;--danger-soft:#FBE7E5;--danger:#B42318;--danger-ink:#B42318;--wa:#1E8C4C;--line:#E3E0D8;--line-2:#EFECE5;--promo:#C2702E;--disabled:#A9ADA9;--disabled-ink:#FFFFFF;--tab:#FFFFFF;--shadow:0 10px 30px rgba(0,0,0,.2);color-scheme:light}
-html,body{margin:0;background:#E4E1D9;font-family:'Onest',system-ui,sans-serif;color:#15171A;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
-body:has([data-screen-label="App"][data-theme="dark"]){background:#1A1813}
+html,body{margin:0;height:100%;background:#F3F1EB;font-family:'Onest',system-ui,sans-serif;color:#15171A;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;text-size-adjust:100%;overscroll-behavior:none}
+body:has([data-screen-label="App"][data-theme="dark"]){background:#0C0B09}
 a{text-decoration:none}
 input,textarea,button{font-family:inherit}
-[data-theme] input,[data-theme] textarea{color:var(--ink);background:var(--input)}
+/* touch-action evita el zoom por doble toque; 16px evita el zoom automático de iOS al enfocar un campo */
+button,a,label,input,textarea{touch-action:manipulation}
+[data-theme] input,[data-theme] textarea{color:var(--ink);background:var(--input);font-size:16px!important}
 [data-theme] ::placeholder{color:var(--muted);opacity:.75}
 [data-theme] input:focus,[data-theme] textarea:focus{border-color:var(--accent)!important;box-shadow:0 0 0 3px var(--accent-soft)}
 [data-theme] button:focus-visible,[data-theme] a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 *::-webkit-scrollbar{width:0;height:0}
-@media (max-width:500px){
-  [data-frame]{padding:0!important;min-height:100dvh!important}
-  [data-screen-label="App"]{width:100vw!important;height:100dvh!important;border-radius:0!important;box-shadow:none!important}
-  [data-sb]{height:env(safe-area-inset-top,0px)!important}
-  [data-sb]>*{display:none!important}
-  [data-tabbar]{padding-bottom:calc(6px + env(safe-area-inset-bottom,0px))!important}
-  [data-cartbar]{padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))!important}
-  [data-toast]{top:calc(12px + env(safe-area-inset-top,0px))!important}
+[data-scroll]{-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+/* En pantallas anchas la app se muestra como una columna centrada */
+@media (min-width:600px){
+  [data-screen-label="App"]{border-left:1px solid var(--line);border-right:1px solid var(--line);box-shadow:0 0 60px rgba(0,0,0,.25)}
 }
 </style>
 </helmet>
-<div data-frame="" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 16px;box-sizing:border-box">
-<div data-screen-label="App" data-theme="{{ theme }}" style="width:390px;height:844px;background:var(--bg);color:var(--ink);border-radius:48px;box-shadow:0 0 0 10px #15171A,0 30px 80px rgba(0,0,0,.25);overflow:hidden;display:flex;flex-direction:column;position:relative">
+<div data-frame="" style="height:100vh;height:100dvh;display:flex;justify-content:center">
+<div data-screen-label="App" data-theme="{{ theme }}" style="width:100%;max-width:480px;height:100%;background:var(--bg);color:var(--ink);overflow:hidden;display:flex;flex-direction:column;position:relative;padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px);box-sizing:border-box">
 
-<div data-sb="" data-theme="{{ chromeTheme }}" style="height:48px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 30px;font-size:15px;font-weight:600;background:var(--bg);color:var(--ink)">
-<span>9:41</span>
-<div style="width:17px;height:10px;border:1.5px solid currentColor;border-radius:3px;padding:1px;box-sizing:border-box"><div style="width:80%;height:100%;background:currentColor;border-radius:1px"></div></div>
-</div>
+<div data-sb="" aria-hidden="true" style="flex:none;height:env(safe-area-inset-top,0px);background:#0C0B09"></div>
 
 <sc-if value="{{ inFlow }}" hint-placeholder-val="{{ false }}">
-<div style="flex:none;padding:6px 16px 12px;display:flex;flex-direction:column;gap:12px;border-bottom:1px solid var(--line)">
+<div style="flex:none;padding:12px 16px 12px;display:flex;flex-direction:column;gap:12px;border-bottom:1px solid var(--line)">
 <div style="display:flex;align-items:center;gap:8px">
 <sc-if value="{{ showBack }}" hint-placeholder-val="{{ false }}"><button sc-camel-on-click="{{ goBack }}" aria-label="Volver" style="width:44px;height:44px;border-radius:22px;border:1px solid var(--line);background:var(--card);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer" style-active="transform:scale(.95)"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></button></sc-if>
 <div style="flex:1;display:flex;flex-direction:column;gap:2px">
@@ -406,14 +401,14 @@ input,textarea,button{font-family:inherit}
 </div>
 </sc-if>
 
-<div ref="{{ scrollRef }}" style="flex:1;overflow-y:auto;overflow-x:hidden">
+<div ref="{{ scrollRef }}" data-scroll="" style="flex:1;min-height:0;overflow-y:auto;overflow-x:hidden">
 
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
 <div data-screen-label="Inicio" data-theme="dark" style="background:var(--bg);min-height:100%;display:flex;flex-direction:column;gap:22px;padding-bottom:28px;color:var(--ink)">
 <div style="position:relative;height:340px;margin-top:-1px;overflow:hidden">
 <img src="66a9647f-bdaa-40de-abb5-191f50dcd5f3" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%">
 <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,11,9,.55) 0%,rgba(12,11,9,0) 28%,rgba(12,11,9,.15) 55%,#0C0B09 100%)"></div>
-<div style="position:absolute;top:8px;left:20px;right:20px;display:flex;align-items:center;gap:10px">
+<div style="position:absolute;top:14px;left:20px;right:20px;display:flex;align-items:center;gap:10px">
 <div style="width:40px;height:40px;border-radius:20px;background:rgba(12,11,9,.6);display:flex;align-items:center;justify-content:center"><svg width="30" height="30" sc-camel-view-box="0 0 48 48" fill="none" stroke="#C9A24A" stroke-width="2.4"><circle cx="24" cy="24" r="21.5"></circle><circle cx="24" cy="24" r="17"></circle><path d="M8.5 24C13 16.5 18.2 13.5 24 13.5S35 16.5 39.5 24C35 31.5 29.8 34.5 24 34.5S13 31.5 8.5 24Z"></path><circle cx="24" cy="24" r="6.5"></circle><path d="M24 20.2v7.6" stroke-width="3.2" stroke-linecap="round"></path></svg></div>
 <span style="flex:1;font:700 14px 'Cinzel',serif;letter-spacing:.14em;color:#E6CC8A">PYTHON VAULT</span>
 <button sc-camel-on-click="{{ goSettings }}" aria-label="Ajustes" style="width:40px;height:40px;border-radius:20px;border:none;background:rgba(12,11,9,.6);color:#E6CC8A;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"></path></svg></button>
@@ -496,7 +491,7 @@ input,textarea,button{font-family:inherit}
 </sc-if>
 
 <sc-if value="{{ isOrders }}" hint-placeholder-val="{{ false }}">
-<div data-screen-label="Pedidos" style="padding:8px 20px 24px;display:flex;flex-direction:column;gap:14px">
+<div data-screen-label="Pedidos" style="padding:18px 20px 24px;display:flex;flex-direction:column;gap:14px">
 <span style="font:600 28px 'Cinzel',serif;letter-spacing:.02em">Historial</span>
 <input type="search" value="{{ orderQuery }}" sc-camel-on-change="{{ onOrderQuery }}" placeholder="Buscar por cliente o número" style="height:46px;border:1px solid var(--line);border-radius:12px;padding:0 14px;font-size:15px;outline:none;box-sizing:border-box;width:100%">
 <div style="display:flex;gap:8px;overflow-x:auto;margin:0 -20px;padding:0 20px">
@@ -559,7 +554,7 @@ input,textarea,button{font-family:inherit}
 </sc-if>
 
 <sc-if value="{{ isClients }}" hint-placeholder-val="{{ false }}">
-<div data-screen-label="Clientes" style="padding:8px 20px 24px;display:flex;flex-direction:column;gap:14px">
+<div data-screen-label="Clientes" style="padding:18px 20px 24px;display:flex;flex-direction:column;gap:14px">
 <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
 <span style="font:600 28px 'Cinzel',serif;letter-spacing:.02em">Clientes</span>
 <sc-if value="{{ showClientsList }}" hint-placeholder-val="{{ true }}"><button sc-camel-on-click="{{ openClientsNew }}" style="height:40px;padding:0 14px;border-radius:12px;border:none;background:var(--accent);color:var(--on-accent);font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Nuevo</button></sc-if>
@@ -632,7 +627,7 @@ input,textarea,button{font-family:inherit}
 </sc-if>
 
 <sc-if value="{{ isStock }}" hint-placeholder-val="{{ false }}">
-<div data-screen-label="Stock" style="padding:8px 20px 24px;display:flex;flex-direction:column;gap:14px">
+<div data-screen-label="Stock" style="padding:18px 20px 24px;display:flex;flex-direction:column;gap:14px">
 <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
 <div style="display:flex;flex-direction:column;gap:4px"><span style="font:600 28px 'Cinzel',serif;letter-spacing:.02em">Stock</span><span style="font-size:13px;color:var(--muted)">Paquetes de 100 fundas · 1 caja = 12 paquetes</span></div>
 <sc-if value="{{ canAddProduct }}" hint-placeholder-val="{{ true }}"><button sc-camel-on-click="{{ openNewProduct }}" style="flex:none;height:40px;padding:0 14px;border-radius:12px;border:none;background:var(--accent);color:var(--on-accent);font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Producto</button></sc-if>
@@ -701,7 +696,7 @@ input,textarea,button{font-family:inherit}
 </sc-if>
 
 <sc-if value="{{ isSettings }}" hint-placeholder-val="{{ false }}">
-<div data-screen-label="Ajustes" style="padding:8px 20px 24px;display:flex;flex-direction:column;gap:14px">
+<div data-screen-label="Ajustes" style="padding:18px 20px 24px;display:flex;flex-direction:column;gap:14px">
 <span style="font:600 28px 'Cinzel',serif;letter-spacing:.02em">Ajustes</span>
 
 <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px">
@@ -959,13 +954,13 @@ input,textarea,button{font-family:inherit}
 </div>
 
 <sc-if value="{{ showCartBar }}" hint-placeholder-val="{{ false }}">
-<div data-cartbar="" style="flex:none;padding:12px 16px 28px;background:var(--bg);border-top:1px solid var(--line)">
+<div data-cartbar="" style="flex:none;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:var(--bg);border-top:1px solid var(--line)">
 <button sc-camel-on-click="{{ barAction }}" aria-disabled="{{ barDisabled }}" style="width:100%;height:56px;border:none;border-radius:16px;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:space-between;padding:0 20px;cursor:pointer;background:{{ barBg }};color:{{ barColor }}" style-active="transform:scale(.98)"><span>{{ barLeft }}</span><span>{{ barRight }}</span></button>
 </div>
 </sc-if>
 
 <sc-if value="{{ showTabs }}" hint-placeholder-val="{{ true }}">
-<nav data-tabbar="" data-theme="{{ chromeTheme }}" aria-label="Secciones" style="flex:none;display:grid;grid-template-columns:repeat(5,1fr);padding:8px 4px 26px;background:var(--tab);border-top:1px solid var(--line)">
+<nav data-tabbar="" data-theme="{{ chromeTheme }}" aria-label="Secciones" style="flex:none;display:grid;grid-template-columns:repeat(5,1fr);padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px));background:var(--tab);border-top:1px solid var(--line)">
 <button sc-camel-on-click="{{ goHome }}" aria-current="{{ aHome }}" style="height:52px;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:11px;font-weight:600;color:{{ tHome }}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 20V11M12 20V5M19 20v-6"></path></svg>Resumen</button>
 <button sc-camel-on-click="{{ goOrder }}" style="height:52px;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:11px;font-weight:600;color:{{ tOrder }}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><path d="M12 8v8M8 12h8"></path></svg>Pedido</button>
 <button sc-camel-on-click="{{ goOrders }}" aria-current="{{ aOrders }}" style="height:52px;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:11px;font-weight:600;color:{{ tOrders }}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="3.5" width="14" height="17" rx="2"></rect><path d="M9 8.5h6M9 12h6M9 15.5h4"></path></svg>Historial</button>
@@ -975,7 +970,7 @@ input,textarea,button{font-family:inherit}
 </sc-if>
 
 <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
-<div data-toast="" role="status" style="position:absolute;left:20px;right:20px;top:60px;background:var(--solid);color:var(--on-solid);border-radius:14px;padding:14px 16px;font-size:14px;font-weight:500;box-shadow:var(--shadow)">{{ toast }}</div>
+<div data-toast="" role="status" style="position:absolute;left:20px;right:20px;top:calc(12px + env(safe-area-inset-top,0px));z-index:10;background:var(--solid);color:var(--on-solid);border-radius:14px;padding:14px 16px;font-size:14px;font-weight:500;box-shadow:var(--shadow)">{{ toast }}</div>
 </sc-if>
 
 </div>
@@ -1009,8 +1004,16 @@ class Component extends DCLogic {
     const { flow, tab } = this.state;
     if ((flow !== this._prev.flow || tab !== this._prev.tab) && this.scrollRef.current) this.scrollRef.current.scrollTop = 0;
     this._prev = { flow, tab };
+    this.syncChrome();
   }
+  componentDidMount() { this.syncChrome(); }
   componentWillUnmount() { clearTimeout(this._t); }
+  // Barra del navegador (Android/Safari) del mismo color que la pantalla visible
+  syncChrome() {
+    const light = this.state.settings.theme === 'light' && !(this.state.tab === 'home' && !this.state.flow);
+    const m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.setAttribute('content', light ? '#F3F1EB' : '#0C0B09');
+  }
   // ---------- utilidades ----------
   iso(d) { const z = new Date(d.getTime() - d.getTimezoneOffset() * 60000); return z.toISOString().slice(0, 10); }
   addDays(n) { const d = new Date(); d.setDate(d.getDate() + n); return this.iso(d); }

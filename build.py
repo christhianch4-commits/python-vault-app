@@ -26,6 +26,8 @@ pwa = [HEAD_START,
        '  <meta name="apple-mobile-web-app-title" content="Python Vault">',
        '  <link rel="manifest" href="manifest.webmanifest">',
        '  <link rel="apple-touch-icon" href="icon-180.png">',
+       # Sin el aviso "Unpacking..." al abrir: se ve solo el logo sobre fondo oscuro.
+       '  <style>#__bundler_loading{display:none!important}html,body{background:#0C0B09}</style>',
        HEAD_END]
 if HEAD_START in lines:
     lines[lines.index(HEAD_START):lines.index(HEAD_END) + 1] = pwa
