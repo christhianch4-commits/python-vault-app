@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Python Vault</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0C0B09">
+<script src="20c9ad89-1cdf-43c3-a7ed-5830794f062e"></script>
+</head>
+<body>
+
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>/* latin-ext */
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("afc19a64-5aff-4f60-aaf7-d37564850e53") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("81eb42e9-c1ae-427f-ba18-d4dce899a248") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("afc19a64-5aff-4f60-aaf7-d37564850e53") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("81eb42e9-c1ae-427f-ba18-d4dce899a248") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("2083864c-1d3f-44fb-abda-0de8a44be77c") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("e7b92a63-3b95-466b-9d76-eaac5ae97c56") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("27fb7a74-514f-4d45-bdf5-478ef079f864") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("dae499e7-b41a-4b43-b2bb-2e6790546bb3") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("ffbd6336-2319-4a28-a52f-3b89bc51386f") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("2ea8aa85-94dd-40a8-bbe6-077e682e9d25") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("03b91fff-7007-49be-b670-c341c874c8cc") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("27781568-609d-4002-ac80-436e878b7ae1") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* math */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("4cabfd7c-8bc6-4c27-8aca-b890770d7ef8") format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("5e25a7c8-3179-47c3-b5eb-ee95e0321108") format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("c97a9c70-2266-471b-b3b2-37fb36ebc8e4") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("b48efae1-5e97-400a-beed-3eb6bbe42bd0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("2fa4a7bd-e0aa-4062-a7b0-823fad33e85b") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("03b91fff-7007-49be-b670-c341c874c8cc") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("27781568-609d-4002-ac80-436e878b7ae1") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* math */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("4cabfd7c-8bc6-4c27-8aca-b890770d7ef8") format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("5e25a7c8-3179-47c3-b5eb-ee95e0321108") format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("c97a9c70-2266-471b-b3b2-37fb36ebc8e4") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("b48efae1-5e97-400a-beed-3eb6bbe42bd0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("2fa4a7bd-e0aa-4062-a7b0-823fad33e85b") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("03b91fff-7007-49be-b670-c341c874c8cc") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("27781568-609d-4002-ac80-436e878b7ae1") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* math */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("4cabfd7c-8bc6-4c27-8aca-b890770d7ef8") format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("5e25a7c8-3179-47c3-b5eb-ee95e0321108") format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("c97a9c70-2266-471b-b3b2-37fb36ebc8e4") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("b48efae1-5e97-400a-beed-3eb6bbe42bd0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("2fa4a7bd-e0aa-4062-a7b0-823fad33e85b") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("03b91fff-7007-49be-b670-c341c874c8cc") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("27781568-609d-4002-ac80-436e878b7ae1") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* math */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("4cabfd7c-8bc6-4c27-8aca-b890770d7ef8") format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("5e25a7c8-3179-47c3-b5eb-ee95e0321108") format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("c97a9c70-2266-471b-b3b2-37fb36ebc8e4") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("b48efae1-5e97-400a-beed-3eb6bbe42bd0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("2fa4a7bd-e0aa-4062-a7b0-823fad33e85b") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+html,body{margin:0;background:#E4E1D9;font-family:'Onest',system-ui,sans-serif;color:#15171A;-webkit-font-smoothing:antialiased}
+a{color:#8C6A22;text-decoration:none}a:hover{color:#15171A}
+input,textarea,button{font-family:inherit}
+*::-webkit-scrollbar{width:0;height:0}
+@media (max-width:500px){
+  [data-frame]{padding:0!important;min-height:100dvh!important}
+  [data-screen-label="App"]{width:100vw!important;height:100dvh!important;border-radius:0!important;box-shadow:none!important}
+  [data-sb]{height:env(safe-area-inset-top,0px)!important}
+  [data-sb]>*{display:none!important}
+  [data-tabbar]{padding-bottom:calc(6px + env(safe-area-inset-bottom,0px))!important}
+  [data-cartbar]{padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))!important}
+}
+</style>
+</helmet>
+<div data-frame="" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 16px;box-sizing:border-box">
+<div data-screen-label="App" style="width:390px;height:844px;background:#F3F1EB;border-radius:48px;box-shadow:0 0 0 10px #15171A,0 30px 80px rgba(0,0,0,.25);overflow:hidden;display:flex;flex-direction:column;position:relative">
+
+<div data-sb="" style="height:48px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 30px;font-size:15px;font-weight:600;background:{{ sbBg }};color:{{ sbColor }}">
+<span>9:41</span>
+<div style="display:flex;gap:6px;align-items:center"><div style="width:17px;height:10px;border:1.5px solid {{ sbColor }};border-radius:3px;padding:1px;box-sizing:border-box"><div style="width:80%;height:100%;background:{{ sbColor }};border-radius:1px"></div></div></div>
+</div>
+
+<sc-if value="{{ inFlow }}" hint-placeholder-val="{{ false }}">
+<div style="flex:none;padding:6px 16px 12px;display:flex;flex-direction:column;gap:12px;border-bottom:1px solid #E3E0D8">
+<div style="display:flex;align-items:center;gap:8px">
+<sc-if value="{{ showBack }}" hint-placeholder-val="{{ false }}"><button sc-camel-on-click="{{ goBack }}" aria-label="Volver" style="width:44px;height:44px;border-radius:22px;border:none;background:#FFFFFF;display:flex;align-items:center;justify-content:center;cursor:pointer" style-active="transform:scale(.95)"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="#15171A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></button></sc-if>
+<div style="flex:1;display:flex;flex-direction:column;gap:1px">
+<span style="font-size:12px;color:#6B6E72;font-weight:500">{{ stepLabel }}</span>
+<span style="font-size:18px;font-weight:600">{{ flowTitle }}</span>
+</div>
+</div>
+<sc-if value="{{ showSteps }}" hint-placeholder-val="{{ true }}">
+<div style="height:4px;background:#E3E0D8;border-radius:2px;overflow:hidden"><div style="height:100%;background:#8C6A22;border-radius:2px;transition:width .3s;width:{{ stepPct }}"></div></div>
+</sc-if>
+</div>
+</sc-if>
+
+<div ref="{{ scrollRef }}" style="flex:1;overflow-y:auto;overflow-x:hidden">
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="Inicio" style="background:#0C0B09;min-height:100%;display:flex;flex-direction:column;gap:22px;padding-bottom:28px;color:#F2EDE2">
+<div style="position:relative;height:360px;margin-top:-1px;overflow:hidden">
+<img src="66a9647f-bdaa-40de-abb5-191f50dcd5f3" alt="Python Vault" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%">
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,11,9,.55) 0%,rgba(12,11,9,0) 28%,rgba(12,11,9,.15) 55%,#0C0B09 100%)"></div>
+<div style="position:absolute;top:8px;left:20px;right:20px;display:flex;align-items:center;gap:10px">
+<div style="width:40px;height:40px;border-radius:20px;background:rgba(12,11,9,.6);display:flex;align-items:center;justify-content:center"><svg width="30" height="30" sc-camel-view-box="0 0 48 48" fill="none" stroke="#C9A24A" stroke-width="2.4"><circle cx="24" cy="24" r="21.5"></circle><circle cx="24" cy="24" r="17"></circle><path d="M8.5 24C13 16.5 18.2 13.5 24 13.5S35 16.5 39.5 24C35 31.5 29.8 34.5 24 34.5S13 31.5 8.5 24Z"></path><circle cx="24" cy="24" r="6.5"></circle><path d="M24 20.2v7.6" stroke-width="3.2" stroke-linecap="round"></path></svg></div>
+<div style="flex:1;display:flex;flex-direction:column"><span style="font:700 14px 'Cinzel',serif;letter-spacing:.14em;color:#E6CC8A">PYTHON VAULT</span></div>
+</div>
+<div style="position:absolute;left:20px;right:20px;bottom:18px;display:flex;flex-direction:column;gap:6px">
+<span style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C9A24A;font-weight:600">{{ todayLabel }}</span>
+<span style="font:600 32px/1.1 'Cinzel',serif;color:#FFFFFF;text-wrap:pretty">Resumen del día</span>
+</div>
+</div>
+<div style="padding:0 20px;display:flex;flex-direction:column;gap:22px">
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#2A261C;border:1px solid #2A261C;border-radius:18px;overflow:hidden">
+<div style="background:#14120E;padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A39C8C">Pedidos hoy</span><span style="font:600 28px 'Cinzel',serif;color:#F2EDE2">{{ ordersToday }}</span></div>
+<div style="background:#14120E;padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A39C8C">Por despachar</span><span style="font:600 28px 'Cinzel',serif;color:#E59A5C">{{ pendingCount }}</span></div>
+<div style="background:#14120E;padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A39C8C">Ventas · IVA incl.</span><span style="font:600 24px 'Cinzel',serif;color:#F2EDE2">{{ salesToday }}</span></div>
+<div style="background:#1C180F;padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#C9A24A">Ganancia · {{ marginToday }}</span><span style="font:600 24px 'Cinzel',serif;color:#E6CC8A">{{ profitToday }}</span></div>
+</div>
+<sc-if value="{{ hasReceivable }}" hint-placeholder-val="{{ false }}">
+<button sc-camel-on-click="{{ goReceivables }}" style="text-align:left;background:#17150F;border:1px solid #4A3A1C;border-radius:16px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;color:#F2EDE2">
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#E59A5C;font-weight:600">Por cobrar · crédito</span><span style="font-size:13px;color:#A39C8C">{{ receivableCount }}</span></div>
+<span style="font:600 22px 'Cinzel',serif;color:#F2EDE2">{{ receivableTotal }}</span>
+</button>
+</sc-if>
+<button sc-camel-on-click="{{ newOrder }}" style="height:62px;border:none;border-radius:18px;background:linear-gradient(180deg,#D9B55E,#B38A34);color:#15110A;font-size:16px;font-weight:700;letter-spacing:.04em;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)" style-active="transform:scale(.98)"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="#15110A" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Nuevo pedido</button>
+<sc-if value="{{ hasLowStock }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:10px">
+<span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A39C8C;font-weight:600">Stock bajo</span>
+<div style="background:#17150F;border:1px solid #2A261C;border-radius:16px;display:flex;flex-direction:column;overflow:hidden">
+<sc-for list="{{ lowStock }}" as="p" hint-placeholder-count="2">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid #2A261C;margin-bottom:-1px">
+<span style="font-size:14px;font-weight:500;color:#F2EDE2">{{ p.name }}</span>
+<span style="font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px;white-space:nowrap;background:{{ p.stockBg }};color:{{ p.stockColor }}">{{ p.stockLabel }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A39C8C;font-weight:600">Últimos pedidos</span><button sc-camel-on-click="{{ goOrders }}" style="border:none;background:none;color:#C9A24A;font-size:13px;font-weight:600;cursor:pointer;padding:10px 0">Ver todos</button></div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ recentOrders }}" as="o" hint-placeholder-count="2">
+<div style="background:#17150F;border:1px solid #2A261C;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;opacity:{{ o.opacity }}">
+<div style="display:flex;justify-content:space-between;gap:12px"><span style="font-size:15px;font-weight:600;color:#F2EDE2">{{ o.clientName }}</span><span style="font-size:15px;font-weight:600;color:#E6CC8A">{{ o.total }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><span style="font:500 12px 'JetBrains Mono',monospace;color:#A39C8C">{{ o.id }} · {{ o.items }}</span>
+<div style="display:flex;gap:6px">
+<sc-if value="{{ o.unpaid }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px;white-space:nowrap;background:#FBE7E5;color:#B42318">Por cobrar</span></sc-if>
+<span style="font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px;white-space:nowrap;background:{{ o.statusBg }};color:{{ o.statusColor }}">{{ o.statusLabel }}</span>
+</div></div>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="margin-top:6px;border-radius:8px;overflow:hidden;position:relative;height:122px;box-shadow:0 8px 24px rgba(0,0,0,.5)">
+<img src="4ba1f1c0-eec8-4fba-ac4b-f08ee2c9c2c3" alt="Python Vault" style="position:absolute;width:113.3%;left:-6.6%;top:-14.6px;height:auto">
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isOrders }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Pedidos" style="padding:8px 20px 24px;display:flex;flex-direction:column;gap:16px">
+<span style="font-size:30px;font-weight:700;letter-spacing:-.02em">Historial</span>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<sc-for list="{{ orderFilters }}" as="c" hint-placeholder-count="3">
+<button sc-camel-on-click="{{ c.onClick }}" style="height:36px;padding:0 14px;border-radius:18px;font-size:14px;font-weight:500;cursor:pointer;background:{{ c.bg }};color:{{ c.color }};border:1px solid {{ c.border }}">{{ c.label }}</button>
+</sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ orderRows }}" as="o" hint-placeholder-count="3">
+<div style="background:#FFFFFF;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;justify-content:space-between;gap:12px;opacity:{{ o.opacity }}"><span style="font-size:15px;font-weight:600">{{ o.clientName }}</span><span style="font-size:15px;font-weight:600">{{ o.total }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;opacity:{{ o.opacity }}"><span style="font:500 12px 'JetBrains Mono',monospace;color:#6B6E72">{{ o.id }} · {{ o.items }} · {{ o.payment }}</span>
+<div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end">
+<sc-if value="{{ o.unpaid }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px;white-space:nowrap;background:#FBE7E5;color:#B42318">Por cobrar</span></sc-if>
+<span style="font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px;white-space:nowrap;background:{{ o.statusBg }};color:{{ o.statusColor }}">{{ o.statusLabel }}</span>
+</div></div>
+<sc-if value="{{ o.confirming }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:8px;background:#FBE7E5;border-radius:12px;padding:12px">
+<span style="font-size:13px;color:#B42318;font-weight:500">¿Anular {{ o.id }}? Los paquetes vuelven al stock y el pedido deja de contar en ventas y promo.</span>
+<div style="display:flex;gap:8px">
+<button sc-camel-on-click="{{ o.onCancelNo }}" style="flex:1;height:40px;border-radius:10px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer;color:#15171A">Volver</button>
+<button sc-camel-on-click="{{ o.onCancelYes }}" style="flex:1;height:40px;border-radius:10px;border:none;background:#B42318;color:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer">Anular pedido</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ o.showActions }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
+<sc-if value="{{ o.isPending }}" hint-placeholder-val="{{ false }}"><button sc-camel-on-click="{{ o.onMark }}" style="flex:1 1 140px;height:44px;border-radius:12px;border:1px solid #E3E0D8;background:#F3F1EB;font-size:14px;font-weight:600;cursor:pointer;color:#15171A">Marcar despachado</button></sc-if>
+<sc-if value="{{ o.unpaid }}" hint-placeholder-val="{{ false }}"><button sc-camel-on-click="{{ o.onCollect }}" style="flex:1 1 140px;height:44px;border-radius:12px;border:1px solid #E3E0D8;background:#F3F1EB;font-size:14px;font-weight:600;cursor:pointer;color:#15171A">Marcar cobrado</button></sc-if>
+</div>
+<div style="display:flex;gap:18px">
+<a href="{{ o.mailHref }}" style="font-size:13px;font-weight:600;padding:6px 0">Enviar mail</a>
+<button sc-camel-on-click="{{ o.onAskCancel }}" style="border:none;background:none;padding:6px 0;font-size:13px;font-weight:600;color:#B42318;cursor:pointer">Anular</button>
+</div>
+</sc-if>
+</div>
+</sc-for>
+<sc-if value="{{ noOrders }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;color:#6B6E72;padding:24px 0;text-align:center">Sin pedidos en esta vista</span></sc-if>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isClients }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Clientes" style="padding:8px 20px 24px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+<span style="font-size:30px;font-weight:700;letter-spacing:-.02em">Clientes</span>
+<sc-if value="{{ showClientsList }}" hint-placeholder-val="{{ true }}"><button sc-camel-on-click="{{ openClientsNew }}" style="height:40px;padding:0 14px;border-radius:12px;border:none;background:#8C6A22;color:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Nuevo</button></sc-if>
+</div>
+<sc-if value="{{ clientsNew }}" hint-placeholder-val="{{ false }}">
+<div style="background:#FFFFFF;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:14px">
+<span style="font-size:16px;font-weight:600">{{ clientFormTitle }}</span>
+<sc-for list="{{ formFields }}" as="f" hint-placeholder-count="5">
+<label style="display:flex;flex-direction:column;gap:6px">
+<span style="font-size:13px;font-weight:600">{{ f.label }}</span>
+<input type="{{ f.type }}" value="{{ f.value }}" sc-camel-on-change="{{ f.onChange }}" placeholder="{{ f.placeholder }}" style="height:48px;border-radius:12px;padding:0 14px;font-size:15px;background:#FFFFFF;outline:none;box-sizing:border-box;width:100%;border:1px solid {{ f.border }}">
+<sc-if value="{{ f.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#B42318;font-weight:500">{{ f.error }}</span></sc-if>
+</label>
+</sc-for>
+<div style="display:flex;gap:8px">
+<button sc-camel-on-click="{{ cancelClientsNew }}" style="flex:1;height:48px;border-radius:14px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:15px;font-weight:600;cursor:pointer;color:#15171A">Cancelar</button>
+<button sc-camel-on-click="{{ saveClient }}" style="flex:2;height:48px;border-radius:14px;border:none;background:#8C6A22;color:#FFFFFF;font-size:15px;font-weight:600;cursor:pointer">{{ clientSaveLabel }}</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ showClientsList }}" hint-placeholder-val="{{ true }}">
+<input value="{{ clientsQuery }}" sc-camel-on-change="{{ onClientsQuery }}" placeholder="Buscar por nombre, email o RUC" style="height:48px;border:1px solid #E3E0D8;border-radius:12px;padding:0 14px;font-size:15px;background:#FFFFFF;outline:none;box-sizing:border-box;width:100%">
+<div style="display:flex;gap:8px">
+<sc-for list="{{ clientFilters }}" as="c" hint-placeholder-count="2">
+<button sc-camel-on-click="{{ c.onClick }}" style="height:36px;padding:0 14px;border-radius:18px;font-size:14px;font-weight:500;cursor:pointer;background:{{ c.bg }};color:{{ c.color }};border:1px solid {{ c.border }}">{{ c.label }}</button>
+</sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ clientRows }}" as="c" hint-placeholder-count="2">
+<div style="background:#FFFFFF;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:12px;opacity:{{ c.opacity }}">
+<div style="display:flex;align-items:center;gap:12px">
+<div style="width:40px;height:40px;flex:none;border-radius:20px;background:#F3EBD9;color:#8C6A22;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">{{ c.initials }}</div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<span style="font-size:15px;font-weight:600">{{ c.name }}</span>
+<span style="font-size:13px;color:#6B6E72;overflow:hidden;text-overflow:ellipsis">{{ c.email }}</span>
+<span style="font-size:12px;color:#6B6E72">{{ c.meta }}</span>
+</div>
+<sc-if value="{{ c.active }}" hint-placeholder-val="{{ true }}"><button sc-camel-on-click="{{ c.onEdit }}" style="flex:none;border:none;background:none;color:#8C6A22;font-size:13px;font-weight:600;cursor:pointer;padding:8px 0">Editar</button></sc-if>
+</div>
+<div style="display:flex;align-items:center;gap:10px">
+<div style="flex:1;height:6px;background:#EFECE5;border-radius:3px;overflow:hidden"><div style="height:100%;background:#C2702E;border-radius:3px;width:{{ c.promoPct }}"></div></div>
+<span style="font-size:12px;font-weight:600;color:#9A4515;white-space:nowrap">{{ c.promoLabel }}</span>
+</div>
+<sc-if value="{{ c.confirming }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:8px;background:#FBE7E5;border-radius:12px;padding:12px">
+<span style="font-size:13px;color:#B42318;font-weight:500">¿Dar de baja a {{ c.name }}? Su historial de pedidos se conserva.</span>
+<div style="display:flex;gap:8px">
+<button sc-camel-on-click="{{ c.onCancel }}" style="flex:1;height:40px;border-radius:10px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer;color:#15171A">Cancelar</button>
+<button sc-camel-on-click="{{ c.onConfirm }}" style="flex:1;height:40px;border-radius:10px;border:none;background:#B42318;color:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer">Dar de baja</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ c.showActions }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;gap:8px">
+<sc-if value="{{ c.active }}" hint-placeholder-val="{{ true }}">
+<button sc-camel-on-click="{{ c.onAskRemove }}" style="flex:1;height:40px;border-radius:10px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:13px;font-weight:600;cursor:pointer;color:#B42318">Dar de baja</button>
+<button sc-camel-on-click="{{ c.onOrder }}" style="flex:1;height:40px;border-radius:10px;border:none;background:#15171A;color:#FFFFFF;font-size:13px;font-weight:600;cursor:pointer">Nuevo pedido</button>
+</sc-if>
+<sc-if value="{{ c.inactive }}" hint-placeholder-val="{{ false }}">
+<button sc-camel-on-click="{{ c.onRestore }}" style="flex:1;height:40px;border-radius:10px;border:1px solid #8C6A22;background:#F3EBD9;font-size:13px;font-weight:600;cursor:pointer;color:#8C6A22">Reactivar cliente</button>
+</sc-if>
+</div>
+</sc-if>
+</div>
+</sc-for>
+<sc-if value="{{ noClients }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;color:#6B6E72;padding:24px 0;text-align:center">Sin clientes en esta vista</span></sc-if>
+</div>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ isStock }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Stock" style="padding:8px 20px 24px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+<div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:30px;font-weight:700;letter-spacing:-.02em">Stock</span><span style="font-size:13px;color:#6B6E72">Paquetes de 100 fundas · 1 caja = 12 paquetes</span></div>
+<sc-if value="{{ canAddProduct }}" hint-placeholder-val="{{ true }}"><button sc-camel-on-click="{{ openNewProduct }}" style="flex:none;height:40px;padding:0 14px;border-radius:12px;border:none;background:#8C6A22;color:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Producto</button></sc-if>
+</div>
+<sc-if value="{{ newProductOpen }}" hint-placeholder-val="{{ false }}">
+<div style="background:#FFFFFF;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px">
+<span style="font-size:16px;font-weight:600">Nuevo producto</span>
+<div style="display:flex;flex-wrap:wrap;gap:10px">
+<sc-for list="{{ prodFields }}" as="f" hint-placeholder-count="5">
+<label style="display:flex;flex-direction:column;gap:6px;width:{{ f.width }}">
+<span style="font-size:13px;font-weight:600">{{ f.label }}</span>
+<input type="text" sc-camel-input-mode="{{ f.mode }}" value="{{ f.value }}" sc-camel-on-change="{{ f.onChange }}" placeholder="{{ f.placeholder }}" style="height:44px;border-radius:12px;padding:0 12px;font-size:15px;background:#FFFFFF;outline:none;box-sizing:border-box;width:100%;border:1px solid {{ f.border }}">
+<sc-if value="{{ f.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#B42318;font-weight:500">{{ f.error }}</span></sc-if>
+</label>
+</sc-for>
+</div>
+<div style="display:flex;gap:8px">
+<button sc-camel-on-click="{{ cancelProduct }}" style="flex:1;height:46px;border-radius:14px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:15px;font-weight:600;cursor:pointer;color:#15171A">Cancelar</button>
+<button sc-camel-on-click="{{ saveProduct }}" style="flex:2;height:46px;border-radius:14px;border:none;background:#8C6A22;color:#FFFFFF;font-size:15px;font-weight:600;cursor:pointer">Crear producto</button>
+</div>
+</div>
+</sc-if>
+<div style="background:#FFFFFF;border-radius:16px;display:flex;flex-direction:column">
+<sc-for list="{{ stockRows }}" as="p" hint-placeholder-count="4">
+<div style="display:flex;flex-direction:column;gap:10px;padding:12px 16px;border-bottom:1px solid #EFECE5">
+<div style="display:flex;align-items:center;gap:12px">
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px"><span style="font-size:14px;font-weight:600">{{ p.name }}</span><span style="font-size:12px;color:#6B6E72">Costo {{ p.costLabel }} · Venta {{ p.priceLabel }} · Caja {{ p.boxLabel }}</span><span style="font-size:12px;font-weight:600;color:#8C6A22">Margen {{ p.margin }} · {{ p.units }}</span></div>
+<div style="display:flex;align-items:center;gap:4px">
+<button sc-camel-on-click="{{ p.onDec }}" aria-label="{{ p.decLabel }}" style="width:36px;height:36px;border-radius:10px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:18px;cursor:pointer;color:#15171A">−</button>
+<span style="min-width:34px;text-align:center;font-size:15px;font-weight:700;color:{{ p.stockColor }}">{{ p.stock }}</span>
+<button sc-camel-on-click="{{ p.onInc }}" aria-label="{{ p.incLabel }}" style="width:36px;height:36px;border-radius:10px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:18px;cursor:pointer;color:#15171A">+</button>
+</div>
+</div>
+<sc-if value="{{ p.notEditing }}" hint-placeholder-val="{{ true }}"><button sc-camel-on-click="{{ p.onEdit }}" style="align-self:flex-start;border:none;background:none;color:#8C6A22;font-size:13px;font-weight:600;cursor:pointer;padding:0">Editar precios</button></sc-if>
+<sc-if value="{{ p.editing }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:12px;background:#F7F5F0;border-radius:12px;padding:12px">
+<div style="display:flex;flex-wrap:wrap;gap:10px">
+<sc-for list="{{ prodFields }}" as="f" hint-placeholder-count="5">
+<label style="display:flex;flex-direction:column;gap:6px;width:{{ f.width }}">
+<span style="font-size:13px;font-weight:600">{{ f.label }}</span>
+<input type="text" sc-camel-input-mode="{{ f.mode }}" value="{{ f.value }}" sc-camel-on-change="{{ f.onChange }}" placeholder="{{ f.placeholder }}" style="height:44px;border-radius:12px;padding:0 12px;font-size:15px;background:#FFFFFF;outline:none;box-sizing:border-box;width:100%;border:1px solid {{ f.border }}">
+<sc-if value="{{ f.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#B42318;font-weight:500">{{ f.error }}</span></sc-if>
+</label>
+</sc-for>
+</div>
+<div style="display:flex;gap:8px">
+<button sc-camel-on-click="{{ cancelProduct }}" style="flex:1;height:44px;border-radius:12px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer;color:#15171A">Cancelar</button>
+<button sc-camel-on-click="{{ saveProduct }}" style="flex:2;height:44px;border-radius:12px;border:none;background:#8C6A22;color:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer">Guardar cambios</button>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+
+<div style="background:#FFFFFF;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px">
+<span style="font-size:16px;font-weight:600">Promo tiendas</span>
+<span style="font-size:13px;color:#6B6E72">{{ promoDesc }}</span>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+<span style="font-size:14px;font-weight:600">Cajas para ganar regalo</span>
+<div style="display:flex;align-items:center;gap:4px">
+<button sc-camel-on-click="{{ promoBoxesDec }}" aria-label="Menos cajas para la promo" style="width:36px;height:36px;border-radius:10px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:18px;cursor:pointer;color:#15171A">−</button>
+<span style="min-width:34px;text-align:center;font-size:15px;font-weight:700">{{ promoBoxes }}</span>
+<button sc-camel-on-click="{{ promoBoxesInc }}" aria-label="Más cajas para la promo" style="width:36px;height:36px;border-radius:10px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:18px;cursor:pointer;color:#15171A">+</button>
+</div>
+</div>
+<span style="font-size:14px;font-weight:600">Regalo (1 paquete x100, se descuenta del stock)</span>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<sc-for list="{{ promoChips }}" as="c" hint-placeholder-count="4">
+<button sc-camel-on-click="{{ c.onClick }}" style="height:36px;padding:0 12px;border-radius:18px;font-size:13px;font-weight:500;cursor:pointer;background:{{ c.bg }};color:{{ c.color }};border:1px solid {{ c.border }}">{{ c.label }}</button>
+</sc-for>
+</div>
+<sc-if value="{{ promoUnset }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:600;color:#9A4515">Elige el producto de regalo para que se descuente del stock.</span></sc-if>
+</div>
+
+<div style="background:#FFFFFF;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px">
+<span style="font-size:16px;font-weight:600">Respaldo de datos</span>
+<span style="font-size:13px;color:#6B6E72">Clientes, pedidos y stock viven solo en este dispositivo. Exporta un respaldo seguido y guárdalo en Drive o en tu correo; con él puedes recuperar todo o pasarlo a otro celular.</span>
+<span style="font-size:12px;font-weight:600;color:{{ backupColor }}">{{ backupLabel }}</span>
+<div style="display:flex;gap:8px">
+<button sc-camel-on-click="{{ exportBackup }}" style="flex:1;height:46px;border-radius:14px;border:none;background:#15171A;color:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer">Exportar respaldo</button>
+<label style="flex:1;height:46px;border-radius:14px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer;color:#15171A;display:flex;align-items:center;justify-content:center">Importar<input type="file" accept="application/json,.json" sc-camel-on-change="{{ importBackup }}" style="display:none"></label>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ fClient }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Paso 1 Cliente" style="padding:16px 20px 24px;display:flex;flex-direction:column;gap:16px">
+<sc-if value="{{ showClientSearch }}" hint-placeholder-val="{{ true }}">
+<input value="{{ clientQuery }}" sc-camel-on-change="{{ onClientQuery }}" placeholder="Buscar cliente guardado" style="height:48px;border:1px solid #E3E0D8;border-radius:12px;padding:0 14px;font-size:15px;background:#FFFFFF;outline:none;box-sizing:border-box;width:100%">
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ matchingClients }}" as="c" hint-placeholder-count="2">
+<button sc-camel-on-click="{{ c.onClick }}" style="text-align:left;background:#FFFFFF;border:1px solid #FFFFFF;border-radius:16px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;color:#15171A" style-hover="border-color:#8C6A22">
+<div style="width:40px;height:40px;flex:none;border-radius:20px;background:#F3EBD9;color:#8C6A22;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">{{ c.initials }}</div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:600">{{ c.name }}</span><span style="font-size:13px;color:#6B6E72">{{ c.email }}</span><span style="font-size:12px;font-weight:600;color:#9A4515">{{ c.promoLabel }}</span></div>
+<svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#6B6E72" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"></path></svg>
+</button>
+</sc-for>
+<sc-if value="{{ noClientMatch }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;color:#6B6E72;padding:8px 0">No hay coincidencias. Crea el cliente abajo.</span></sc-if>
+</div>
+<button sc-camel-on-click="{{ openNew }}" style="height:52px;border-radius:14px;border:1.5px dashed #8C6A22;background:#F3EBD9;color:#8C6A22;font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#8C6A22" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Crear cliente nuevo</button>
+</sc-if>
+<sc-if value="{{ showNew }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:14px">
+<span style="font-size:13px;color:#6B6E72">Los datos de la tienda quedan guardados para el próximo pedido.</span>
+<sc-for list="{{ formFields }}" as="f" hint-placeholder-count="5">
+<label style="display:flex;flex-direction:column;gap:6px">
+<span style="font-size:13px;font-weight:600">{{ f.label }}</span>
+<input type="{{ f.type }}" value="{{ f.value }}" sc-camel-on-change="{{ f.onChange }}" placeholder="{{ f.placeholder }}" style="height:48px;border-radius:12px;padding:0 14px;font-size:15px;background:#FFFFFF;outline:none;box-sizing:border-box;width:100%;border:1px solid {{ f.border }}">
+<sc-if value="{{ f.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#B42318;font-weight:500">{{ f.error }}</span></sc-if>
+</label>
+</sc-for>
+<div style="display:flex;gap:8px;margin-top:4px">
+<button sc-camel-on-click="{{ cancelNew }}" style="flex:1;height:52px;border-radius:14px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:15px;font-weight:600;cursor:pointer;color:#15171A">Cancelar</button>
+<button sc-camel-on-click="{{ saveClient }}" style="flex:2;height:52px;border-radius:14px;border:none;background:#8C6A22;color:#FFFFFF;font-size:15px;font-weight:600;cursor:pointer">Guardar y continuar</button>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ fProducts }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Paso 2 Productos" style="padding:16px 20px 24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;gap:10px;background:#FFFFFF;border-radius:14px;padding:10px 14px">
+<div style="width:32px;height:32px;flex:none;border-radius:16px;background:#F3EBD9;color:#8C6A22;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">{{ selClient.initials }}</div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column"><span style="font-size:14px;font-weight:600">{{ selClient.name }}</span><span style="font-size:12px;color:#6B6E72">{{ selClient.email }}</span></div>
+<button sc-camel-on-click="{{ changeClient }}" style="border:none;background:none;color:#8C6A22;font-size:13px;font-weight:600;cursor:pointer;padding:8px 0">Cambiar</button>
+</div>
+<div style="border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;background:#F8E9DE">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font-size:14px;font-weight:600;color:#7A3610">{{ promoTitle }}</span><span style="font-size:12px;font-weight:600;color:#7A3610;white-space:nowrap">{{ promoCount }}</span></div>
+<div style="height:6px;background:#FFFFFF;border-radius:3px;overflow:hidden"><div style="height:100%;background:#C2702E;border-radius:3px;transition:width .3s;width:{{ promoPct }}"></div></div>
+<span style="font-size:13px;color:#7A3610">{{ promoText }}</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ productRows }}" as="p" hint-placeholder-count="5">
+<div style="background:#FFFFFF;border-radius:16px;padding:14px 12px 8px 16px;display:flex;flex-direction:column;gap:6px;opacity:{{ p.opacity }};border:1.5px solid {{ p.border }}">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding-right:4px">
+<div style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-size:15px;font-weight:600">{{ p.name }}</span><span style="font-size:12px;color:#6B6E72">{{ p.pvpLabel }}</span></div>
+<span style="flex:none;font-size:11px;font-weight:600;padding:3px 8px;border-radius:999px;background:{{ p.stockBg }};color:{{ p.stockColor }}">{{ p.stockLabel }}</span>
+</div>
+<sc-for list="{{ p.options }}" as="u" hint-placeholder-count="2">
+<div style="display:flex;align-items:center;gap:12px;border-top:1px solid #EFECE5;padding-top:6px">
+<div style="flex:1;display:flex;flex-direction:column;gap:1px"><span style="font-size:13px;color:#6B6E72">{{ u.label }}</span><span style="font-size:15px;font-weight:700">{{ u.priceLabel }}</span></div>
+<sc-if value="{{ u.hasQty }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;background:#15171A;border-radius:14px;padding:2px">
+<button sc-camel-on-click="{{ u.onDec }}" aria-label="{{ u.decLabel }}" style="width:40px;height:40px;border:none;background:none;color:#FFFFFF;font-size:20px;cursor:pointer">−</button>
+<span style="min-width:24px;text-align:center;color:#FFFFFF;font-size:15px;font-weight:700">{{ u.qty }}</span>
+<button sc-camel-on-click="{{ u.onInc }}" aria-label="{{ u.incLabel }}" style="width:40px;height:40px;border:none;background:none;font-size:20px;cursor:pointer;color:{{ u.incColor }}">+</button>
+</div>
+</sc-if>
+<sc-if value="{{ u.noQty }}" hint-placeholder-val="{{ true }}">
+<button sc-camel-on-click="{{ u.onInc }}" aria-label="{{ u.incLabel }}" style="width:44px;height:44px;border-radius:14px;border:1px solid #E3E0D8;background:#F3F1EB;font-size:22px;cursor:pointer;color:#15171A">+</button>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ fDelivery }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Paso 3 Entrega" style="padding:16px 20px 24px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-direction:column;gap:10px">
+<span style="font-size:15px;font-weight:600">¿Cuándo se entrega?</span>
+<button sc-camel-on-click="{{ pickHoy }}" style="text-align:left;background:#FFFFFF;border-radius:16px;padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;color:#15171A;border:2px solid {{ hoyBorder }}">
+<div style="width:22px;height:22px;flex:none;border-radius:11px;box-sizing:border-box;border:{{ hoyRadio }}"></div>
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font-size:16px;font-weight:600">Entrega hoy</span><span style="font-size:13px;color:#6B6E72">El cliente se lleva el pedido ahora</span></div>
+</button>
+<button sc-camel-on-click="{{ pickDesp }}" style="text-align:left;background:#FFFFFF;border-radius:16px;padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;color:#15171A;border:2px solid {{ despBorder }}">
+<div style="width:22px;height:22px;flex:none;border-radius:11px;box-sizing:border-box;border:{{ despRadio }}"></div>
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font-size:16px;font-weight:600">Despacho posterior</span><span style="font-size:13px;color:#6B6E72">Se envía en una fecha programada</span></div>
+</button>
+</div>
+<sc-if value="{{ isDespacho }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:10px">
+<span style="font-size:15px;font-weight:600">Fecha de despacho</span>
+<div style="display:flex;gap:8px;overflow-x:auto;margin:0 -20px;padding:0 20px">
+<sc-for list="{{ dateChips }}" as="d" hint-placeholder-count="5">
+<button sc-camel-on-click="{{ d.onClick }}" style="flex:none;width:64px;height:72px;border-radius:14px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:{{ d.bg }};color:{{ d.color }};border:1px solid {{ d.border }}"><span style="font-size:12px;text-transform:capitalize">{{ d.dow }}</span><span style="font-size:20px;font-weight:700">{{ d.day }}</span></button>
+</sc-for>
+</div>
+<label style="display:flex;flex-direction:column;gap:6px;margin-top:6px"><span style="font-size:15px;font-weight:600">Dirección de despacho</span>
+<input value="{{ draftAddress }}" sc-camel-on-change="{{ onAddress }}" placeholder="Calle, número, ciudad" style="height:48px;border:1px solid #E3E0D8;border-radius:12px;padding:0 14px;font-size:15px;background:#FFFFFF;outline:none;box-sizing:border-box;width:100%"></label>
+</div>
+</sc-if>
+<div style="display:flex;flex-direction:column;gap:10px">
+<span style="font-size:15px;font-weight:600">Forma de pago</span>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<sc-for list="{{ payChips }}" as="c" hint-placeholder-count="4">
+<button sc-camel-on-click="{{ c.onClick }}" style="height:40px;padding:0 16px;border-radius:20px;font-size:14px;font-weight:500;cursor:pointer;background:{{ c.bg }};color:{{ c.color }};border:1px solid {{ c.border }}">{{ c.label }}</button>
+</sc-for>
+</div>
+<sc-if value="{{ isCredit }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#9A4515">Quedará como «Por cobrar» hasta que lo marques cobrado en el Historial.</span></sc-if>
+</div>
+<label style="display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">Notas <span style="font-weight:400;color:#6B6E72">(opcional)</span></span>
+<textarea value="{{ draftNotes }}" sc-camel-on-change="{{ onNotes }}" placeholder="Horario, referencia, instrucciones…" rows="3" style="border:1px solid #E3E0D8;border-radius:12px;padding:12px 14px;font-size:15px;background:#FFFFFF;outline:none;resize:none;box-sizing:border-box;width:100%"></textarea></label>
+<sc-if value="{{ deliveryError }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#B42318;font-weight:500">{{ deliveryError }}</span></sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ fReview }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Paso 4 Confirmar" style="padding:16px 20px 24px;display:flex;flex-direction:column;gap:12px">
+<div style="background:#FFFFFF;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:4px">
+<span style="font-size:12px;color:#6B6E72;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Cliente</span>
+<span style="font-size:16px;font-weight:600">{{ selClient.name }}</span>
+<span style="font-size:14px;color:#6B6E72">{{ selClient.email }} · {{ selClient.phone }}</span>
+</div>
+<div style="background:#FFFFFF;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px">
+<span style="font-size:12px;color:#6B6E72;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Productos</span>
+<sc-for list="{{ reviewItems }}" as="i" hint-placeholder-count="2">
+<div style="display:flex;justify-content:space-between;gap:12px;font-size:14px"><span><b style="font-weight:700">{{ i.qty }}×</b> {{ i.name }}</span><span style="font-weight:600;white-space:nowrap">{{ i.line }}</span></div>
+</sc-for>
+<sc-if value="{{ promoWon }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;justify-content:space-between;gap:12px;font-size:14px;background:#F8E9DE;color:#7A3610;border-radius:10px;padding:8px 10px;margin:0 -4px"><span><b style="font-weight:700">{{ promoEarned }}×</b> {{ promoName }} · promo {{ promoBoxes }} cajas</span><span style="font-weight:700">Regalo</span></div>
+</sc-if>
+<div style="height:1px;background:#EFECE5;margin:4px 0"></div>
+<div style="display:flex;justify-content:space-between;font-size:14px;color:#6B6E72"><span>Subtotal sin IVA</span><span>{{ subLabel }}</span></div>
+<div style="display:flex;justify-content:space-between;font-size:14px;color:#6B6E72"><span>{{ taxName }}</span><span>{{ taxLabel }}</span></div>
+<div style="display:flex;justify-content:space-between;font-size:18px;font-weight:700"><span>Total</span><span>{{ totalLabel }}</span></div>
+</div>
+<div style="background:#F3EBD9;border-radius:16px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px">
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:14px;font-weight:600;color:#8C6A22">Tu ganancia</span><span style="font-size:12px;color:#8C6A22">Interno · no aparece en el mail</span></div>
+<div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px"><span style="font-size:18px;font-weight:700;color:#8C6A22">{{ profitLabel }}</span><span style="font-size:12px;font-weight:600;color:#8C6A22">Margen {{ marginLabel }}</span></div>
+</div>
+<div style="background:#FFFFFF;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:4px">
+<span style="font-size:12px;color:#6B6E72;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Entrega y pago</span>
+<span style="font-size:15px;font-weight:600">{{ deliveryLabel }}</span>
+<span style="font-size:14px;color:#6B6E72">{{ deliverySub }}</span>
+</div>
+<button sc-camel-on-click="{{ toggleMail }}" role="switch" aria-checked="{{ sendMail }}" style="text-align:left;background:#FFFFFF;border:none;border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;color:#15171A">
+<div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:600">Preparar mail de confirmación</span><span style="font-size:13px;color:#6B6E72">{{ selClient.email }}</span></div>
+<div style="width:48px;height:28px;flex:none;border-radius:14px;position:relative;transition:background .2s;background:{{ mailTrack }}"><div style="position:absolute;top:3px;width:22px;height:22px;border-radius:11px;background:#FFFFFF;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.2);left:{{ mailKnob }}"></div></div>
+</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ fDone }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Pedido confirmado" style="padding:28px 20px 24px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+<div style="width:64px;height:64px;border-radius:32px;background:#8C6A22;display:flex;align-items:center;justify-content:center"><svg width="30" height="30" sc-camel-view-box="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div>
+<span style="font-size:24px;font-weight:700;letter-spacing:-.01em">Pedido confirmado</span>
+<span style="font:500 14px 'JetBrains Mono',monospace;color:#6B6E72">{{ done.id }} · {{ done.total }}</span>
+<span style="font-size:14px;color:#15171A;background:#FFFFFF;padding:6px 12px;border-radius:999px">{{ done.status }}</span>
+</div>
+<sc-if value="{{ done.mailWanted }}" hint-placeholder-val="{{ true }}">
+<a href="{{ done.mailHref }}" style="height:52px;border-radius:14px;border:none;background:#8C6A22;display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:600;color:#FFFFFF"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3.5 6.5L12 13l8.5-6.5"></path></svg>Enviar mail al cliente</a>
+<div style="background:#FFFFFF;border-radius:16px;overflow:hidden;display:flex;flex-direction:column">
+<div style="padding:12px 16px;border-bottom:1px solid #EFECE5;display:flex;flex-direction:column;gap:4px;font-size:13px">
+<span style="font-size:12px;font-weight:600;color:#9A4515">Borrador · todavía no se ha enviado</span>
+<span><span style="color:#6B6E72">Para:</span> {{ done.email }}</span>
+<span><span style="color:#6B6E72">Asunto:</span> {{ done.subject }}</span>
+</div>
+<div style="padding:14px 16px;font-size:13px;line-height:1.55;white-space:pre-wrap;color:#15171A">{{ done.body }}</div>
+</div>
+</sc-if>
+<div style="display:flex;gap:8px">
+<button sc-camel-on-click="{{ goHome }}" style="flex:1;height:52px;border-radius:14px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:15px;font-weight:600;cursor:pointer;color:#15171A">Inicio</button>
+<button sc-camel-on-click="{{ newOrder }}" style="flex:1;height:52px;border-radius:14px;border:1px solid #E3E0D8;background:#FFFFFF;font-size:15px;font-weight:600;cursor:pointer;color:#15171A">Otro pedido</button>
+</div>
+</div>
+</sc-if>
+
+</div>
+
+<sc-if value="{{ showCartBar }}" hint-placeholder-val="{{ false }}">
+<div data-cartbar="" style="flex:none;padding:12px 16px 28px;background:#F3F1EB;border-top:1px solid #E3E0D8">
+<button sc-camel-on-click="{{ barAction }}" style="width:100%;height:56px;border:none;border-radius:16px;color:#FFFFFF;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:space-between;padding:0 20px;cursor:pointer;background:{{ barBg }}" style-active="transform:scale(.98)"><span>{{ barLeft }}</span><span>{{ barRight }}</span></button>
+</div>
+</sc-if>
+
+<sc-if value="{{ showTabs }}" hint-placeholder-val="{{ true }}">
+<div data-tabbar="" style="flex:none;display:grid;grid-template-columns:repeat(5,1fr);padding:8px 4px 26px;background:{{ tabBg }};border-top:1px solid {{ tabBorder }}">
+<button sc-camel-on-click="{{ goHome }}" style="height:52px;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:11px;font-weight:600;color:{{ tHome }}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 20V11M12 20V5M19 20v-6"></path></svg>Resumen</button>
+<button sc-camel-on-click="{{ goOrder }}" style="height:52px;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:11px;font-weight:600;color:{{ tOrder }}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><path d="M12 8v8M8 12h8"></path></svg>Pedido</button>
+<button sc-camel-on-click="{{ goOrders }}" style="height:52px;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:11px;font-weight:600;color:{{ tOrders }}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="3.5" width="14" height="17" rx="2"></rect><path d="M9 8.5h6M9 12h6M9 15.5h4"></path></svg>Historial</button>
+<button sc-camel-on-click="{{ goClients }}" style="height:52px;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:11px;font-weight:600;color:{{ tClients }}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8.5" r="3.5"></circle><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"></path></svg>Clientes</button>
+<button sc-camel-on-click="{{ goStock }}" style="height:52px;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:11px;font-weight:600;color:{{ tStock }}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3.5l8 4.2v8.6l-8 4.2-8-4.2V7.7z"></path><path d="M4 7.7l8 4.3 8-4.3M12 12v8.5"></path></svg>Stock</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div role="status" style="position:absolute;left:20px;right:20px;top:60px;background:#15171A;color:#FFFFFF;border-radius:14px;padding:14px 16px;font-size:14px;font-weight:500;box-shadow:0 10px 30px rgba(0,0,0,.2)">{{ toast }}</div>
+</sc-if>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;taxRate&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:15,&quot;min&quot;:0,&quot;max&quot;:30,&quot;unit&quot;:&quot;%&quot;,&quot;tsType&quot;:&quot;number&quot;},&quot;allowBackorder&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const STORE_KEY = 'pv_orders_app_v3';
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.scrollRef = React.createRef();
+    this._prev = { flow: null, tab: 'home' };
+    this.state = { ...this.load(), tab: 'home', flow: null, clientsNew: false, editingClient: null, clientsFilter: 'Activos', confirmRemove: null,
+      draft: this.emptyDraft(), clientQuery: '', showNew: false, form: this.emptyForm(), errors: {}, lastOrderId: null, sendMail: true,
+      toast: null, clientsQuery: '', orderFilter: 'Todos', deliveryError: '', confirmCancel: null,
+      editingProduct: null, prodForm: this.emptyProdForm(), prodErrors: {} };
+  }
+  // ---------- datos ----------
+  load() {
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(STORE_KEY)); } catch (e) {}
+    return this.normalize(saved && saved.products ? saved : this.seed());
+  }
+  normalize(d) {
+    return { seq: d.seq || 0, products: d.products, clients: d.clients, orders: d.orders || [],
+      settings: { promoBoxes: 4, promoPid: null, ...(d.settings || {}) }, lastBackup: d.lastBackup || null };
+  }
+  persisted() { const { clients, products, orders, seq, settings, lastBackup } = this.state; return { clients, products, orders, seq, settings, lastBackup }; }
+  componentDidUpdate() {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(this.persisted())); } catch (e) {}
+    const { flow, tab } = this.state;
+    if ((flow !== this._prev.flow || tab !== this._prev.tab) && this.scrollRef.current) this.scrollRef.current.scrollTop = 0;
+    this._prev = { flow, tab };
+  }
+  componentWillUnmount() { clearTimeout(this._t); }
+  // ---------- utilidades ----------
+  iso(d) { const z = new Date(d.getTime() - d.getTimezoneOffset() * 60000); return z.toISOString().slice(0, 10); }
+  addDays(n) { const d = new Date(); d.setDate(d.getDate() + n); return this.iso(d); }
+  parse(iso) { const [y, m, d] = iso.split('-').map(Number); return new Date(y, m - 1, d); }
+  dateLabel(iso) { return this.parse(iso).toLocaleDateString('es-EC', { weekday: 'short', day: 'numeric', month: 'short' }); }
+  money(n) { return '$' + (Math.round(n * 100) / 100).toFixed(2).replace('.', ','); }
+  pct(n) { return Math.round(n * 100) + '%'; }
+  num(v) { const n = parseFloat(String(v).replace(',', '.')); return isFinite(n) ? n : NaN; }
+  packsUsed(pid, items) { return (items[pid + '|p'] || 0) + 12 * (items[pid + '|c'] || 0); }
+  line(p, unit, qty) { const box = unit === 'c'; return { pid: p.id, unit, name: p.name + (box ? ' · Caja x12' : ' · Paquete x100'), qty, price: box ? p.box : p.price, packs: qty * (box ? 12 : 1), cost: p.cost }; }
+  initials(n) { return n.split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join(''); }
+  emptyForm() { return { name: '', email: '', phone: '', doc: '', address: '' }; }
+  emptyProdForm() { return { name: '', price: '', box: '', cost: '', pvp: '' }; }
+  emptyDraft() { return { clientId: null, items: {}, delivery: 'hoy', date: this.addDays(1), address: '', payment: 'Efectivo', notes: '' }; }
+  isActive(o) { return o.status !== 'anulado'; }
+  isPaid(o) { return o.paid ?? (o.payment !== 'Crédito'); }
+  showToast(msg) { this.setState({ toast: msg }); clearTimeout(this._t); this._t = setTimeout(() => this.setState({ toast: null }), 2400); }
+  rate() { return (this.props.taxRate ?? 15) / 100; }
+  seed() {
+    const t = this.addDays(0), y = this.addDays(-1);
+    const products = [
+      { id: 'p1', sku: 'PV-MAT', name: 'Fundas mate', price: 7.5, box: 90, cost: 4.43, pvp: 12.5, stock: 24 },
+      { id: 'p2', sku: 'PV-DUA', name: 'Fundas dobles mate (dual)', price: 9, box: 108, cost: 5.06, pvp: 15, stock: 18 },
+      { id: 'p4', sku: 'PV-HOL', name: 'Fundas holográficas Lewtemi', price: 9, box: 108, cost: 6.07, pvp: 15, stock: 6 },
+      { id: 'p5', sku: 'PV-TRA', name: 'Fundas transparentes', price: 3.9, box: 46.8, cost: 1.38, pvp: 6.5, stock: 50 }
+    ];
+    const mk = (id, clientId, items, extra) => { const tt = this.totals(items); return { id, clientId, items, subtotal: tt.sub, tax: tt.tax, total: tt.total, notes: '', mailWanted: true, ...extra }; };
+    return {
+      seq: 2, products,
+      clients: [
+        { id: 'c1', name: 'Arena TCG Quito', email: 'pedidos@arenatcg.ec', phone: '0991234567', doc: '1792345678001', address: 'Av. Naciones Unidas E4-12, Quito' },
+        { id: 'c2', name: 'Cartas del Valle', email: 'compras@cartasdelvalle.ec', phone: '0987654321', doc: '1712345678', address: 'Av. Ilaló 234, San Rafael' }
+      ],
+      orders: [
+        mk('PV-0002', 'c2', [this.line(products[1], 'c', 1), this.line(products[3], 'p', 4)], { delivery: 'despacho', date: this.addDays(1), address: 'Av. Ilaló 234, San Rafael', payment: 'Transferencia', status: 'pendiente', createdAt: t }),
+        mk('PV-0001', 'c1', [this.line(products[0], 'c', 3)], { delivery: 'hoy', date: y, address: '', payment: 'Efectivo', status: 'entregado', createdAt: y })
+      ]
+    };
+  }
+  totals(items) {
+    const total = items.reduce((a, i) => a + i.qty * i.price, 0);
+    const sub = Math.round(total / (1 + this.rate()) * 100) / 100;
+    const cost = items.reduce((a, i) => a + (i.packs || i.qty) * (i.cost || 0), 0);
+    return { sub, tax: total - sub, total, profit: sub - cost, margin: sub ? (sub - cost) / sub : 0 };
+  }
+  // ---------- pedido en curso ----------
+  draftItems() {
+    const s = this.state;
+    return Object.entries(s.draft.items).filter(([, q]) => q > 0).map(([k, qty]) => {
+      const [pid, u] = k.split('|'); const p = s.products.find(x => x.id === pid); return p && this.line(p, u, qty);
+    }).filter(Boolean);
+  }
+  setDraft(patch) { this.setState(s => ({ draft: { ...s.draft, ...patch }, deliveryError: '' })); }
+  startOrder(clientId) {
+    const c = clientId && this.state.clients.find(x => x.id === clientId);
+    this.setState({ tab: 'order', flow: c ? 'products' : 'client', draft: { ...this.emptyDraft(), clientId: c ? c.id : null, address: c ? c.address : '' },
+      clientQuery: '', showNew: false, form: this.emptyForm(), errors: {}, deliveryError: '', sendMail: true });
+  }
+  pickClient(c) { this.setState(s => ({ draft: { ...s.draft, clientId: c.id, address: c.address || '' }, flow: 'products' })); }
+  changeQty(pid, unit, delta) {
+    const p = this.state.products.find(x => x.id === pid);
+    const k = pid + '|' + unit, items = this.state.draft.items;
+    const next = { ...items, [k]: Math.max(0, (items[k] || 0) + delta) };
+    if (delta > 0 && !(this.props.allowBackorder ?? false) && this.packsUsed(pid, next) > p.stock) {
+      const left = p.stock - this.packsUsed(pid, items);
+      return this.showToast(left <= 0 ? 'No queda stock de ' + p.name.toLowerCase() : 'Solo quedan ' + left + ' paquetes' + (unit === 'c' ? ', no alcanza una caja' : ''));
+    }
+    this.setDraft({ items: next });
+  }
+  goReview() {
+    const d = this.state.draft;
+    if (d.delivery === 'despacho' && !d.address.trim()) return this.setState({ deliveryError: 'Ingresa la dirección de despacho' });
+    this.setState({ flow: 'review' });
+  }
+  confirm() {
+    const s = this.state, items = this.draftItems(), t = this.totals(items), d = s.draft;
+    if (!items.length) return;
+    const id = 'PV-' + String(s.seq + 1).padStart(4, '0');
+    const hoy = d.delivery === 'hoy';
+    const promo = this.promoCalc(d.clientId, items.filter(i => i.unit === 'c').reduce((a, i) => a + i.qty, 0)).earned;
+    const promoPid = promo > 0 ? s.settings.promoPid : null;
+    const order = { id, clientId: d.clientId, items, delivery: d.delivery, date: hoy ? this.addDays(0) : d.date, address: d.address, payment: d.payment, notes: d.notes,
+      subtotal: t.sub, tax: t.tax, total: t.total, status: hoy ? 'entregado' : 'pendiente', paid: d.payment !== 'Crédito', createdAt: this.addDays(0),
+      mailWanted: s.sendMail, promo, promoPid, promoGift: promo > 0 ? this.promoName() : '' };
+    const products = this.applyStock(s.products, order, -1);
+    const gift = promoPid && products.find(p => p.id === promoPid);
+    this.setState({ orders: [order, ...s.orders], products, seq: s.seq + 1, lastOrderId: id, flow: 'done' });
+    if (gift && gift.stock < 0) this.showToast('Ojo: no alcanza el stock de ' + gift.name.toLowerCase() + ' para el regalo');
+  }
+  // sign = -1 descuenta (confirmar), +1 devuelve (anular)
+  applyStock(products, o, sign) {
+    return products.map(p => {
+      let packs = o.items.filter(i => i.pid === p.id).reduce((a, i) => a + i.packs, 0);
+      if (o.promoPid === p.id) packs += o.promo || 0;
+      return packs ? { ...p, stock: p.stock + sign * packs } : p;
+    });
+  }
+  cancelOrder(id) {
+    this.setState(s => {
+      const o = s.orders.find(x => x.id === id);
+      if (!o || !this.isActive(o)) return null;
+      return { orders: s.orders.map(x => x.id === id ? { ...x, status: 'anulado' } : x), products: this.applyStock(s.products, o, 1), confirmCancel: null };
+    });
+    this.showToast(id + ' anulado · stock devuelto');
+  }
+  // ---------- promo ----------
+  promoName() { const p = this.state.products.find(x => x.id === this.state.settings.promoPid); return p ? p.name + ' · Paquete x100' : 'Regalo promocional'; }
+  boxesOf(id) { return this.state.orders.filter(o => o.clientId === id && this.isActive(o)).reduce((a, o) => a + o.items.filter(i => i.unit === 'c').reduce((b, i) => b + i.qty, 0), 0); }
+  promoCalc(id, add) { const th = Math.max(1, this.state.settings.promoBoxes), prev = this.boxesOf(id), tot = prev + add;
+    return { th, prev, tot, earned: Math.floor(tot / th) - Math.floor(prev / th), into: tot % th, left: th - (tot % th) }; }
+  setSettings(patch) { this.setState(s => ({ settings: { ...s.settings, ...patch } })); }
+  // ---------- clientes ----------
+  client(id) { return this.state.clients.find(c => c.id === id) || { name: 'Cliente', email: '', phone: '', address: '' }; }
+  saveClient() {
+    const f = this.state.form, e = {}, editing = this.state.editingClient;
+    const email = f.email.trim(), doc = f.doc.replace(/\D/g, ''), phone = f.phone.replace(/\D/g, '');
+    if (!f.name.trim()) e.name = 'Ingresa el nombre del cliente';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = 'Ingresa un email válido';
+    else {
+      const dup = this.state.clients.find(c => c.id !== editing && c.email.toLowerCase() === email.toLowerCase());
+      if (dup) e.email = dup.active === false ? 'Este cliente está dado de baja; reactívalo en la lista' : 'Ya existe un cliente con este email';
+    }
+    if (f.phone.trim() && (phone.length < 9 || phone.length > 10)) e.phone = 'El teléfono debe tener 9 o 10 dígitos';
+    if (f.doc.trim() && doc.length !== 10 && doc.length !== 13) e.doc = 'La cédula tiene 10 dígitos y el RUC 13';
+    if (Object.keys(e).length) return this.setState({ errors: e });
+    const data = { name: f.name.trim(), email, phone: f.phone.trim(), doc, address: f.address.trim() };
+    if (editing) {
+      this.setState(s => ({ clients: s.clients.map(c => c.id === editing ? { ...c, ...data } : c), form: this.emptyForm(), errors: {}, clientsNew: false, editingClient: null }));
+      return this.showToast('Cliente actualizado');
+    }
+    const c = { id: 'c' + Date.now(), active: true, ...data };
+    if (this.state.tab === 'clients') { this.setState(s => ({ clients: [c, ...s.clients], form: this.emptyForm(), errors: {}, clientsNew: false, clientsFilter: 'Activos' })); return this.showToast('Cliente creado'); }
+    this.setState(s => ({ clients: [c, ...s.clients], form: this.emptyForm(), errors: {}, showNew: false, draft: { ...s.draft, clientId: c.id, address: c.address }, flow: 'products' }));
+    this.showToast('Cliente guardado para próximos pedidos');
+  }
+  // ---------- productos ----------
+  editProduct(p) {
+    this.setState({ editingProduct: p.id, prodErrors: {}, prodForm: { name: p.name, price: String(p.price), box: String(p.box), cost: String(p.cost), pvp: p.pvp ? String(p.pvp) : '' } });
+  }
+  saveProduct() {
+    const f = this.state.prodForm, e = {}, id = this.state.editingProduct;
+    const price = this.num(f.price), cost = this.num(f.cost), box = f.box.trim() ? this.num(f.box) : price * 12, pvp = f.pvp.trim() ? this.num(f.pvp) : 0;
+    if (!f.name.trim()) e.name = 'Ingresa el nombre';
+    if (!(price > 0)) e.price = 'Precio inválido';
+    if (!(box > 0)) e.box = 'Precio inválido';
+    if (!(cost >= 0)) e.cost = 'Costo inválido';
+    if (!(pvp >= 0)) e.pvp = 'PVP inválido';
+    if (Object.keys(e).length) return this.setState({ prodErrors: e });
+    const data = { name: f.name.trim(), price, box: Math.round(box * 100) / 100, cost, pvp };
+    if (id === 'new') this.setState(s => ({ products: [...s.products, { id: 'p' + Date.now(), stock: 0, ...data }], editingProduct: null, prodForm: this.emptyProdForm() }));
+    else this.setState(s => ({ products: s.products.map(p => p.id === id ? { ...p, ...data } : p), editingProduct: null, prodForm: this.emptyProdForm() }));
+    this.showToast(id === 'new' ? 'Producto creado · ajusta su stock con +' : 'Precios actualizados');
+  }
+  adjustStock(pid, d) { this.setState(s => ({ products: s.products.map(p => p.id === pid ? { ...p, stock: Math.max(0, p.stock + d) } : p) })); }
+  // ---------- respaldo ----------
+  exportBackup() {
+    const now = new Date();
+    const data = { app: 'python-vault', version: 3, exportedAt: now.toISOString(), ...this.persisted(), lastBackup: now.toISOString() };
+    const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
+    const a = document.createElement('a');
+    a.href = url; a.download = 'python-vault-respaldo-' + this.iso(now) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    this.setState({ lastBackup: now.toISOString() });
+    this.showToast('Respaldo descargado');
+  }
+  importBackup(e) {
+    const input = e.target, file = input.files && input.files[0];
+    if (!file) return;
+    file.text().then(txt => {
+      const d = JSON.parse(txt);
+      if (!d || !Array.isArray(d.products) || !Array.isArray(d.clients) || !Array.isArray(d.orders)) throw new Error('formato');
+      if (!window.confirm('Se reemplazarán los datos de este dispositivo por los del respaldo (' + d.orders.length + ' pedidos, ' + d.clients.length + ' clientes). ¿Continuar?')) return;
+      this.setState({ ...this.normalize(d), draft: this.emptyDraft(), tab: 'home', flow: null, lastOrderId: null });
+      this.showToast('Respaldo importado');
+    }).catch(() => this.showToast('El archivo no es un respaldo válido')).finally(() => { input.value = ''; });
+  }
+  // ---------- vistas ----------
+  stockTag(n) {
+    if (n <= 0) return { stockLabel: n < 0 ? 'Faltan ' + (-n) + ' paq.' : 'Sin stock', stockBg: '#FBE7E5', stockColor: '#B42318' };
+    if (n < 12) return { stockLabel: 'Quedan ' + n + ' paq.', stockBg: '#F8E9DE', stockColor: '#9A4515' };
+    return { stockLabel: n + ' paq.', stockBg: '#EFECE5', stockColor: '#4A4D52' };
+  }
+  chip(sel) { return sel ? { bg: '#15171A', color: '#FFFFFF', border: '#15171A' } : { bg: '#FFFFFF', color: '#15171A', border: '#E3E0D8' }; }
+  orderRow(o) {
+    const anul = !this.isActive(o), pend = o.status === 'pendiente', unpaid = !anul && !this.isPaid(o), conf = this.state.confirmCancel === o.id;
+    const st = anul ? ['Anulado', '#EFECE5', '#6B6E72'] : pend ? ['Despacho ' + this.dateLabel(o.date), '#F8E9DE', '#9A4515'] : ['Entregado', '#F3EBD9', '#8C6A22'];
+    return { id: o.id, clientName: this.client(o.clientId).name, total: this.money(o.total), items: o.items.reduce((a, i) => a + i.qty, 0) + ' art.', payment: o.payment,
+      statusLabel: st[0], statusBg: st[1], statusColor: st[2], opacity: anul ? 0.55 : 1, unpaid,
+      isPending: pend, confirming: conf, showActions: !anul && !conf, mailHref: this.mail(o).mailHref,
+      onMark: () => { this.setState(s => ({ orders: s.orders.map(x => x.id === o.id ? { ...x, status: 'entregado' } : x) })); this.showToast(o.id + ' marcado como despachado'); },
+      onCollect: () => { this.setState(s => ({ orders: s.orders.map(x => x.id === o.id ? { ...x, paid: true } : x) })); this.showToast(o.id + ' marcado como cobrado'); },
+      onAskCancel: () => this.setState({ confirmCancel: o.id }), onCancelNo: () => this.setState({ confirmCancel: null }), onCancelYes: () => this.cancelOrder(o.id) };
+  }
+  mail(o) {
+    const c = this.client(o.clientId);
+    const lines = o.items.map(i => '• ' + i.qty + ' × ' + i.name + ' — ' + this.money(i.qty * i.price)).join('\n');
+    const ent = o.delivery === 'hoy' ? 'Entrega: inmediata (hoy)' : 'Despacho: ' + this.dateLabel(o.date) + '\nDirección: ' + o.address;
+    const subject = 'Confirmación de pedido ' + o.id + ' · Python Vault';
+    const body = 'Hola equipo de ' + c.name + ',\n\nConfirmamos su pedido ' + o.id + '.\n\n' + lines + '\n\nSubtotal sin IVA: ' + this.money(o.subtotal) +
+      '\nIVA (' + (this.props.taxRate ?? 15) + '%): ' + this.money(o.tax) + '\nTotal: ' + this.money(o.total) + '\n\n' + ent + '\nPago: ' + o.payment +
+      (o.notes ? '\nNotas: ' + o.notes : '') + (o.promo ? '\n\nPromoción tiendas: este pedido incluye ' + o.promo + ' × ' + (o.promoGift || 'regalo promocional') + ' sin costo.' : '') + '\n\nGracias por tu compra.\nPython Vault';
+    return { email: c.email, subject, body, mailHref: 'mailto:' + c.email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body) };
+  }
+  renderVals() {
+    const s = this.state, flow = s.flow, today = this.addDays(0);
+    const inFlow = s.tab === 'order' && !!flow;
+    const items = this.draftItems(), t = this.totals(items);
+    const orderBoxes = items.filter(i => i.unit === 'c').reduce((a, i) => a + i.qty, 0);
+    const pr = this.promoCalc(s.draft.clientId, orderBoxes);
+    const promoOf = c => { const x = this.promoCalc(c.id, 0); return { promoLabel: x.into + ' de ' + x.th + ' cajas para promo', promoPct: (x.into / x.th * 100) + '%', boxes: x.prev }; };
+    const count = items.reduce((a, i) => a + i.qty, 0);
+    const sc = this.client(s.draft.clientId);
+    const steps = { client: 1, products: 2, delivery: 3, review: 4 };
+    const titles = { client: 'Cliente', products: 'Productos', delivery: 'Entrega', review: 'Confirmar pedido', done: 'Listo' };
+    const active = s.orders.filter(o => this.isActive(o));
+    const ordersToday = active.filter(o => o.createdAt === today);
+    const receivable = active.filter(o => !this.isPaid(o));
+    const q = s.clientQuery.trim().toLowerCase();
+    const matching = s.clients.filter(c => c.active !== false).filter(c => !q || (c.name + ' ' + c.email + ' ' + c.doc + ' ' + c.phone).toLowerCase().includes(q));
+    const cq = s.clientsQuery.trim().toLowerCase();
+    const backorder = this.props.allowBackorder ?? false;
+    const fieldDefs = [
+      ['name', 'Tienda o razón social *', 'Ej. Arena TCG Quito', 'text'], ['email', 'Email *', 'correo@ejemplo.com', 'email'],
+      ['phone', 'Teléfono', '099 123 4567', 'tel'], ['doc', 'Cédula / RUC', '1712345678', 'text'], ['address', 'Dirección', 'Calle, número, ciudad', 'text']
+    ];
+    const prodDefs = [
+      ['name', 'Nombre *', 'Ej. Fundas mate', 'text', '100%'], ['price', 'Precio paquete *', '7,50', 'decimal', 'calc(50% - 5px)'],
+      ['box', 'Precio caja x12', 'Auto: 12 × paquete', 'decimal', 'calc(50% - 5px)'], ['cost', 'Costo paquete *', '4,43', 'decimal', 'calc(50% - 5px)'],
+      ['pvp', 'PVP sugerido', '12,50', 'decimal', 'calc(50% - 5px)']
+    ];
+    const orderFilter = {
+      'Todos': () => true, 'Por despachar': o => o.status === 'pendiente', 'Por cobrar': o => this.isActive(o) && !this.isPaid(o),
+      'Entregados': o => o.status === 'entregado', 'Anulados': o => !this.isActive(o)
+    };
+    const filtered = s.orders.filter(orderFilter[s.orderFilter] || orderFilter['Todos']);
+    const lastO = s.orders.find(o => o.id === s.lastOrderId);
+    const dark = !inFlow && s.tab === 'home';
+    const tabColor = k => (s.tab === k ? (dark ? '#C9A24A' : '#8C6A22') : (dark ? '#8C8576' : '#8A8D91'));
+    const barByFlow = {
+      products: { show: true, left: count ? count + (count === 1 ? ' artículo' : ' artículos') : 'Agrega productos', right: count ? this.money(t.total) + '  →' : '', ok: count > 0, act: () => this.setState({ flow: 'delivery' }) },
+      delivery: { show: true, left: 'Revisar pedido', right: '→', ok: true, act: () => this.goReview() },
+      review: { show: true, left: 'Confirmar pedido', right: this.money(t.total), ok: count > 0, act: () => this.confirm() }
+    }[flow] || { show: false };
+    const hoy = s.draft.delivery === 'hoy';
+    const gift = s.products.find(p => p.id === s.settings.promoPid);
+    const days = s.lastBackup ? Math.floor((Date.now() - new Date(s.lastBackup).getTime()) / 86400000) : null;
+    return {
+      scrollRef: this.scrollRef, toast: s.toast, sbBg: dark ? '#0C0B09' : '#F3F1EB', sbColor: dark ? '#F2EDE2' : '#15171A', tabBg: dark ? '#0C0B09' : '#FFFFFF', tabBorder: dark ? '#2A261C' : '#E3E0D8',
+      inFlow, showTabs: !inFlow || flow === 'client' || flow === 'done', showSteps: !!steps[flow], showBack: ['products', 'delivery', 'review'].includes(flow),
+      tOrder: tabColor('order'), goOrder: () => this.startOrder(null),
+      isHome: !inFlow && s.tab === 'home', isOrders: !inFlow && s.tab === 'orders', isClients: !inFlow && s.tab === 'clients', isStock: !inFlow && s.tab === 'stock',
+      fClient: flow === 'client', fProducts: flow === 'products', fDelivery: flow === 'delivery', fReview: flow === 'review', fDone: flow === 'done',
+      flowTitle: titles[flow] || '', stepLabel: steps[flow] ? 'Nuevo pedido · Paso ' + steps[flow] + ' de 4' : 'Nuevo pedido', stepPct: ((steps[flow] || 4) / 4 * 100) + '%',
+      tHome: tabColor('home'), tOrders: tabColor('orders'), tClients: tabColor('clients'), tStock: tabColor('stock'),
+      goHome: () => this.setState({ tab: 'home', flow: null }), goOrders: () => this.setState({ tab: 'orders', flow: null, confirmCancel: null }),
+      goReceivables: () => this.setState({ tab: 'orders', flow: null, orderFilter: 'Por cobrar', confirmCancel: null }),
+      goClients: () => this.setState({ tab: 'clients', flow: null, clientsNew: false, editingClient: null, confirmRemove: null }),
+      goStock: () => this.setState({ tab: 'stock', flow: null, editingProduct: null }),
+      newOrder: () => this.startOrder(null),
+      goBack: () => { const prev = { client: null, products: 'client', delivery: 'products', review: 'delivery', done: null }[flow]; this.setState({ flow: prev, showNew: false }); },
+      todayLabel: new Date().toLocaleDateString('es-EC', { weekday: 'long', day: 'numeric', month: 'long' }),
+      ordersToday: ordersToday.length, pendingCount: active.filter(o => o.status === 'pendiente').length,
+      salesToday: this.money(ordersToday.reduce((a, o) => a + o.total, 0)),
+      ...(() => { const tt = this.totals(ordersToday.flatMap(o => o.items)); return { profitToday: this.money(tt.profit), marginToday: 'margen ' + this.pct(tt.margin) }; })(),
+      hasReceivable: receivable.length > 0, receivableTotal: this.money(receivable.reduce((a, o) => a + o.total, 0)),
+      receivableCount: receivable.length + (receivable.length === 1 ? ' pedido pendiente de pago' : ' pedidos pendientes de pago'),
+      lowStock: s.products.filter(p => p.stock < 12).map(p => ({ name: p.name, ...this.stockTag(p.stock) })),
+      hasLowStock: s.products.some(p => p.stock < 12),
+      recentOrders: s.orders.slice(0, 4).map(o => this.orderRow(o)),
+      orderFilters: Object.keys(orderFilter).map(l => ({ label: l, ...this.chip(s.orderFilter === l), onClick: () => this.setState({ orderFilter: l, confirmCancel: null }) })),
+      orderRows: filtered.map(o => this.orderRow(o)), noOrders: filtered.length === 0,
+      clientsQuery: s.clientsQuery, onClientsQuery: e => this.setState({ clientsQuery: e.target.value }),
+      clientsNew: s.clientsNew, showClientsList: !s.clientsNew,
+      clientFormTitle: s.editingClient ? 'Editar cliente' : 'Crear cliente', clientSaveLabel: s.editingClient ? 'Guardar cambios' : 'Guardar cliente',
+      openClientsNew: () => this.setState({ clientsNew: true, editingClient: null, form: this.emptyForm(), errors: {}, confirmRemove: null }),
+      cancelClientsNew: () => this.setState({ clientsNew: false, editingClient: null, errors: {} }),
+      clientFilters: ['Activos', 'De baja'].map(l => ({ label: l + ' (' + s.clients.filter(c => (c.active !== false) === (l === 'Activos')).length + ')', ...this.chip(s.clientsFilter === l), onClick: () => this.setState({ clientsFilter: l, confirmRemove: null }) })),
+      ...(() => { const rows = s.clients.filter(c => (c.active !== false) === (s.clientsFilter === 'Activos')).filter(c => !cq || (c.name + ' ' + c.email + ' ' + c.doc).toLowerCase().includes(cq)).map(c => {
+        const n = s.orders.filter(o => o.clientId === c.id && this.isActive(o)).length, po = promoOf(c), isOn = c.active !== false, conf = s.confirmRemove === c.id;
+        return { name: c.name, email: c.email, initials: this.initials(c.name), meta: n + (n === 1 ? ' pedido' : ' pedidos') + ' · ' + po.boxes + (po.boxes === 1 ? ' caja' : ' cajas') + (c.phone ? ' · ' + c.phone : ''),
+          promoLabel: po.promoLabel, promoPct: po.promoPct, active: isOn, inactive: !isOn, opacity: isOn ? 1 : 0.7, confirming: conf, showActions: !conf,
+          onEdit: () => this.setState({ clientsNew: true, editingClient: c.id, errors: {}, confirmRemove: null, form: { name: c.name, email: c.email, phone: c.phone || '', doc: c.doc || '', address: c.address || '' } }),
+          onOrder: () => this.startOrder(c.id), onAskRemove: () => this.setState({ confirmRemove: c.id }), onCancel: () => this.setState({ confirmRemove: null }),
+          onConfirm: () => { this.setState(st => ({ clients: st.clients.map(x => x.id === c.id ? { ...x, active: false } : x), confirmRemove: null })); this.showToast(c.name + ' dado de baja'); },
+          onRestore: () => { this.setState(st => ({ clients: st.clients.map(x => x.id === c.id ? { ...x, active: true } : x) })); this.showToast(c.name + ' reactivado'); } };
+      }); return { clientRows: rows, noClients: rows.length === 0 }; })(),
+      stockRows: s.products.map(p => { const net = p.price / (1 + this.rate()), editing = s.editingProduct === p.id;
+        return { name: p.name, priceLabel: this.money(p.price), boxLabel: this.money(p.box), costLabel: this.money(p.cost), stock: p.stock, stockColor: this.stockTag(p.stock).stockColor,
+          margin: this.pct((net - p.cost) / net), units: (p.stock * 100).toLocaleString('es-EC') + ' fundas',
+          decLabel: 'Quitar un paquete de ' + p.name, incLabel: 'Agregar un paquete de ' + p.name,
+          editing, notEditing: !editing, onEdit: () => this.editProduct(p),
+          onInc: () => this.adjustStock(p.id, 1), onDec: () => this.adjustStock(p.id, -1) }; }),
+      canAddProduct: s.editingProduct === null, newProductOpen: s.editingProduct === 'new',
+      openNewProduct: () => this.setState({ editingProduct: 'new', prodForm: this.emptyProdForm(), prodErrors: {} }),
+      cancelProduct: () => this.setState({ editingProduct: null, prodErrors: {} }), saveProduct: () => this.saveProduct(),
+      prodFields: prodDefs.map(([k, label, ph, mode, width]) => ({ label, placeholder: ph, mode, width, value: s.prodForm[k], error: s.prodErrors[k] || '', border: s.prodErrors[k] ? '#B42318' : '#E3E0D8',
+        onChange: e => { const v = e.target.value; this.setState(st => ({ prodForm: { ...st.prodForm, [k]: v }, prodErrors: { ...st.prodErrors, [k]: '' } })); } })),
+      promoDesc: 'Cada ' + s.settings.promoBoxes + ' cajas acumuladas por una tienda, el pedido incluye ' + (gift ? '1 paquete de ' + gift.name.toLowerCase() : 'un regalo') + ' sin costo.',
+      promoBoxesInc: () => this.setSettings({ promoBoxes: Math.min(20, s.settings.promoBoxes + 1) }),
+      promoBoxesDec: () => this.setSettings({ promoBoxes: Math.max(1, s.settings.promoBoxes - 1) }),
+      promoChips: s.products.map(p => ({ label: p.name, ...this.chip(s.settings.promoPid === p.id), onClick: () => this.setSettings({ promoPid: p.id }) })),
+      promoUnset: !gift,
+      backupLabel: days === null ? 'Aún no has exportado un respaldo' : 'Último respaldo: ' + (days === 0 ? 'hoy' : days === 1 ? 'ayer' : 'hace ' + days + ' días'),
+      backupColor: days === null || days > 7 ? '#B42318' : '#8C6A22',
+      exportBackup: () => this.exportBackup(), importBackup: e => this.importBackup(e),
+      showClientSearch: !s.showNew, showNew: s.showNew,
+      clientQuery: s.clientQuery, onClientQuery: e => this.setState({ clientQuery: e.target.value }),
+      matchingClients: matching.map(c => ({ name: c.name, email: c.email, initials: this.initials(c.name), promoLabel: promoOf(c).promoLabel, onClick: () => this.pickClient(c) })),
+      noClientMatch: matching.length === 0,
+      openNew: () => this.setState(st => ({ showNew: true, editingClient: null, errors: {}, form: { ...this.emptyForm(), name: /@/.test(st.clientQuery) ? '' : st.clientQuery, email: /@/.test(st.clientQuery) ? st.clientQuery : '' } })),
+      cancelNew: () => this.setState({ showNew: false, errors: {} }),
+      saveClient: () => this.saveClient(),
+      formFields: fieldDefs.map(([k, label, ph, type]) => ({ label, placeholder: ph, type, value: s.form[k], error: s.errors[k] || '', border: s.errors[k] ? '#B42318' : '#E3E0D8',
+        onChange: e => { const v = e.target.value; this.setState(st => ({ form: { ...st.form, [k]: v }, errors: { ...st.errors, [k]: '' } })); } })),
+      selClient: { name: sc.name, email: sc.email, phone: sc.phone || 'Sin teléfono', initials: this.initials(sc.name) },
+      changeClient: () => this.setState({ flow: 'client' }),
+      productRows: s.products.map(p => {
+        const used = this.packsUsed(p.id, s.draft.items), left = p.stock - used, blocked = !backorder && p.stock <= 0;
+        const opt = (u, label, price, need) => { const qty = s.draft.items[p.id + '|' + u] || 0;
+          return { label, priceLabel: this.money(price), qty, hasQty: qty > 0, noQty: qty === 0, incColor: !backorder && left < need ? '#5A5D61' : '#FFFFFF',
+            incLabel: 'Agregar ' + label.toLowerCase() + ' de ' + p.name, decLabel: 'Quitar ' + label.toLowerCase() + ' de ' + p.name,
+            onInc: () => this.changeQty(p.id, u, 1), onDec: () => this.changeQty(p.id, u, -1) }; };
+        return { name: p.name, pvpLabel: p.pvp ? 'PVP sugerido ' + this.money(p.pvp) : 'Sin PVP sugerido', ...this.stockTag(left), opacity: blocked ? 0.5 : 1, border: used > 0 ? '#8C6A22' : '#FFFFFF',
+          options: [opt('p', 'Paquete x100', p.price, 1), opt('c', 'Caja x12 paquetes', p.box, 12)] };
+      }),
+      pickHoy: () => this.setDraft({ delivery: 'hoy' }), pickDesp: () => this.setDraft({ delivery: 'despacho' }),
+      hoyBorder: hoy ? '#8C6A22' : '#FFFFFF', despBorder: hoy ? '#FFFFFF' : '#8C6A22',
+      hoyRadio: hoy ? '7px solid #8C6A22' : '2px solid #C9C5BB', despRadio: hoy ? '2px solid #C9C5BB' : '7px solid #8C6A22',
+      isDespacho: !hoy,
+      dateChips: [1, 2, 3, 4, 5, 6, 7].map(n => { const iso = this.addDays(n), d = this.parse(iso);
+        return { dow: d.toLocaleDateString('es-EC', { weekday: 'short' }).replace('.', ''), day: d.getDate(), ...this.chip(s.draft.date === iso), onClick: () => this.setDraft({ date: iso }) }; }),
+      draftAddress: s.draft.address, onAddress: e => this.setDraft({ address: e.target.value }),
+      payChips: ['Efectivo', 'Transferencia', 'Tarjeta', 'Crédito'].map(l => ({ label: l, ...this.chip(s.draft.payment === l), onClick: () => this.setDraft({ payment: l }) })),
+      isCredit: s.draft.payment === 'Crédito',
+      draftNotes: s.draft.notes, onNotes: e => this.setDraft({ notes: e.target.value }),
+      deliveryError: s.deliveryError,
+      reviewItems: items.map(i => ({ qty: i.qty, name: i.name, line: this.money(i.qty * i.price) })),
+      promoName: this.promoName(), promoBoxes: pr.th, promoWon: pr.earned > 0, promoEarned: pr.earned,
+      promoTitle: pr.earned > 0 ? 'Promo desbloqueada' : 'Promo tiendas', promoCount: (pr.earned > 0 && pr.into === 0 ? pr.th : pr.into) + ' / ' + pr.th + ' cajas',
+      promoPct: ((pr.earned > 0 && pr.into === 0 ? pr.th : pr.into) / pr.th * 100) + '%',
+      promoText: pr.earned > 0 ? 'Este pedido incluye ' + pr.earned + ' × ' + this.promoName() + ' de regalo.' : 'Con ' + pr.left + (pr.left === 1 ? ' caja' : ' cajas') + ' más recibe ' + this.promoName() + ' de regalo.',
+      subLabel: this.money(t.sub), profitLabel: this.money(t.profit), marginLabel: this.pct(t.margin), taxName: 'IVA ' + (this.props.taxRate ?? 15) + '%', taxLabel: this.money(t.tax), totalLabel: this.money(t.total),
+      deliveryLabel: hoy ? 'Entrega hoy' : 'Despacho ' + this.dateLabel(s.draft.date),
+      deliverySub: (hoy ? '' : s.draft.address + ' · ') + 'Pago: ' + s.draft.payment + (s.draft.notes ? ' · ' + s.draft.notes : ''),
+      sendMail: s.sendMail ? 'true' : 'false', toggleMail: () => this.setState(st => ({ sendMail: !st.sendMail })),
+      mailTrack: s.sendMail ? '#8C6A22' : '#C9C5BB', mailKnob: s.sendMail ? '23px' : '3px',
+      done: lastO ? { id: lastO.id, total: this.money(lastO.total), status: lastO.status === 'pendiente' ? 'Por despachar · ' + this.dateLabel(lastO.date) : 'Entregado hoy',
+        mailWanted: !!(lastO.mailWanted ?? lastO.mailSent), ...this.mail(lastO) } : { mailWanted: false },
+      showCartBar: !!barByFlow.show, barLeft: barByFlow.left, barRight: barByFlow.right,
+      barBg: barByFlow.ok ? '#8C6A22' : '#A9ADA9',
+      barAction: () => { if (barByFlow.ok && barByFlow.act) barByFlow.act(); }
+    };
+  }
+}
+</script>
+
+
+</body></html>
